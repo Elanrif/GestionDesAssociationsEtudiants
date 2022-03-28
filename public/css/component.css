@@ -1,0 +1,119 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap');
+*{
+ --bisque-- : #C4E0F9;
+ --blanc--: #FFFBFC ;  /*#FFFBFC ;*/
+ --bleu_ciel--: #449DD1 ; 
+ --noir--: #00072D ;
+ --bleu--: #232ED1;
+
+ font-family: 'Poppins', sans-serif;
+ /* font-family: 'Lobster', cursive; */
+}
+
+
+
+.btn1{ 
+  border : solid 1px blue ; 
+  background-color: blue;
+  color:white ; 
+  float:right;
+  margin-right:100px;
+}
+.liens{
+  background-color: var(--noir--);
+  color:var(--blanc--);
+  padding-top:50px;
+}
+
+
+#newsletter{ 
+  background-color: var(--bisque--);
+  color:var(--noir--);
+}
+
+.index1{ 
+  z-index:-1; 
+  
+}
+.card_1{ 
+  box-shadow: 12px 12px 2px 1px var(--bisque--);
+}
+
+.index2{
+  z-index:1;
+}
+
+/* pour l'image en linear-gradient*/
+.linear{ 
+  background: linear-gradient(rgb(0,0,0,0.5),#0676d1) , url(../images/esma.jpg) center / cover no-repeat  ;
+  height:60vh;
+}
+
+.owen{ 
+  background-color: var(--bisque--);
+}
+.lineaire { 
+   background: linear-gradient(rgba(38, 35, 66, 0.5),#0e0324) , url(../images/fete.jpeg) center / cover no-repeat  ;
+  height:100vh;
+  border-radius:74% 26% 94% 6% / 4% 66% 34% 96% ;
+}
+.linear img { 
+  position : relative ; 
+  top:10px ; 
+  right: 15px ;
+  left:20px;
+   height:200px;
+   opacity:0.2; 
+   border-radius: 50%;
+   
+}
+
+/*page admin */
+.admin{
+   height:100vh;
+}
+
+.admin-s{
+  height:100vh;
+
+}
+/* */
+.voix{
+  margin-left:300px;
+  margin-top:50px;
+}
+
+
+@media screen and (max-width:970px) {
+
+  .voix{ 
+    margin-left:0px;
+   
+  }
+  .voi-x{
+    margin-top:100px;
+  }
+    #newsletter{ 
+        padding-top:0px;
+        margin-left:0px;
+    }
+    .forms{ 
+      width:70%;
+    }
+   .admin-s{
+     height:50px;
+   
+   }
+    .togle > * {
+      margin-bottom: 5px;
+      margin-top:5px;
+    }
+   .lineaire{ 
+     border-radius: 87% 13% 44% 56% / 28% 79% 21% 72% ;
+     visibility:hidden ;
+     height:0px;
+     
+   }
+
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Association;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/default-laravel', function () {
-    return view('welcome');
+    return view('default-laravel');
 });
+
+Route::get('/',function(){ 
+    $associations = Association::all() ; 
+    return view('welcome',compact('associations')) ; 
+});
+
+
 
 
