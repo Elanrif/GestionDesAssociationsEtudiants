@@ -8,7 +8,7 @@
                 <div class="card-header fs-5" >{{ __('Connexion') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -56,9 +56,10 @@
                                 <button type="submit" class="btn fs-5 btn-primary">
                                     {{ __('Se connecter') }}
                                 </button>
+                               
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link fs-5" href="{{ route('password.request') }}">
+                                @if (Route::has('password.request')) <!-- # = password.request --> 
+                                    <a class="btn btn-link fs-5" href="#">
                                         {{ __('Mot de passe oublié ?') }}
                                     </a>
                                 @endif

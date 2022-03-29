@@ -34,9 +34,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
-                     <li class="nav-item bg-dark rounded-3 fs-4">
+                     <li class="nav-item  rounded-3 fs-2">
                                    
-                         <a class="nav-link fw-bold text-light btn-outline-secondary rounded-3 {{request()->is('/') ? 'active':''}}" aria-current="page" href="/"><i class="fa-solid fa-right-from-bracket me-2"></i>Acceuil</a>
+                         <a class="nav-link fw-bold text-dark btn-outline-secondary rounded-3 {{request()->is('/') ? 'active':''}}" aria-current="page" href="/"><i class="fa-solid fa-right-from-bracket me-2"></i>Acceuil</a>
                       </li>
                     </ul>
 
@@ -79,7 +79,7 @@
             </div>
         </nav>
 
-        <main class="py-5">
+        <main class="py-0">
           
                 @yield('content')
    

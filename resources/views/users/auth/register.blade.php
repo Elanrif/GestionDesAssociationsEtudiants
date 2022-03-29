@@ -3,14 +3,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card"> 
                 <div class="card-header text-primary fs-5" >{{ __('Veuillez remplir le formulaire d\'inscription ') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ url('register') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -40,13 +40,15 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> 
 
+                       
+     
                           <div class="row mb-3">
                             <label for="code_apogée" class="col-md-4 fs-3 col-form-label text-md-end">{{ __('Code apogée') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code_apogée" type="number" class="form-control fs-4 @error('code_apogée') is-invalid @enderror" name="code_apogée" value="{{ old('code_apogée') }}" required autocomplete="code_apogée" autofocus placeholder="saisr votre code etudiant">
+                                <input id="code_apogée" type="number" class="form-control fs-4 @error('code_apogée') is-invalid @enderror" name="code_apogée" value="{{ old('code_apogée') }}" required autocomplete="code_apogée" autofocus placeholder="saisir votre code etudiant">
 
                                 @error('code_apogée')
                                     <span class="invalid-feedback" role="alert">
@@ -55,12 +57,12 @@
                                 @enderror
                             </div>
                         </div>
-
+                    
                           <div class="row mb-3">
                             <label for="num_tel" class="col-md-4 fs-3 col-form-label text-md-end">{{ __('Num Tel') }}</label>
 
                             <div class="col-md-6">
-                                <input id="num_tel" type="number" class="form-control fs-4 @error('num_tel') is-invalid @enderror" name="num_tel" value="{{ old('num_tel') }}" required autocomplete="num_tel" autofocus placeholder="saisir votre numero">
+                                <input id="num_tel" type="tel" class="form-control fs-4 @error('num_tel') is-invalid @enderror" name="num_tel" value="{{ old('num_tel') }}" required autocomplete="num_tel" autofocus placeholder="saisir votre numero">
 
                                 @error('num_tel')
                                     <span class="invalid-feedback" role="alert">
@@ -69,7 +71,31 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!--
+                                <div class="row mb-3">
+                                 <label for="exampleDataList" class="col-form-label fs-3 text-md-end col-md-4">Filière</label>
+                                 <div class="col-md-6">
+                                 <input list="datalistOptions" id="exampleDataList" placeholder="filière..." class="form-control fs-4 @error('filiere') is-invalid @enderror" name="filiere" value="{{ old('filiere') }}" required>
+                                 <datalist id="datalistOptions">
+                                   <option value="SMAI">
+                                   <option value="SVT">
+                                   <option value="SMPC">
+                                   <option value="SMA">
+                                   <option value="SMI">
+                                   <option value="SVI">
+                                   <option value="STU">
+                                   <option value="SMP">
+                                   <option value="SMC">
+                                 </datalist>  
+                                  @error('filiere')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror   
+                                 </div> 
+                             </div>
+                            -->
+  
                          <div class="row mb-3">
                             <label for="filiere" class="col-md-4 fs-3 col-form-label text-md-end">{{ __('filiere') }}</label>
 
@@ -93,6 +119,8 @@
                                 @enderror
                             </div>
                          </div>
+
+                     
                      
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 fs-3 col-form-label text-md-end">{{ __('Addresse email') }}</label>

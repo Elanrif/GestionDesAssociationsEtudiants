@@ -2,6 +2,8 @@
 
 use App\Models\Association;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,14 @@ Route::get('/default-laravel', function () {
 Route::get('/',function(){ 
     $associations = Association::all() ; 
     return view('welcome',compact('associations')) ; 
+});
+
+Route::group(['namespace' => 'Auth'], function() { 
+    Route::get('register', [RegisterController::class,'create'])->name('register') ; 
+    Route::post('register',[RegisterController::class , 'store']);
+    Route::get('login', [LoginController::class,'create'])->name('login') ; 
+    Route::post('login', [LoginController::class,'store']) ; 
+    Route::get('logout', [loginController::class,'destroy'])->name('logout') ; 
 });
 
 

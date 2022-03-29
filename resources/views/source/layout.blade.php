@@ -50,11 +50,11 @@
         @guest
         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-         <button class="btn btn-outline-success me-3"> <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user me-2"></i>s'inscrire</a></button>
+         <button class="btn btn-outline-success me-3"> <a class="nav-link active" aria-current="page" href="{{ route('register') }}"><i class="fas fa-user me-2"></i>s'inscrire</a></button>
         </li>
         
          <li class="nav-item">
-          <button class="btn btn-outline-primary me-3"><a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-check me-2"></i>se connecter</a></button>
+          <button class="btn btn-outline-primary me-3"><a class="nav-link active" aria-current="page" href="{{ route('login') }}"><i class="fas fa-user-check me-2"></i>se connecter</a></button>
         </li>
         </ul>
         @endif
