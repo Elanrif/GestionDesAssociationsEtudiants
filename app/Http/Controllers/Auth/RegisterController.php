@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -26,5 +27,11 @@ class RegisterController extends Controller
             'code_apogée'=>['required','numeric','unique:users','digits:8'],
             'filiere' =>['required','string'],
             ]);
+
+            User::create($request->all()) ; 
+
+            return back() ; 
+            
+           //  return redirect()->route('users.home')->with('success','Bienvenu dans votre page d\'acceuil.');
     }
 }
