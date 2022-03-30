@@ -2,10 +2,7 @@
 @section('content')
  
 <!-- Test--> 
-@auth
 
-<div class="text-primary"> Bonjour {{ Auth()->user->nom }}</div>
-@endauth
 <!-- image avec linear gradient -->
 
 

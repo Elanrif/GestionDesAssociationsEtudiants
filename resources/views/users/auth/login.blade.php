@@ -9,6 +9,13 @@
     <div class="col-md-7">
     <label for="email" class="form-label fw-bold">Email</label>
     <input type="email" name="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="saisir votre email">
+      @if ($message = Session::get('danger'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong class="fs-5">Whoops !</strong> <span class="fw-bold">{{ $message }}</span>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+  
      @error('email')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -19,32 +26,23 @@
   <div class="col-md-7">
     <label for="password" class="form-label fw-bold">Mot de passe</label>
     <input type="password" name="password" value="{{ old('password') }}" required class="form-control @error('password') is-invalid @enderror"  id="password" placeholder="saisir votre mot de passe">
-     @error('password')
-          <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-           </span>
-     @enderror
   </div>
   
-  <div class="col-md-7 me-2">
-              
+  <div class="col-md-7 me-2">          
            <div class="form-check">
-                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                    <label class="form-check-label fs-5" for="remember">
-                            {{ __('Se rappeler de moi ') }}
-                    </label>
-           </div>
-    
+           <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+           <label class="form-check-label fs-5" for="remember">
+                    {{ __('Se rappeler de moi ') }}
+           </label>
+      </div>
   </div>
    
    <div class="col-md-7 py-2">
-
       <button type="submit" class="btn d-inline me-2  btn-primary">
                                     {{ __('Se connecter') }}
                                 </button>
                         
-                    <button type="button" class="btn d-inline ms-2 btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="reset">Annuler</button> <br>
+                    <button type="button" class="btn d-inline ms-2 btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="reset">Rénitialiser</button> <br>
 
                     <!-- # = password.request --> 
                                     <a class="btn btn-link mt-2 " href="#">
@@ -63,8 +61,8 @@
        Êtes-vous sur de Rénitialiser tout les champs déjà rempli ! 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
-        <button type="reset" class="btn btn-info" data-bs-dismiss="modal">Oui</button>
+        <button type="reset" class="btn btn-info px-3" onclick="history.go(0)" data-bs-dismiss="modal">Oui</button>
+        <button type="button" class="btn btn-danger px-3"  data-bs-dismiss="modal">Non</button>
       </div>
     </div>
   </div>

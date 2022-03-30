@@ -59,16 +59,12 @@
         @guest
         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-         <button class="btn btn-outline-success fw-bold me-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a class="nav-link active" aria-current="page" href="{{ route('register') }}"><i class="fas fa-user fw-bold me-2"></i>s'inscrire</a></button> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
+        <a class="nav-link btn btn-outline-success {{request()->is('register') ? 'active':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user fw-bold me-2"></i>s'inscrire</a> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
         </li>
         
          <li class="nav-item">
-          <button class="btn btn-outline-primary fw-bold me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"> <a class="nav-link active" aria-current="page" href="?#"><i class="fas fa-user-check fw-bold me-2"></i>se connecter</a></button>
-           @if ($message = Session::get('success'))
-        <div class="alert alert-danger">
-            <p class="fw-bold">{{ $message }}</p>
-        </div>
-    @endif
+         <a class="nav-link btn btn-outline-primary {{request()->is('login') ? 'active':''}} fw-bold me-3" aria-current="page" href="{{ route('login') }}"> <i class="fas fa-user-check fw-bold me-2"></i>se connecter</a>
+        
         </li>
         </ul>
         @endif
@@ -76,7 +72,11 @@
         @auth
          <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-         <button class="btn btn-outline-primary me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a class="nav-link active fs-4" aria-current="page" href="#"> <i class="fa-solid fa-user-shield me-2"></i>compte</a></button>
+         
+         <a class="nav-link active fs-4" aria-current="page" href="{{ route('home') }}">
+          <i class="fas fa-door-open text-dark fs-2"></i>
+         <img class="me-2" src="{{ asset('images/assurance_association_sportive.jpg') }}" alt="" style="border-radius:50%;height:70px; width:70px;">   
+        </a>
         </li>
      
         </ul>

@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Acceuil') }}</title>
 
     <!-- Scripts -->
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -20,79 +21,86 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  
+  <!-- Modal de deconnexion -->
 
-  <nav class="index2 navbar navbar-expand-lg navbar-light bg-light" style="height:100px;">
-  <div class="container-fluid fs-4">
-    <a class="navbar-brand ps-5" href="/">
+
+ 
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal001" tabindex="-1" aria-labelledby="exampleModalLabel001" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel001"> Attention</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous vous déconnecter du site LES ASSOCIATIONS ETUDIANTS DE LA FACULTÉS DE SCIENCES DE TETOUAN ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <a type="button" href="{{ route('logout') }}" class="btn btn-primary px-4 fw-bold">OK</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- fin Modal --> 
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid px-4" style="padding:auto 100px;">
+    <a class="navbar-brand ps-4 ms-4" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedConten01t" aria-controls="navbarSupportedConten01t" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse bg-light Z-index-3 ps-3" id="navbarSupportedContent">
-      <ul class="index navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item px-3">
-          <a class="nav-link btn-outline-primary rounded-2 {{request()->is('/') ? 'active':''}} " aria-current="page" href="/">Acceuil</a>
+    <div class="collapse navbar-collapse " id="navbarSupportedConten01t" style="margin:auto 100px;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="us-ser nav-item mx-5 px-4">
+          <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-home-alt me-2 fs-4"></i>Acceuil</a>
         </li>
-        <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
-          @if(auth()->check() AND auth()->user()->role == 'admin')
-        <li class="nav-item px-3">
-          <a class="nav-link btn-outline-primary rounded-2 " href="#"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+        <li class="nav-item mx-5 px-4">
+          <a class="nav-link" href="#">Link</a>
         </li>
-        @endif
-        <li class="nav-item px-3">
-          <a class="nav-link btn-outline-primary rounded-2 {{request()->is('#1') ? 'active':''}}" href="#1">Presentation</a>
-        </li>
-       
-
-        <li class="nav-item dropdown px-3">
-          <a class="nav-link btn-outline-primary rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Associations
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           
-            <li><a class="dropdown-item" href="#">RIEN</a></li>
-           
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown02">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-       
+      
       </ul>
-
-  
-      <form class="d-flex me-5 pe-5">
+      <div class="pe-5" style="margin-right:80px;">
+      <form class="d-flex me-3 pe-3" style="margin-right:200px;">
+      
         @guest
-        <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-         <button class="btn btn-outline-success {{request()->is('register') ? 'active':''}} fw-bold me-3 "><a class="nav-link active " aria-current="page" href="{{ route('register') }}"><i class="fas fa-user fw-bold me-2"></i>s'inscrire</a></button> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
-        </li>
-        
-         <li class="nav-item">
-          <button class="btn btn-outline-primary  {{request()->is('login') ? 'active':''}} fw-bold me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"> <a class="nav-link active" aria-current="page" href="{{ route('login') }}"><i class="fas fa-user-check fw-bold me-2"></i>se connecter</a></button>
-        </li>
-
-        </ul>
-        @endif
-
+        <a href="{{ route('register') }}" class="btn mx-2 btn-outline-info {{ request()->is('register/create')? 'active':'' }} fw-bold"> S'inscrire </a>
+        <a href="{{ route('login') }}"  class="btn btn-outline-primary {{ request()->is('login')? 'active':'' }} fw-bold"> Se connecter </a>
+          
+        @endguest
         @auth
-         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-         <button class="btn btn-outline-danger me-3"><a class="nav-link active " aria-current="page" href="{{ route('logout') }}"> <i class="fa-solid fa-user-shield me-2"></i>Deconnexion</a></button>
-        </li>
-     
-        </ul>
-        @endif
-        
+        <a href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal001" class="btn btn-outline-danger fw-bold"> Deconnexion </a>
+        @endauth
       </form>
+      </div>
     </div>
   </div>
 </nav>
-        <main class="py-0">
-          
-                @yield('content')
-   
-        </main>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9"> <hr>
+         @yield('content')
+           </div>
     </div>
-     
+  </div>
+ 
 </body>
 </html>

@@ -4,52 +4,46 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
+
+     public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     public function create() { 
 
         return view('users.auth.login') ; 
     }
 
-    public function store(Request $request)
+    public function store()
     { 
 
-          $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        // si l'email de l'utilisateur pris par request est égale a email d'un utilisatuer en base de donnée on prend le premier : et puisque les email unique donc c'est bien lui 
+    $user = User::where('email',request('email'))->first() ;
+        
+    if($user){ 
+      if(request('password') == $user->password){ //verifie si le mot de passe pris est == aux mot de passe de l'utilisateur avec l\'email saisie
 
-        $credentiels = $request->validate([
-            'nom' => [ 'required','email'],
-            'password' => ['required'],
-        ]);
+        if($user->active == 1) { // pour activer ou désactiver le compte 
 
-         if (Auth::attempt($credentials)) {
+            auth()->login($user) ; 
 
-            $request->session()->regenerate();
- 
-            return redirect()->intended('home');
-        }
-        elseif(Auth::attempt($credentiels)){
-
-            $request->session()->regenerate(); 
-
-            return redirect()->intended('home') ; 
+          return redirect()->home(); 
         }
 
-
-       if(auth()->attempt(['nom'=>request('nom'),'password'=>request('password')])){
-
-            return redirect()->route('home') ;
-        } 
-        elseif(auth()->attempt(['email'=>request('email'),'password'=>request('password')])){ 
-
-            return redirect()->route('home');
-        }
-
-        return redirect()->route('source.layout')->with('succes','Whoops cliquez sur le boutton preçedent ! ') ; 
+        return redirect()->route('login')->with('danger','votre compte a été désactivé pour le moment') ;
+         
+      }
+      return back()->with('danger','Ces informations d\'identification ne corresponds pas à nos enregistrements') ; 
+    }
+      
+        return back()->with('danger','Ces informations d\'identification ne correspondent pas à nos enregistrements.') ;
     }
 
     public function logout() { 
