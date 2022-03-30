@@ -24,7 +24,7 @@ Route::get('/default-laravel', function () {
 Route::get('/',function(){ 
     $associations = Association::all() ; 
     return view('welcome',compact('associations')) ; 
-});
+})->name('welcome');
 
 Route::get('/home',[HomeController::class,'index'])->name('home') ; 
 

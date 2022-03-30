@@ -9,15 +9,10 @@
     <link rel="stylesheet" href="{{asset('css/component.css')}}">
 </head>
 <body>
-      
 
+<!-- Modal je ne sais pas pourquoi mais les modals ont besoi de lien '?#'pour bien marcher . donc je vais dans la ou j'utilise et je fais ce lien <se connecter> et <deconnecter> -->
+  
 
-<!-- Modal Modal1 -->
-
-
-        @include('../users/auth/register')
-      
-        @include('../users/auth/login')
 <!-- finModal --> 
 
    <!--header-->
@@ -59,16 +54,21 @@
        
       </ul>
 
-      
+  
       <form class="d-flex me-5 pe-5">
         @guest
         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-         <button class="btn btn-outline-success me-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user me-2"></i>s'inscrire</a></button>
+         <button class="btn btn-outline-success fw-bold me-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a class="nav-link active" aria-current="page" href="{{ route('register') }}"><i class="fas fa-user fw-bold me-2"></i>s'inscrire</a></button> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
         </li>
         
          <li class="nav-item">
-          <button class="btn btn-outline-primary me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-check me-2"></i>se connecter</a></button>
+          <button class="btn btn-outline-primary fw-bold me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"> <a class="nav-link active" aria-current="page" href="?#"><i class="fas fa-user-check fw-bold me-2"></i>se connecter</a></button>
+           @if ($message = Session::get('success'))
+        <div class="alert alert-danger">
+            <p class="fw-bold">{{ $message }}</p>
+        </div>
+    @endif
         </li>
         </ul>
         @endif

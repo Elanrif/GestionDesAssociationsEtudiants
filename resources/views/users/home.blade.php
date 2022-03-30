@@ -20,7 +20,7 @@
         </div>
     @endif
                          
-                   {{__('Bonjour')}} <strong class="text-primary"> {{Auth::user()->name}}</strong> {{ __('BIENVENU!') }}
+                   {{__('Bonjour')}} <strong class="text-primary"> Bonjour</strong> {{ __('BIENVENU!') }}
                 </div>
             </div>
         </div>

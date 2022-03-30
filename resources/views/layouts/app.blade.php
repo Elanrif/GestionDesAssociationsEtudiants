@@ -20,65 +20,73 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                   <!-- {{ config('app.name', 'Acceuil') }} -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+  
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+  <nav class="index2 navbar navbar-expand-lg navbar-light bg-light" style="height:100px;">
+  <div class="container-fluid fs-4">
+    <a class="navbar-brand ps-5" href="/">
+    <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-light Z-index-3 ps-3" id="navbarSupportedContent">
+      <ul class="index navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+          <a class="nav-link btn-outline-primary rounded-2 {{request()->is('/') ? 'active':''}} " aria-current="page" href="/">Acceuil</a>
+        </li>
+        <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
+          @if(auth()->check() AND auth()->user()->role == 'admin')
+        <li class="nav-item px-3">
+          <a class="nav-link btn-outline-primary rounded-2 " href="#"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+        </li>
+        @endif
+        <li class="nav-item px-3">
+          <a class="nav-link btn-outline-primary rounded-2 {{request()->is('#1') ? 'active':''}}" href="#1">Presentation</a>
+        </li>
+       
 
-                     <li class="nav-item  rounded-3 fs-2">
-                                   
-                         <a class="nav-link fw-bold text-dark btn-outline-secondary rounded-3 {{request()->is('/') ? 'active':''}}" aria-current="page" href="/"><i class="fa-solid fa-right-from-bracket me-2"></i>Acceuil</a>
-                      </li>
-                    </ul>
+        <li class="nav-item dropdown px-3">
+          <a class="nav-link btn-outline-primary rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Associations
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           
+            <li><a class="dropdown-item" href="#">RIEN</a></li>
+           
+          </ul>
+        </li>
+       
+      </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link fw-bold fs-5" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
-                                </li>
-                            @endif
+  
+      <form class="d-flex me-5 pe-5">
+        @guest
+        <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+         <button class="btn btn-outline-success {{request()->is('register') ? 'active':''}} fw-bold me-3 "><a class="nav-link active " aria-current="page" href="{{ route('register') }}"><i class="fas fa-user fw-bold me-2"></i>s'inscrire</a></button> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
+        </li>
+        
+         <li class="nav-item">
+          <button class="btn btn-outline-primary  {{request()->is('login') ? 'active':''}} fw-bold me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"> <a class="nav-link active" aria-current="page" href="{{ route('login') }}"><i class="fas fa-user-check fw-bold me-2"></i>se connecter</a></button>
+        </li>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link fw-bold fs-5" href="{{ route('register') }}">{{ __('S\'inscrire') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown me-3 fs-4">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->nom  }} {{ Auth::user()->prenom }}
-                                </a>
+        </ul>
+        @endif
 
-                                <div class="dropdown-menu dropdown-menu-end bg-danger " aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item fw-bold text-white " href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Se déconnecter') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+        @auth
+         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+         <button class="btn btn-outline-danger me-3"><a class="nav-link active " aria-current="page" href="{{ route('logout') }}"> <i class="fa-solid fa-user-shield me-2"></i>Deconnexion</a></button>
+        </li>
+     
+        </ul>
+        @endif
+        
+      </form>
+    </div>
+  </div>
+</nav>
         <main class="py-0">
           
                 @yield('content')

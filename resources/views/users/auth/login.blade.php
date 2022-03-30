@@ -1,18 +1,13 @@
+@extends('layouts.app')
 
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop1Label" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdrop1Label">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+@section('content')
+
 <!-- le body du modal -->
  <div class="container">
-<form class="row g-3 d-flex justify-content-center" method="POST" action="{{ route('login') }}">
+<form class="row g-3 d-flex justify-content-center mx-5 mt-5" method="post" action="{{ route('login') }}">
     @csrf
     <div class="col-md-7">
-    <label for="email" class="form-label">Email</label>
+    <label for="email" class="form-label fw-bold">Email</label>
     <input type="email" name="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="saisir votre email">
      @error('email')
           <span class="invalid-feedback" role="alert">
@@ -22,7 +17,7 @@
   </div>
 
   <div class="col-md-7">
-    <label for="password" class="form-label">Mot de passe</label>
+    <label for="password" class="form-label fw-bold">Mot de passe</label>
     <input type="password" name="password" value="{{ old('password') }}" required class="form-control @error('password') is-invalid @enderror"  id="password" placeholder="saisir votre mot de passe">
      @error('password')
           <span class="invalid-feedback" role="alert">
@@ -30,28 +25,53 @@
            </span>
      @enderror
   </div>
+  
+  <div class="col-md-7 me-2">
+              
+           <div class="form-check">
+                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                    <label class="form-check-label fs-5" for="remember">
+                            {{ __('Se rappeler de moi ') }}
+                    </label>
+           </div>
+    
+  </div>
    
-   <div class="col-md-6 pt-5">
+   <div class="col-md-7 py-2">
+
       <button type="submit" class="btn d-inline me-2  btn-primary">
                                     {{ __('Se connecter') }}
                                 </button>
-                               
+                        
+                    <button type="button" class="btn d-inline ms-2 btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" type="reset">Annuler</button> <br>
 
-                                @if (Route::has('password.request')) <!-- # = password.request --> 
-                                    <a class="btn btn-link " href="#">
+                    <!-- # = password.request --> 
+                                    <a class="btn btn-link mt-2 " href="#">
                                         {{ __('Mot de passe oublié ?') }}
-                                    </a>
-                                @endif
-                    <button class="btn d-inline  btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                    </a> <br>
    </div>
-</form>
- </div>
- <!-- fin de body --> 
- </div>
-     
+   <!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="staticBackdropLabel"> <i class="fas fa-exclamation-triangle me-2 text-danger"></i> Attention</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body fw-bold">
+       Êtes-vous sur de Rénitialiser tout les champs déjà rempli ! 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Non</button>
+        <button type="reset" class="btn btn-info" data-bs-dismiss="modal">Oui</button>
+      </div>
+    </div>
   </div>
 </div>
-</div>
+</form>
+ </div>
+@endsection
 
 
 

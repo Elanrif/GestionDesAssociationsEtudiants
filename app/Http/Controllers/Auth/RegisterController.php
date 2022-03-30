@@ -30,8 +30,6 @@ class RegisterController extends Controller
 
             User::create($request->all()) ; 
 
-            return back() ; 
-            
-           //  return redirect()->route('users.home')->with('success','Bienvenu dans votre page d\'acceuil.');
+            return redirect()->route('home') ;
     }
 }
