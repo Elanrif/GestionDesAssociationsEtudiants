@@ -30,15 +30,14 @@ Route::get('/',function(){
 Route::get('/home',[HomeController::class,'index'])->name('home') ; 
 
 Route::group(['namespace' => 'Auth'], function() { 
+    Route::get('register',[RegisterController::class,'create'])->name('register');
+    Route::post('register',[RegisterController::class ,'store']) ;
+    Route::put('register/{register}',[RegisterController::class, 'update'])->name('register.update');
+    Route::get('register/{register}/edit',[RegisterController::class, 'edit'])->name('register.edit') ;
     Route::get('login', [LoginController::class,'create'])->name('login') ; 
     Route::post('login', [LoginController::class,'store']) ; 
     Route::get('logout', [loginController::class,'logout'])->name('logout') ; 
 });
-Route::resource('register', RegisterController::class)->names([
-    'create' => 'register',
-    
- 
-]) ; 
 
  
 

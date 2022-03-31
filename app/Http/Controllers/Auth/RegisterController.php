@@ -2,53 +2,30 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class RegisterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-      public function __construct()
+     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except(['edit','update']);
     }
 
-    public function elanrif() { 
-        //
-    }
-    public function index()
-    {
-        $users = User::all() ;
-        return view('users.auth.index',compact('users')) ; 
+    public function create() { 
+ 
+        return view('users.auth.register') ; 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-         return view('users.auth.register') ; 
-    }
+    public function store(Request $request) { 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-         $request->validate([
+            $request->validate([
 
             'nom' => ['required', 'string','min:3','max:255'],
             'prenom'=>['required', 'string' ,'min:3', 'max:255'],
@@ -59,79 +36,42 @@ class RegisterController extends Controller
             'filiere' =>['required','string'],
             ]);
 
-           $user =  User::create([
-            'nom' => $request->nom ,
-            'prenom'=> $request->prenom,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'num_tel' => $request->num_tel,
-            'code_apogée'=> $request->code_apogée,
-            'filiere' =>$request->filiere,
-           ]) ; 
+           $user =  User::create($request->all()) ; 
             auth()->login($user) ; 
 
             return redirect()->route('home') ;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    
+    public function edit(User $user){ 
+
+        return view('users.auth.edit',compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        return view('users.auth.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-          $request->validate([
+    public function update(Request $request) { 
+        
+           $request->validate([
 
             'nom' => ['required', 'string','min:3','max:255'],
             'prenom'=>['required', 'string' ,'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email','min:13','max:255',Rule::unique('users')->ignore($user->id)],
+            'email' => ['required', 'string', 'email','min:13','max:255',Rule::unique('users')->ignore(auth()->user())],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'num_tel' => ['required','numeric', Rule::unique('users')->ignore($user->id),'digits:10'],
-            'code_apogée'=>['required','numeric',Rule::unique('users')->ignore($user->id),'digits:8'],
+            'num_tel' => ['required','numeric', Rule::unique('users')->ignore(auth()->user()),'digits:10'],
+            'code_apogée'=>['required','numeric',Rule::unique('users')->ignore(auth()->user()),'digits:8'],
             'filiere' =>['required','string'],
             ]);
-
-            $user->update($request->all()) ; 
- 
-            auth()->login($user) ; 
-
+            $user = User::find(auth()->user()->id); // Permet de trouver directement l'utilisateur avec le même id que la personne authentifié 
+             
+           $user->nom = $request->nom ; 
+           $user->prenom = $request->prenom ; 
+           $user->email = $request->email ; 
+           $user->password = $request->password ; 
+           $user->num_tel = $request->num_tel ; 
+           $user->code_apogée = $request->code_apogée ; 
+           $user->filiere = $request->filiere ; 
+           $user->save() ; // qui va chercher la personne avec le même id est l'enregister voir le modifier
+         
             return redirect()->route('home')->with('success','Vos informations ont été modifié avec succès ! ') ;  ;
 
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-       //
     }
 }

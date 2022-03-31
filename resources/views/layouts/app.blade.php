@@ -81,7 +81,7 @@
       <form class="d-flex me-3 pe-3" style="margin-right:200px;">
       
         @guest
-        <a href="{{ route('register') }}" class="btn mx-2 btn-outline-info {{ request()->is('register/create')? 'active':'' }} fw-bold"> S'inscrire </a>
+        <a href="{{ route('register') }}" class="btn mx-2 btn-outline-info {{ request()->is('register')? 'active':'' }} fw-bold"> S'inscrire </a>
         <a href="{{ route('login') }}"  class="btn btn-outline-primary {{ request()->is('login')? 'active':'' }} fw-bold"> Se connecter </a>
           
         @endguest

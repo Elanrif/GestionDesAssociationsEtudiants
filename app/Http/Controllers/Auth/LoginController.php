@@ -21,7 +21,7 @@ class LoginController extends Controller
         return view('users.auth.login') ; 
     }
 
-    public function store()
+    public function store(Request $request)
     { 
 
         // si l'email de l'utilisateur pris par request est égale a email d'un utilisatuer en base de donnée on prend le premier : et puisque les email unique donc c'est bien lui 
@@ -32,7 +32,8 @@ class LoginController extends Controller
 
         if($user->active == 1) { // pour activer ou désactiver le compte 
 
-            auth()->login($user) ; 
+            Auth::login($user)  ;
+            $request->session()->regenerate();  // regenere la session()
 
           return redirect()->home(); 
         }
@@ -46,9 +47,12 @@ class LoginController extends Controller
         return back()->with('danger','Ces informations d\'identification ne correspondent pas à nos enregistrements.') ;
     }
 
-    public function logout() { 
+    public function logout(Request $request) { 
 
         auth()->logout() ; 
+        
+        $request->session()->invalidate();
+
         return redirect()->route('welcome'); 
     }
 }
