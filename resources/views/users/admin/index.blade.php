@@ -1,10 +1,6 @@
 @extends("../../admin/home")
 @section('admin')
-@foreach ($users as $user )
 
- <ul>
-     <li> {{ $user->nom }} {{ $user->prenom }} {{ $user->password }}</li>
- </ul>
     <table class="table">
   <thead>
     <tr>
@@ -18,28 +14,57 @@
       <th scope="col">Tel</th>
       <th scope="col">Role</th>
       <th scope="col">Active</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
+      @foreach($users as $user)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{ $loop->index }}</th>
+      <td>{{ $user->nom }}</td>
+      <td>{{ $user->prenom }}</td>
+      <td>{{ $user->email }}</td>
+      <td>{{ $user->password }}</td>
+      <td>{{ $user->filiere }}</td>
+      <td>{{ $user->code_apogée }}</td>
+      <td>{{ $user->num_tel }}</td>
+      <td>{{ $user->role }}</td>
+      <td>{{ $user->active }}</td>
+      
+      <td>   <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal0001"> <i class="fa-solid text-danger fs-4 fa-trash"></i> </a> </td>
+     
+      <td><a href="{{ route('admin-users.edit',$user->id) }}"><i class="fa-solid fa-file-pen fs-4 text-primary"></i></a></td><!--modifer-->
+      <td><a href="#"><i class="fa-solid fs-4 text-success fa-eye"></i></a></td><!-- voir --> 
+   
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+
+    <!-- doit être dans le foreach pour avoir la variable $user->id  -->
+<div class="modal fade" id="exampleModal0001" tabindex="-1" aria-labelledby="exampleModalLabel0001" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel0001"><i class="fa-solid fa-triangle-exclamation me-1 text-danger"></i> Attention</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+       <div class="modal-body fw-bold d-flex justify-content-center">
+        êtes-vous sur de vouloir  <span class="text-primary px-2">supprimé</span>  cette utilisateur   ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <form action="{{ route('admin-users.destroy', $user->id) }}" method="post">
+         @csrf
+         @method('DELETE')
+       <button type="submit" onClick="history.go(0)" class="btn btn-danger mx-2" data-bs-dismiss="modal">Oui</button></td><!-- supprimer-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+      @endforeach
   </tbody>
 </table>
 
-@endforeach
+
+
+
 @endsection

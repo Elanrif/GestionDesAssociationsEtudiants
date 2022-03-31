@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController ; 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 
 /*
@@ -39,10 +40,13 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::get('logout', [loginController::class,'logout'])->name('logout') ; 
 });
 
-  Route::get('/admin-users',function() { 
+Route::get('/admin-users',[UserController::class , 'index'])->name('admin-users');
+Route::get('/admin-users/{user}/edit',[UserController::class , 'edit'])->name('admin-users.edit') ;
+Route::put('/admin-users/{user}',[UserController::class,'update'])->name('admin-users.update'); 
+Route::delete('/admin-users/{user}',[UserController::class,'destroy'])->name('admin-users.destroy');
 
-    $users = User::where('role','<>','admin')->get() ; 
-    return view('users.admin.index',compact('users')) ; 
-  })->name('admin-users');
- 
+Route::get('/no-send',function(){ 
 
+  $users = User::all() ; 
+  return view('admin.home',compact('users')) ;
+});
