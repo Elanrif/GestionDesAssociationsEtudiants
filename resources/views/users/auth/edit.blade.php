@@ -127,7 +127,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body fw-bold d-flex justify-content-center">
-         Êtes-vous sûr de <span class="text-primary fw-bold ">&nbsp; Valider toute les Modifications </span> &nbsp; ? 
+         Êtes-vous sûr de <span class="text-primary fw-bold ">&nbsp; vouloir Modifier vos informations ! </span> &nbsp; ? 
       </div>
       <div class="modal-footer" style="margin-right:150px;">
        <a href="{{ route('home') }}"> <button type="submit" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>

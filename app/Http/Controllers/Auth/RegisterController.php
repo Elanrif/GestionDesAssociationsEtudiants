@@ -36,7 +36,15 @@ class RegisterController extends Controller
             'filiere' =>['required','string'],
             ]);
 
-           $user =  User::create($request->all()) ; 
+           $user =  User::create([
+               'nom'=>$request->nom,
+               'prenom'=>$request->prenom,
+               'email'=>$request->email,
+               'password'=>$request->password,
+               'num_tel'=>$request->num_tel,
+               'code_apogée'=>$request->code_apogée,
+               'filiere'=>$request->filiere,
+           ]) ; 
             auth()->login($user) ; 
 
             return redirect()->route('home') ;
@@ -71,7 +79,7 @@ class RegisterController extends Controller
            $user->filiere = $request->filiere ; 
            $user->save() ; // qui va chercher la personne avec le même id est l'enregister voir le modifier
          
-            return redirect()->route('home')->with('success','Vos informations ont été modifié avec succès ! ') ;  ;
+            return redirect()->route('home')->with('update','Vos informations ont été modifié avec succès ! ') ;  ;
 
     }
 }

@@ -21,8 +21,33 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  <!-- Modal de deconnexion -->
 
+  <div class="ilemes">
+    <div class="ileme_link1 bg-black">
+      <img src="{{ asset('images/assos-etudiant-4__1_.webp') }}" alt="" style="border-radius:0 0 250px 250px;heigth:100px;width:200px;"> <!-- pour l'image --> 
+      <div class="pt-4 d-flex justify-content-center bg-dark">
+        <p class="text-light fw-bold fs-5">{{ auth()->user()->nom }} {{ auth()->user()->prenom }}</p>
+      </div>
+  <div class="d-flex justify-content-center"><!-- permet aux élement enfant de prendre automatiquement la largeur --> 
+  <ul class="nav uuid flex-column">
+  <li class="nav-item">
+    <a class="nav-link fw-bold text-light btn  btn-outline-primary {{ request()->is('admin-users*') ? 'active':'' }} border-dark" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-users-line me-2 fs-5"></i>Les utilisateurs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark" href="#"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>Les Associations</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark" href="#"><i class="fa-solid fa-calendar-days fs-5 me-2"></i>Les Evènements</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a>
+  </li>
+</ul>
+           
+    </div>
+    </div>
+    <div class="ileme_link2">
+ 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal001" tabindex="-1" aria-labelledby="exampleModalLabel001" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -55,40 +80,19 @@
     <div class="collapse navbar-collapse " id="navbarSupportedConten01t" style="margin:auto 100px;">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="us-ser nav-item mx-5 px-4">
-          <a class="nav-link rounded-circle fw-bold btn-outline-primary {{ route('welcome') }}" aria-current="page" href="/"><i class="fas fa-home-alt me-2 fs-4"></i>Acceuil</a>
+          <a class="nav-link rounded-3 fw-bold btn-outline-primary " aria-current="page" href="{{ route('welcome') }}"><i class="fas fa-home-alt me-2 fs-4"></i>Acceuil</a>
         </li>
-        @auth
-         
-      @if(auth()->check() AND auth()->user()->role == 'admin')
+
         <li class="us-ser nav-item mx-5 px-4">
-          <a class="nav-link rounded-circle fw-bold btn-outline-primary {{ request()->is('admin-users')? 'active': '' }}" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie fs-4 me-2"></i>Administration</a>
+          <a class="nav-link rounded-3 fw-bold btn-outline-primary" aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house-user fs-4 me-2"></i>Mon-compte</a>
         </li>
-      @endif
-      @endauth
-        <li class="nav-item mx-5 px-4">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown02">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+     
+  
       
       </ul>
-      <div class="pe-5" style="margin-right:80px;">
-      <form class="d-flex me-3 pe-3" style="margin-right:200px;">
-      
-        @guest
-        <a href="{{ route('register') }}" class="btn mx-2 btn-outline-info {{ request()->is('register')? 'active':'' }} fw-bold"> S'inscrire </a>
-        <a href="{{ route('login') }}"  class="btn btn-outline-primary {{ request()->is('login')? 'active':'' }} fw-bold"> Se connecter </a>
-          
-        @endguest
+      <div class="pe-5" style="margin-right:50px;">
+      <form class="d-flex me-3 " >
+  
         @auth
         <a href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal001" class="btn btn-outline-danger fw-bold"> Deconnexion </a>
         @endauth
@@ -97,14 +101,9 @@
     </div>
   </div>
 </nav>
+        @yield('admin')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-9"> <hr>
-         @yield('content')
-           </div>
     </div>
   </div>
- 
 </body>
 </html>

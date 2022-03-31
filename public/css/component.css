@@ -70,13 +70,34 @@
 }
 
 /*page admin */
-.admin{
-   height:100vh;
+.ilemes {
+  width:100%;
+  display:flex ;
 }
+.ileme_link1{ 
 
-.admin-s{
+  flex:1 0 200px ;
   height:100vh;
+  
 
+}
+.ileme_link2{
+  height:100vh;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: 0;
+  flex:1 1 100%;
+}
+ .ileme_link2::-webkit-scrollbar {
+        display: none;
+      }
+     .ileme_link2 {
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none;
+      }
+
+.uuid > * { 
+  margin-top: 40px;
 }
 /* */
 .voix{

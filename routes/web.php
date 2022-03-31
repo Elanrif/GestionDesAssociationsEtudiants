@@ -39,5 +39,10 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::get('logout', [loginController::class,'logout'])->name('logout') ; 
 });
 
+  Route::get('/admin-users',function() { 
+
+    $users = User::where('role','<>','admin')->get() ; 
+    return view('users.admin.index',compact('users')) ; 
+  })->name('admin-users');
  
 

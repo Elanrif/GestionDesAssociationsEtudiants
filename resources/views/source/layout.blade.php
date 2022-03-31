@@ -33,7 +33,7 @@
         <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
           @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="nav-item px-3">
-          <a class="nav-link btn-outline-primary rounded-2 " href="#"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+          <a class="nav-link btn-outline-primary rounded-2 " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
         </li>
         @endif
         <li class="nav-item px-3">

@@ -3,6 +3,12 @@
 
 @section('content')
 <div class="mt-5">
+   @if ($message = Session::get('update'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong> <span class="fw-bold">{{ $message }}</span>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
     <div class="row g-4">
     <div class="col-8 pt-3 col-lg-3 me-3">
 <img class="me-2" src="{{ asset('images/assurance_association_sportive.jpg') }}" alt="" style="border-radius:50%;height:250px; width:250px;">
