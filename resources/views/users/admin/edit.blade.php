@@ -3,7 +3,7 @@
 
 
 <div class="container">
-<form class="row g-3 gx-5 mx-5 mt-5" method="POST" action="{{ route('admin-users.update',$user->id) }}">
+<form class="row g-3 gx-5 mx-5 mt-2" method="POST" action="{{ route('admin-users.update',$user->id) }}">
     @csrf
     @method('PUT')
    <p class="fs-3"><i class="fas fa-user-edit text-primary fs-4 me-2"></i> Modification</p>
@@ -38,7 +38,7 @@
     <div class="col-md-6">
     <label for="num_tel" class="form-label fw-bold">Tel</label>
   <!-- j'ai ajouté un zéro dans value '0' car par défaut le zéro n'etait pas sauvegardé -->
-    <input type="number" name="num_tel" value="0{{$user->num_tel}}" required class="form-control @error('num_tel') is-invalid @enderror" id="num_tel" placeholder="saisir votre Numéro">
+    <input type="number" name="num_tel" value="0{{$user->num_tel}}" required class="form-control @error('num_tel') is-invalid @enderror" id="num_tel" placeholder="Modifier le numéro">
      @error('num_tel')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
  
     <div class="col-md-6">
     <label for="email" class="form-label fw-bold">Email</label>
-    <input type="email" name="email" value="{{$user->email }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="saisir votre email">
+    <input type="email" name="email" value="{{$user->email }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Modifier l'email">
      @error('email')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -91,11 +91,46 @@
     <input type="password" value="{{ $user->password }}" name="password_confirmation" required class="form-control @error('password_confirmation') is-invalid @enderror" id="confirmation" placeholder="confimer le mot de passe">
     
   </div>
+  
+     <div class="col-md-6">
+    <label for="role" class="form-label fw-bold">Utilisateur/Admin</label>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="role" id="user" value="utilisateur" checked>
+  <label class="form-check-label" for="user">
+    utilisateur
+  </label>
+  </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="role" id="admin" value="admin">
+  <label class="form-check-label" for="admin">
+    admin
+  </label>
+</div>
+  </div>
+  
+
+
    <div class="col-md-6">
-      
+     <label for="role" class="form-label fw-bold">Activer/Désactiver : Compte</label>
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="active" id="exampleRadios1" value="1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Activé
+  </label>
+  </div>
+    <div class="form-check">
+  <input class="form-check-input" type="radio" name="active" id="exampleRadios2" value="0">
+  <label class="form-check-label" for="exampleRadios2">
+    Désactivé
+  </label>
+    </div>
+  </div>
+
+   <div class="col-md-6">
                   <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop001" class="btn me-2" style="background-color:var(--bleu--);color:var(--blanc--)"> Modifier  </button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop02">Annuler</button>
    </div>
+
    <!-- Button trigger modal -->
 
 

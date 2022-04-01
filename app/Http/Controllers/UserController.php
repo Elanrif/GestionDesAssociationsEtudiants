@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index() { 
 
-    $users = User::where('role','<>','admin')->get() ; 
+    $users = User::where('id','<>',auth()->user()->id)->get() ; // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     return view('users.admin.index',compact('users')) ;
 
     }
@@ -32,11 +32,13 @@ class UserController extends Controller
             'num_tel' => ['required','numeric', Rule::unique('users')->ignore($user->id),'digits:10'],
             'code_apogée'=>['required','numeric',Rule::unique('users')->ignore($user->id),'digits:8'],
             'filiere' =>['required','string'],
+            'role'=>['required'],
+            'active'=>['required'],
             ]); 
            
             $user->update($request->all()) ; 
 
-            return view('users.admin.index')->with('admin','Les modifications on été effectués avec succès ! ')  ; 
+            return redirect()->route('admin-users')->with('admin','Les modifications on été effectués avec succès ! ')  ; // dans destroy ,update , store il faut toujours redirigé vers une route ; sinon tu auras une erreur que la variable n'existe pas si tu veux dirigé dans le view ce qui est normale car tu l'a déjà supprimé/modifier et il n'existe pas encore etc.....
     }  
 
     public function destroy(User $user) { 
@@ -44,6 +46,6 @@ class UserController extends Controller
        
          $user->delete() ; 
 
-         return view('users.admin.index')->with('admin','L\'utilisateur a été supprimer avec succès ! ') ;
+         return redirect()->route('admin-users')->with('admin','L\'utilisateur a été supprimer avec succès ! ') ;//ne jamais faire directement view(..) car on aura une erreur . donc il faut toujours redirigé pour echapper ça 
     }
 }
