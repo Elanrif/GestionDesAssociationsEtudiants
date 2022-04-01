@@ -45,8 +45,4 @@ Route::get('/admin-users/{user}/edit',[UserController::class , 'edit'])->name('a
 Route::put('/admin-users/{user}',[UserController::class,'update'])->name('admin-users.update'); 
 Route::delete('/admin-users/{user}',[UserController::class,'destroy'])->name('admin-users.destroy');
 
-Route::get('/no-send',function(){ 
-
-  $users = User::all() ; 
-  return view('admin.home',compact('users')) ;
-});
+Route::post('/users-image',[UserController::class,'images'])->name('users-image.store') ;//ici c'est pas l'administrateur qui va modifier mais la personne authentifié  . normalement cette ligne doit etre dans le namesapce Auth() mais bon 

@@ -47,7 +47,7 @@ class RegisterController extends Controller
            ]) ; 
             auth()->login($user) ; 
 
-            return redirect()->route('home') ;
+            return redirect()->route('home')->with('register','Votre compte a été crée avec succès !') ;
     }
 
     
@@ -79,7 +79,7 @@ class RegisterController extends Controller
            $user->filiere = $request->filiere ; 
            $user->save() ; // qui va chercher la personne avec le même id est l'enregister voir le modifier
          
-            return redirect()->route('home')->with('update','Vos informations ont été modifié avec succès ! ') ;  ;
+            return redirect()->route('home')->with('update',' Vos informations ont été modifié avec succès ! ') ;  ;
 
     }
 }

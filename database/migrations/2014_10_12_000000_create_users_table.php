@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('num_tel');
             $table->string('role')->default('utilisateur');
             $table->boolean('active')->default(1);
+            $table->string('image')->default('users-image/1648831284.png') ; 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

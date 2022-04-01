@@ -22,7 +22,7 @@
  -->
 
 
-<!-- card en grande image en haut -->
+<!-- card en grande  en haut -->
 <div class="card mb-3 container-fluid">
  
   <div class="card-body row row-cols-1 row-cols-md-3  g-4">

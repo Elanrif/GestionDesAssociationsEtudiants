@@ -1,7 +1,25 @@
 @extends("../../admin/home")
 @section('admin')
 
-    <table class="table">
+
+<!-- pour la modification --> 
+    @if ($message = Session::get('update'))
+        <div class="alert alert-primary alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"><i class="fa-solid fa-face-laugh-wink" style="color:rgb(26, 142, 84);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
+<!-- pour la suppression --> 
+    @if ($message = Session::get('delete'))
+        <div class="alert alert-primary alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif  
+<!-- fin des message -->
+
+    <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -20,7 +38,7 @@
   <tbody>
       @foreach($users as $user)
     <tr>
-      <th scope="row">{{ $loop->index }}</th>
+      <th scope="row">{{ $loop->index+1 }}</th>
       <td>{{ $user->nom }}</td>
       <td>{{ $user->prenom }}</td>
       <td>{{ $user->email }}</td>

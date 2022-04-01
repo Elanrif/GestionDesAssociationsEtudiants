@@ -21,7 +21,7 @@ class LoginController extends Controller
         return view('users.auth.login') ; 
     }
 
-    public function store(Request $request)
+    public function store(Request $request) // la personne va être connecté 
     { 
 
         // si l'email de l'utilisateur pris par request est égale a email d'un utilisatuer en base de donnée on prend le premier : et puisque les email unique donc c'est bien lui 
@@ -35,7 +35,7 @@ class LoginController extends Controller
             Auth::login($user)  ;
             $request->session()->regenerate();  // regenere la session()
 
-          return redirect()->home(); 
+          return redirect()->home()->with('login',' Bienvenu dans votre page utilisateur '); 
         }
 
         return redirect()->route('login')->with('danger','votre compte a été désactivé pour le moment') ;

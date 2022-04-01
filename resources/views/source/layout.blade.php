@@ -75,7 +75,7 @@
          
          <a class="nav-link active fs-4" aria-current="page" href="{{ route('home') }}">
           <i class="fas fa-door-open text-dark fs-2"></i>
-         <img class="me-2" src="{{ asset('images/assurance_association_sportive.jpg') }}" alt="" style="border-radius:50%;height:70px; width:70px;">   
+         <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:70px; width:70px;">   
         </a>
         </li>
      

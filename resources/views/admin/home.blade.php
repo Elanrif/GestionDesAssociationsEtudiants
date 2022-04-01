@@ -24,7 +24,7 @@
 
   <div class="ilemes">
     <div class="ileme_link1 bg-black">
-      <img src="{{ asset('images/assos-etudiant-4__1_.webp') }}" alt="" style="border-radius:0 0 250px 250px;heigth:100px;width:200px;"> <!-- pour l'image --> 
+      <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:0 0 250px 250px;heigth:100px;width:200px;"> <!-- pour l'image --> 
       <div class="pt-4 d-flex justify-content-center bg-dark">
         <p class="text-light fw-bold fs-5">{{ auth()->user()->nom }} {{ auth()->user()->prenom }}</p>
       </div>
