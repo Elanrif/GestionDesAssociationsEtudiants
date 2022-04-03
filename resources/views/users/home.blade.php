@@ -4,6 +4,38 @@
 @section('content')
 <div class="mt-5">
 
+<!-- Modla pour les message -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal00c" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+ <form action="{{ route('users-comment.save') }}" method="post"> <!-- on va poster les informations -->
+        @csrf
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="exampleModalLabel"><i class="fa-solid fa-comment-dots me-2 text-primary  fs-3"></i>  Poster un Message </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Ecrire le message..." id="floatingTextarea2" style="height: 100px" name="commentaire" required></textarea>
+          <label for="floatingTextarea2">Écrire quelque chose....</label>
+        </div>
+      </div>
+  
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        <!-- onclick="history.go(0)" ;; ajout de onclick car par défaut il sauvegarder les message déjà écrit --> 
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
+
 <!-- Modal pour la photo -->
 <div class="modal fade" id="xampleModal" tabindex="-1" aria-labelledby="xampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -57,6 +89,15 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif
+
+    <!-- pour l'envoie d'un commentaire --> 
+    @if ($message = Session::get('comment'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
   <!-- pour la modification --> 
    @if ($message = Session::get('update'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -80,10 +121,14 @@
 </div>
 </div>
 <hr>
-<div class="row"> 
-    <div class="col"><i class="far fs-4 text-primary fa-comments"></i> Poster un commentaire</div>
-    <div class="col"><a href="{{ route('register.edit',auth()->user()->id) }}"> <i class="fas fa-user-edit fs-4 text-primary"></i> Modifier les informations</a></div>
-    <div class="col"><i class="far fs-4 text-primary fa-comments"></i> Poster un commentaire</div>
+<div class="row gy-3"> <!-- poster un commentaire -->  
+
+    <div class="col-md-4"> <a href="#" class="nav-link fs-5 text-dark fw-bold btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal00c"><i class="far fs-4  fa-comments"></i>  Message à tout le monde </a></div>
+
+    <div class="col-md-4"><a href="{{ route('register.edit',auth()->user()->id) }}" class="nav-link fs-5 text-dark fw-bold btn btn-outline-primary"> <i class="fas fa-user-edit fs-4 "></i> Modifier les informations</a></div>
+   
+    <div class="col-md-4"><a href="#" class="nav-link fs-5 text-dark fw-bold btn btn-outline-primary"> <i class="fa-solid fa-cloud-arrow-down fs-4"></i> Mes enregistrements</a></div>
+
 </div>
 
 

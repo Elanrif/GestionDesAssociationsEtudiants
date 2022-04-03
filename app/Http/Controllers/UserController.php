@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule ; 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,6 @@ class UserController extends Controller
         return abort(403);
     }
 
-  
 
     $users = User::where('id','<>',auth()->user()->id)->get() ; // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     return view('users.admin.index',compact('users')) ;
@@ -79,6 +79,22 @@ class UserController extends Controller
         
            $user->save() ;
             return redirect()->home()->with('image','L\'image a été modifier avec succès'); 
+    }
+
+    public function comments(Request $request)//pour la personne connectés
+    {
+        // save # create ! 
+
+       $user = User::find(auth()->user()->id) ;
+       // $user->comment  comment est la relation du hasOne ... 
+       $user->comment = new Comment ;  //j'instancie un enregistrement pour les commentraires de l'utilisateur connecté
+       // si je n'instancie pas il va écraser la 1er valeur enregistrer 
+       $user->comment->commentaire = $request->commentaire ; 
+       $user->comment->user_id  = auth()->user()->id ; // aussi n'oublie pas de mettre le Id de la personne connecté 
+       $user->comment->save()  ; // je sauvegarde les commentaire en passant par la rélation
+       return back()->with('comment',' Votre message a été envoyé avec succès  ! ') ; 
+       
+
     }
 
     public function destroy(User $user) { 

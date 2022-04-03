@@ -37,7 +37,8 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::get('register/{register}/edit',[RegisterController::class, 'edit'])->name('register.edit') ;
     Route::get('login', [LoginController::class,'create'])->name('login') ; 
     Route::post('login', [LoginController::class,'store']) ; 
-    Route::get('logout', [loginController::class,'logout'])->name('logout') ; 
+    Route::get('logout', [loginController::class,'logout'])->name('logout') ;
+     
 });
 
 Route::get('/admin-users',[UserController::class , 'index'])->name('admin-users');
@@ -46,3 +47,4 @@ Route::put('/admin-users/{user}',[UserController::class,'update'])->name('admin-
 Route::delete('/admin-users/{user}',[UserController::class,'destroy'])->name('admin-users.destroy');
 
 Route::post('/users-image',[UserController::class,'images'])->name('users-image.store') ;//ici c'est pas l'administrateur qui va modifier mais la personne authentifié  . normalement cette ligne doit etre dans le namesapce Auth() mais bon 
+Route::post('/users-comment',[UserController::class,'comments'])->name('users-comment.save');

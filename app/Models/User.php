@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Comment ; 
 
 class User extends Authenticatable
 {
@@ -51,9 +52,9 @@ class User extends Authenticatable
       public function associations() { 
         return $this->belongsToMany(Association::class , 'membres') ;
     }
-
-      public function image(){ 
-          
-          return $this->belongsTo(Image::class) ; 
-      }
+   // faire très attentions aux relations . seule le manyTomany ou il y'a belongsToMany. donc bien respecter les syntaxes de laravel 
+     public function comment() { 
+         
+         return $this->hasOne(Comment::class) ; //signifie que c'est dans comment que j'ai une foreignKey reférençant la table "User"
+     }
 }
