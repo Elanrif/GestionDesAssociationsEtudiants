@@ -30,6 +30,9 @@
   </div>
 </div>
 
+
+
+  
   <!-- pour s'être connecter --> 
     @if ($message = Session::get('login'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -37,6 +40,8 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif
+
+   
       <!-- pour l'image  --> 
     @if ($message = Session::get('image'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -146,5 +151,7 @@
     </div>
   </div>
 </div>
+
+
 
 @endsection

@@ -35,7 +35,7 @@ class LoginController extends Controller
             Auth::login($user)  ;
             $request->session()->regenerate();  // regenere la session()
 
-          return redirect()->home()->with('login',' Bienvenu dans votre page utilisateur '); 
+          return redirect()->route('home')->with('login',' Bienvenu dans votre page utilisateur '); 
         }
 
         return redirect()->route('login')->with('danger','votre compte a été désactivé pour le moment') ;
@@ -53,6 +53,6 @@ class LoginController extends Controller
         
         $request->session()->invalidate();
 
-        return redirect()->route('welcome'); 
+        return redirect()->route('login')->with('logout','Veuillez vous connecter à votre compte pour avoir accès aux dernières mises à jour. ! '); 
     }
 }

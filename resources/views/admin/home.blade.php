@@ -105,5 +105,22 @@
 
     </div>
   </div>
+
+    <!-- js button autoclose après 5000 '5 secondes' ; tout les enfants qui auront des alert ils les fermera après les x secondes definis --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+ 
+window.setTimeout(function() {
+    $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+        $(this).remove(); 
+    });
+}, 3000);
+ 
+});
+</script>
+<!-- fin -->
 </body>
 </html>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -36,6 +37,7 @@ class RegisterController extends Controller
             'filiere' =>['required','string'],
             ]);
 
+            
            $user =  User::create([
                'nom'=>$request->nom,
                'prenom'=>$request->prenom,
@@ -45,9 +47,11 @@ class RegisterController extends Controller
                'code_apogée'=>$request->code_apogée,
                'filiere'=>$request->filiere,
            ]) ; 
-            auth()->login($user) ; 
 
-            return redirect()->route('home')->with('register','Votre compte a été crée avec succès !') ;
+          
+            auth()->login($user) ; 
+ 
+            return redirect()->route('home')->with(['register','Votre compte a été crée avec succès !']) ;
     }
 
     
@@ -68,6 +72,9 @@ class RegisterController extends Controller
             'code_apogée'=>['required','numeric',Rule::unique('users')->ignore(auth()->user()),'digits:8'],
             'filiere' =>['required','string'],
             ]);
+
+            // contiendra la valeur qui sera modifié a chaque fois 
+          
             $user = User::find(auth()->user()->id); // Permet de trouver directement l'utilisateur avec le même id que la personne authentifié 
              
            $user->nom = $request->nom ; 
@@ -79,6 +86,7 @@ class RegisterController extends Controller
            $user->filiere = $request->filiere ; 
            $user->save() ; // qui va chercher la personne avec le même id est l'enregister voir le modifier
          
+           // je passe la variable hash_check au view
             return redirect()->route('home')->with('update',' Vos informations ont été modifié avec succès ! ') ;  ;
 
     }

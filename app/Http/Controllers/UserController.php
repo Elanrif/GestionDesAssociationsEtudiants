@@ -4,14 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule ; 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
 {
     public function index() { 
+
+        // Gate::authorize('admin-user') ;  directement rediriger vers le abort en cas d'erreur 
+    if(!Gate::allows('admin-user')){  // si la personne ne réponds pas au gate alors on va pas faire abort(403) ; sachant que le reste c'est  'ELSE '
+
+        return abort(403);
+    }
+
+  
 
     $users = User::where('id','<>',auth()->user()->id)->get() ; // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     return view('users.admin.index',compact('users')) ;
@@ -20,10 +29,14 @@ class UserController extends Controller
 
     public function edit(User $user) { 
 
+        Gate::authorize('admin-user');
+
         return view('users.admin.edit',compact('user')) ; 
     }
 
     public function update(Request $request, User $user) { 
+
+          Gate::authorize('admin-user') ; // directement il va faire le !allows et après faire le allows pour le reste du code car c'est comme else { ....reste du code ....}
 
            $request->validate([
 
@@ -61,14 +74,8 @@ class UserController extends Controller
        
              // yá plusieur façon de faire bien sur 
              // ici puisque je veux seulement recuperer la photo ben les autres champs je vais les modifier par les données de la personne déja connecté 
-           $user->nom = auth()->user()->nom ; 
-           $user->prenom = auth()->user()->prenom ; 
-           $user->email = auth()->user()->email ; 
-           $user->password = auth()->user()->password ; 
-           $user->num_tel = auth()->user()->num_tel ; 
-           $user->code_apogée = auth()->user()->code_apogée ; 
-           $user->filiere = auth()->user()->filiere ; 
-           $user->image = $path ; 
+         
+           $user->image = $path ;  // LA METHODE SAVE PERMET DE MODIFIER DIRECTEMENT CE QUE L'ONT VEUT SANS TENIR COMPTE DES AUTRES 
         
            $user->save() ;
             return redirect()->home()->with('image','L\'image a été modifier avec succès'); 
@@ -76,7 +83,8 @@ class UserController extends Controller
 
     public function destroy(User $user) { 
        
-       
+       Gate::authorize('admin-user') ; 
+
          $user->delete() ; 
 
          return redirect()->route('admin-users')->with('delete','L\'utilisateur a été supprimer avec succès ! ') ;//ne jamais faire directement view(..) car on aura une erreur . donc il faut toujours redirigé pour echapper ça 

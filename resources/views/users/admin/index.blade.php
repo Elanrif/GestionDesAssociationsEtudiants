@@ -41,7 +41,9 @@
       <th scope="row">{{ $loop->index+1 }}</th>
       <td>{{ $user->nom }}</td>
       <td>{{ $user->prenom }}</td>
-      <td>{{ $user->email }}</td>
+      <div class="row">
+      <td class="col-2 text-primary">{{ $user->email }}</td>
+      </div>
       <td>{{ $user->password }}</td>
       <td>{{ $user->filiere }}</td>
       <td>{{ $user->code_apogée }}</td>

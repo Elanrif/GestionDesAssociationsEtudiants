@@ -2,6 +2,15 @@
 
 @section('content')
 
+ <!-- pour s'être déconnecter --> 
+    @if ($message = Session::get('logout'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
+    
 <!-- le body du modal -->
  <div class="container">
 <form class="row g-3 d-flex justify-content-center mx-5 mt-5" method="post" action="{{ route('login') }}">
@@ -50,7 +59,7 @@
                                     </a> <br>
    </div>
    <!-- Modal -->
-<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop1"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

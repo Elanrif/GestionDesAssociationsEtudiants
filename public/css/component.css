@@ -88,9 +88,10 @@
   scrollbar-width: 0;
   flex:1 1 100%;
 }
- .ileme_link2::-webkit-scrollbar {
-        display: none;
+      .ileme_link2::-webkit-scrollbar{
+        display:none; 
       }
+
      .ileme_link2 {
         -ms-overflow-style: none;
         overflow: -moz-scrollbars-none;
