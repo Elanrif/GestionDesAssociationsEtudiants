@@ -132,7 +132,7 @@
 </div>
     <!-- fin --> 
     
-<div class="container-fluid" style = "background:var(--bleu_ciel--);">
+<div class="container-fluid">
   
         <div class="card my-3 mx-5 px-5">
        <div class="card-img-top imgs mt-5 pt-5 mx-5 px-5 d-flex align-items-center justify-content-center">

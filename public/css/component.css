@@ -27,14 +27,14 @@
   background-color: white;
 }
 .a_lien a { 
-  background-color: var(--persian);
+  background-color: var(--midnight);
   color:white ;
   border-radius:0% 100% 0% 100% / 100% 55% 45% 0%  ;
 }
 
 .a_lien a:hover{ 
-  background-color: var(--orange-red);
-  color:black ; 
+  background-color: var(--bleu_ciel--);
+   
 }
 .aa_lien a:hover{ 
   background-color: var(--dark-orchid);
