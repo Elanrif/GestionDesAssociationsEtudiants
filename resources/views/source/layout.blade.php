@@ -16,7 +16,7 @@
 <!-- finModal --> 
 
    <!--header-->
-
+   <!-- le premier barre delaissé 
   <nav class="index2 navbar navbar-expand-lg navbar-light bg-light" style="height:100px;">
   <div class="container-fluid fs-4">
     <a class="navbar-brand ps-5" href="/">
@@ -30,7 +30,7 @@
         <li class="nav-item px-3">
           <a class="nav-link btn-outline-primary rounded-2 {{request()->is('/') ? 'active':''}} " aria-current="page" href="/">Acceuil</a>
         </li>
-        <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
+        //permet juste de cacher le boutton si l'utilisateur n'est pas admin   
           @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="nav-item px-3">
           <a class="nav-link btn-outline-primary rounded-2 " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
@@ -40,15 +40,31 @@
           <a class="nav-link btn-outline-primary rounded-2 {{request()->is('#1') ? 'active':''}}" href="#1">Presentation</a>
         </li>
        
-
-        <li class="nav-item dropdown px-3">
+        
+        <li class="nav-item dropend px-3">
           <a class="nav-link btn-outline-primary rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            Associations
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
             @foreach($associations as $association)
-            <li><a class="dropdown-item" href="#">{{$association->nom}}</a></li>
+               <li><a class="dropdown-item py-2" href="{{ route('admin-asso.show',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
             @endforeach
+
+             <hr>
+             
+             @auth
+               @if(auth()->user()->role == 'admin')
+             <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}">Toutes les Associations</a></li>
+             @else
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @user</a></li>
+             @endif 
+             @endauth
+             
+             @guest
+             
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @visiteur</a></li>
+
+             @endguest
           </ul>
         </li>
        
@@ -59,7 +75,7 @@
         @guest
         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link btn btn-outline-success {{request()->is('register') ? 'active':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user fw-bold me-2"></i>s'inscrire</a> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
+        <a class="nav-link btn btn-outline-success {{request()->is('register') ? 'active':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user fw-bold me-2"></i>s'inscrire</a> // sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme //
         </li>
         
          <li class="nav-item">
@@ -67,7 +83,7 @@
         
         </li>
         </ul>
-        @endif
+        @endguest
 
         @auth
          <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
@@ -80,13 +96,100 @@
         </li>
      
         </ul>
-        @endif
+        @endauth
         
       </form>
     </div>
   </div>
 </nav>
+-->
+
+<!-- 2eme barre --> 
+<nav class="navbar navbar-expand-lg" style="background-color:rgb(3, 19, 73);">
+  <div class="container-fluid">
+     <a class="navbar-brand ps-5" href="/">
+    <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
+    </a>
+    <button class="navbar-toggler bg-light shadow" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon shadow"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item px-5">
+          <a class="nav-link btn-outline-primary text-light fs-5 rounded-2 {{request()->is('/') ? 'active':''}} " aria-current="page" href="/">Acceuil</a>
+        </li>
+        <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
+          @if(auth()->check() AND auth()->user()->role == 'admin')
+        <li class="nav-item px-5">
+          <a class="nav-link text-light fs-5 btn-outline-primary rounded-2 " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+        </li>
+        @endif
+        <li class="nav-item px-5">
+          <a class="nav-link btn-outline-primary text-light fs-5 rounded-2 {{request()->is('#1') ? 'active':''}}" href="#1">Presentation</a>
+        </li>
+       
+        
+        <li class="nav-item dropend px-3">
+          <a class="nav-link btn-outline-primary  text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Associations
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
+            @foreach($associations as $association)
+               <li><a class="dropdown-item py-2" href="{{ route('admin-asso.show',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
+            @endforeach
+
+             <hr>
+             
+             @auth
+               @if(auth()->user()->role == 'admin')
+             <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}">Toutes les Associations</a></li>
+             @else
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @user</a></li>
+             @endif 
+             @endauth
+             
+             @guest
+             
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @visiteur</a></li>
+
+             @endguest
+          </ul>
+        </li>
+      </ul>
+     <form class="d-flex me-5 pe-5">
+        @guest
+        <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link btn btn-outline-success text-light {{request()->is('register') ? 'active':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user text-light fw-bold me-2"></i>s'inscrire</a> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
+        </li>
+        
+         <li class="nav-item">
+         <a class="nav-link text-light btn btn-outline-primary {{request()->is('login') ? 'active':''}} fw-bold me-3" aria-current="page" href="{{ route('login') }}"> <i class="fas fa-user-check fw-bold text-light me-2"></i>se connecter</a>
+        
+        </li>
+        </ul>
+        @endguest
+
+        @auth
+         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+         
+         <a class="nav-link active fs-4" aria-current="page" href="{{ route('home') }}">
+          <i class="fas fa-door-open text-light fs-2"></i>
+         <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:70px; width:70px;">   
+        </a>
+        </li>
+     
+        </ul>
+        @endauth
+        
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- fin --> 
      <!-- ajouter quelque chose -->
+
       
          @yield('content')
 

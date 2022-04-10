@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 *{
  --bisque-- : #C4E0F9;
  --blanc--: #FFFBFC ;  /*#FFFBFC ;*/
@@ -7,12 +9,62 @@
  --noir--: #00072D ;
  --bleu--: #232ED1;
 
+ --dark-orchid: #a42cd6 ;
+ --midnight: #0f084b; 
+ --plum-web:#f9b9f2;
+ --persian:#721817;
+ --orange-red:#ff5a5f;
+
+
  font-family: 'Poppins', sans-serif;
  /* font-family: 'Lobster', cursive; */
 }
 
+/* pour les images en card des associations */ 
+/* pour l'association en violet de grand */
 
+.aa_lien a{ 
+  background-color: white;
+}
+.a_lien a { 
+  background-color: var(--persian);
+  color:white ;
+  border-radius:0% 100% 0% 100% / 100% 55% 45% 0%  ;
+}
 
+.a_lien a:hover{ 
+  background-color: var(--orange-red);
+  color:black ; 
+}
+.aa_lien a:hover{ 
+  background-color: var(--dark-orchid);
+  color:white;
+}
+.imgs{ 
+
+  height:70vh;
+  background: linear-gradient(rgba(13, 6, 36, 0.5),rgb(36, 8, 74)) , url(../images/fete.jpeg) center / cover no-repeat  ;
+
+}
+.foot{ 
+  height:15vh;
+  border-radius: 100% 0% 100% 0% / 55% 96% 4% 45%  ;
+  background-color:var(--dark-orchid);
+}
+.foot-child{ 
+  font-size:20px;
+  font-weight:bold;
+  background-color:var(--midnight);
+  color:white ; 
+}
+
+.foot-child:hover{ 
+  font-size:25px;
+  background-color: white;
+  color:black ;
+}
+
+/* fin de ça */ 
 .btn1{ 
   border : solid 1px blue ; 
   background-color: blue;
@@ -44,11 +96,7 @@
   z-index:1;
 }
 
-/* pour l'image en linear-gradient*/
-.linear{ 
-  background: linear-gradient(rgb(0,0,0,0.5),#0676d1) , url(../images/esma.jpg) center / cover no-repeat  ;
-  height:60vh;
-}
+
 
 .owen{ 
   background-color: var(--bisque--);
@@ -67,6 +115,23 @@
    opacity:0.2; 
    border-radius: 50%;
    
+}
+/*page user */
+
+/*fin */
+.cont-ain {
+  width:100%;
+  display:flex ;
+}
+.cont-ain1{ 
+
+  flex:1 0 200px ;
+  height:75vh;
+  background-color: #00072D;
+}
+.cont-ain2{
+  
+  flex:1 1 100%;
 }
 
 /*page admin */
@@ -147,4 +212,36 @@
      
    }
 
+}
+
+
+/* pour l'image en linear-gradient déja en commentaire dans le blade.php*/
+/*.linear{ 
+  background: linear-gradient(rgb(0,0,0,0.5),#0676d1) , url(../images/esma.jpg) center / cover no-repeat  ;
+  height:60vh;
+}
+*/
+
+.img1 { 
+
+  background: linear-gradient(rgb(0,0,0,0.5),#02022c) , url(../images/association_default/esma.jpg) center / cover no-repeat  ;
+  
+}
+.img1 a { 
+  color:white ; 
+  text-decoration: none;
+}
+.img1 a:hover{ 
+  color:#221ef0;
+  transition: 1,4s ease-out;
+}
+.img2 { 
+
+  background: linear-gradient(rgba(2, 2, 13, 0.5),#02022c) , url(../images/association_default/DEVE-VE-Association_etudiantes.jpg) center / cover no-repeat  ;
+
+}
+.img3 { 
+
+  background: linear-gradient(rgb(0,0,0,0.5),#02022c) , url(../images/association_default/POL_1028-1-1024x683-1.jpg) center / cover no-repeat  ;
+  
 }

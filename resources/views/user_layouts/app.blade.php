@@ -44,7 +44,7 @@
 
   <!-- fin Modal --> 
 
-  <nav class="navbar navbar-expand-lg" style="background-color:rgb(4, 14, 63)">
+  <nav class="navbar navbar-expand-lg" style="background-color:rgb(5, 15, 62)">
   <div class="container-fluid px-4" style="padding:auto 100px;">
     <a class="navbar-brand ps-4 ms-4" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
@@ -61,16 +61,16 @@
          
       @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="us-ser nav-item mx-5 px-4">
-          <a class="nav-link text-light rounded-circle fw-bold btn-outline-primary {{ request()->is('admin-users')? 'active': '' }}" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie fs-4 me-2"></i>Administration</a>
+          <a class="nav-link rounded-circle text-light fw-bold btn-outline-primary {{ request()->is('admin-users')? 'active': '' }}" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie fs-4 me-2"></i>Administration</a>
         </li>
       @endif
       @endauth
         <li class="nav-item mx-5 px-4">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Lien</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            menu
+            Menu 
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown02">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -85,8 +85,8 @@
       <form class="d-flex me-3 pe-3" style="margin-right:200px;">
       
         @guest
-        <a href="{{ route('register') }}" class="btn text-light mx-2 btn-outline-info {{ request()->is('register')? 'active':'' }} fw-bold"> S'inscrire </a>
-        <a href="{{ route('login') }}"  class="btn text-light btn-outline-primary {{ request()->is('login')? 'active':'' }} fw-bold"> Se connecter </a>
+        <a href="{{ route('register') }}" class="btn mx-2 btn-outline-info {{ request()->is('register')? 'active':'' }} fw-bold"> S'inscrire </a>
+        <a href="{{ route('login') }}"  class="btn btn-outline-primary {{ request()->is('login')? 'active':'' }} fw-bold"> Se connecter </a>
           
         @endguest
         @auth
@@ -100,9 +100,45 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9"> <hr>
-         @yield('content')
-           </div>
+        <div class="col-md-12"> <hr>
+            <!-- home-users --> 
+            <div class="mt-5">
+
+<!-- Modla pour les message -->
+<div class="cont-ain">
+  <div class="cont-ain1">
+     <ul class="nav">
+      
+         <li class="nav-item dropend px-3">
+          <a class="nav-link btn-outline-primary mt-3 text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Associations
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
+           
+               <li><a class="dropdown-item " href="#">Associations</a></li>
+          
+
+             <hr>
+            
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations </a></li>
+
+          </ul>
+        </li>
+       
+       <li class="nav-item px-3">
+         <a  class="nav-link fs-5 ps-3 pe-5 w-100 text-light mt-3 btn-outline-primary rounded-2 shadow" href="#">Modifier &nbsp;&nbsp;</a>
+       </li>
+       <li class="nav-item">
+         <a  class="nav-link" href="#"></a>
+       </li>
+     </ul>
+  </div>
+
+
+  <div class="cont-ain2">
+    @yield('user_content')
+   </div>
+
     </div>
   </div>
  

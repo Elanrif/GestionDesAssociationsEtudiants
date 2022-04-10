@@ -125,7 +125,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'Le :attribute doit être une chaîne.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'Le :attribute a déjà été pris.',
+    'unique' => ' Cet utilisateur existe déjà  . ',
     'uploaded' => 'L\':attribute n\'a pas pu être téléchargé.',
     'url' => 'L\' :attribute  doit être une URL valide.',
     'uuid' => 'L\' :attribute doit être un UUID valide.',

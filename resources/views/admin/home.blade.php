@@ -34,7 +34,26 @@
     <a class="nav-link fw-bold text-light btn  btn-outline-primary {{ request()->is('admin-users*') ? 'active':'' }} border-dark" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-users-line me-2 fs-5"></i>Les utilisateurs</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark" href="#"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>Les Associations</a>
+    
+    <div class="dropend">
+  <button class="btn btn-black dropdown-toggle nav-link fw-bold text-light btn  btn-outline-primary {{ request()->is('admin-asso*')?'active':'' }} border-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>
+    Les Associations
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="dropdownMenuButton1">
+
+    @foreach ($associations as $association )
+      
+    <li><a class="dropdown-item py-2" href="#">{{ $association->nom }} {{ $association->date }}</a></li>
+
+    @endforeach
+
+    <hr>
+    <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}">Toutes les Associations</a></li>
+
+  
+  </ul>
+</div>
+
   </li>
   <li class="nav-item">
     <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark" href="#"><i class="fa-solid fa-calendar-days fs-5 me-2"></i>Les Evènements</a>
@@ -69,7 +88,7 @@
 
   <!-- fin Modal --> 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg"  style="background-color:rgb(5, 15, 62)">
   <div class="container-fluid px-4" style="padding:auto 100px;">
     <a class="navbar-brand ps-4 ms-4" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
@@ -80,11 +99,11 @@
     <div class="collapse navbar-collapse " id="navbarSupportedConten01t" style="margin:auto 100px;">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="us-ser nav-item mx-5 px-4">
-          <a class="nav-link rounded-3 fw-bold btn-outline-primary " aria-current="page" href="{{ route('welcome') }}"><i class="fas fa-home-alt me-2 fs-4"></i>Acceuil</a>
+          <a class="nav-link rounded-3 text-light fw-bold btn-outline-primary " aria-current="page" href="{{ route('welcome') }}"><i class="fas fa-home-alt me-2 fs-4"></i>Acceuil</a>
         </li>
 
         <li class="us-ser nav-item mx-5 px-4">
-          <a class="nav-link rounded-3 fw-bold btn-outline-primary" aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house-user fs-4 me-2"></i>Mon-compte</a>
+          <a class="nav-link rounded-3 text-light fw-bold btn-outline-primary" aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house-user fs-4 me-2"></i>Mon-compte</a>
         </li>
      
   

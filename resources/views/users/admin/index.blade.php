@@ -19,6 +19,8 @@
     @endif  
 <!-- fin des message -->
 
+ <div class="container d-flex justify-content-center mt-2 mb-3 bg-body shadow shadow-3 w-25 p-2 rounded-1  fs-4 fw-bold"> <i class="fa-solid p-2 fs-5 shadow shadow-xl  me-3 fa-users-between-lines"></i>Liste des Utilisateurs </div>
+
     <table class="table table-hover">
   <thead>
     <tr>
@@ -36,7 +38,7 @@
     </tr>
   </thead>
   <tbody>
-      @foreach($users as $user)
+      @foreach($users as $user) 
     <tr>
       <th scope="row">{{ $loop->index+1 }}</th>
       <td>{{ $user->nom }}</td>

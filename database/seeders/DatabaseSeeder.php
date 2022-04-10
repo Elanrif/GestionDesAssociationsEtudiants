@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Association;
 use App\Models\CodeEtudiant;
 use App\Models\User;
 use Database\Factories\CodeEtudiantFactory;
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         User::factory()->count(50)->create() ;
+        Association::factory()->count(5)->create() ; 
     }
 }

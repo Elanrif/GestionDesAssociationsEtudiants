@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssociationController;
 use App\Models\Association;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -24,7 +25,7 @@ Route::get('/default-laravel', function () {
 });
 
 Route::get('/',function(){ 
-    $associations = Association::all() ; 
+    $associations = Association::all()->take(3) ; 
     return view('welcome',compact('associations')) ; 
 })->name('welcome');
 
@@ -41,6 +42,18 @@ Route::group(['namespace' => 'Auth'], function() {
      
 });
 
+// tout simplement cette view pour pouvoir passer des models a la vue c'est tout 
+// la vue show ne doit pas heriter de son père car alors il existerait la variable $associatoins avec (s) 
+// mais dans show on veut seulement association sans ('s) 
+// donc la solution il ne dois pas extendre de admin parent . 
+Route::get('/admin_home',function() { 
+
+    $associations = Association::all() ; 
+
+    return view('admin.home',['associations'=>$associations]); 
+});
+
+
 Route::get('/admin-users',[UserController::class , 'index'])->name('admin-users');
 Route::get('/admin-users/{user}/edit',[UserController::class , 'edit'])->name('admin-users.edit') ;
 Route::put('/admin-users/{user}',[UserController::class,'update'])->name('admin-users.update'); 
@@ -48,3 +61,9 @@ Route::delete('/admin-users/{user}',[UserController::class,'destroy'])->name('ad
 
 Route::post('/users-image',[UserController::class,'images'])->name('users-image.store') ;//ici c'est pas l'administrateur qui va modifier mais la personne authentifié  . normalement cette ligne doit etre dans le namesapce Auth() mais bon 
 Route::post('/users-comment',[UserController::class,'comments'])->name('users-comment.save');
+Route::get('/home/user-message',[UserController::class,'messages'])->name('messages') ;
+
+Route::resource('admin-asso',AssociationController::class)->parameters([
+    'admin-asso' => 'association'
+]); 
+

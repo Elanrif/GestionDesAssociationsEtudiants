@@ -20,7 +20,7 @@
     <input type="email" name="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="saisir votre email">
       @if ($message = Session::get('danger'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong class="fs-5">Whoops !</strong> <span class="fw-bold">{{ $message }}</span>.
+  <strong class="fs-5">Oupps !</strong> <span class="fw-bold">{{ $message }}</span>.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif

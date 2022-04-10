@@ -6,13 +6,15 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule ; 
 use App\Http\Controllers\Controller;
+use App\Models\Association;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 
-class UserController extends Controller
+class UserController extends Controller  // dans le parent on doit avoir les mêmes variables qui seront utilisé dans les controller
 {
+// le controller qui va être herité si il y'a une variable a ce controller alors tous ces enfants doivent obligatoirement herité de cette variable ('principe de l\'heritage') ; 
     public function index() { 
 
         // Gate::authorize('admin-user') ;  directement rediriger vers le abort en cas d'erreur 
@@ -21,17 +23,18 @@ class UserController extends Controller
         return abort(403);
     }
 
-
+    // $associations = Association::all() ; 
     $users = User::where('id','<>',auth()->user()->id)->get() ; // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
-    return view('users.admin.index',compact('users')) ;
+    $associations = Association::all() ; 
+    return view('users.admin.index',compact(['users','associations'])) ;
 
     }
 
     public function edit(User $user) { 
 
         Gate::authorize('admin-user');
-
-        return view('users.admin.edit',compact('user')) ; 
+         $associations = Association::all() ; 
+        return view('users.admin.edit',compact(['user','associations'])) ; 
     }
 
     public function update(Request $request, User $user) { 
@@ -95,6 +98,14 @@ class UserController extends Controller
        return back()->with('comment',' Votre message a été envoyé avec succès  ! ') ; 
        
 
+    }
+
+    public function messages() { 
+
+        $user = user::find(auth()->user()->id) ; 
+        $comments =  $user->comment::all(); // ici all() ou get() ça revient au même 
+       
+        return view('users.auth.message',['comments'=> $comments]) ;
     }
 
     public function destroy(User $user) { 

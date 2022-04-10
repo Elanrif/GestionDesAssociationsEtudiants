@@ -1,11 +1,41 @@
 
-
-
 @extends('user_layouts.app')
 
 @section('user_content')
+<div class="mt-5">
 
-            <!-- Modal -->
+<!-- Modla pour les message -->
+<div class="cont-ain">
+  <div class="cont-ain1">
+     <ul class="nav">
+      
+         <li class="nav-item dropend px-3">
+          <a class="nav-link btn-outline-primary mt-3 text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Associations
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
+           
+               <li><a class="dropdown-item " href="#">Associations</a></li>
+          
+
+             <hr>
+            
+             <li><a class="dropdown-item py-2" href="#">Toutes les Associations </a></li>
+
+          </ul>
+        </li>
+       
+       <li class="nav-item">
+         <a  class="nav-link" href="#"></a>
+       </li>
+       <li class="nav-item">
+         <a  class="nav-link" href="#"></a>
+       </li>
+     </ul>
+  </div>
+  <div class="cont-ain2">
+
+    <!-- Modal -->
 <div class="modal fade" id="exampleModal00c" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -222,10 +252,7 @@
 
   </div>
 </div>
-
 @endsection
-
-
 
 
 

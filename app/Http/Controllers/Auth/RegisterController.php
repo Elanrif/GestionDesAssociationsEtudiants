@@ -37,6 +37,7 @@ class RegisterController extends Controller
             'filiere' =>['required','string'],
             ]);
 
+            $descrypt = $request->password ; // je prends le mot de passe qui n'est pas encore crypté
             
            $user =  User::create([
                'nom'=>$request->nom,
