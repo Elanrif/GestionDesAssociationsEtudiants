@@ -12,6 +12,7 @@
  --dark-orchid: #a42cd6 ;
  --midnight: #0f084b; 
  --plum-web:#f9b9f2;
+ --gold-crayola :#f7efe4;
  --persian:#721817;
  --orange-red:#ff5a5f;
 
@@ -25,6 +26,7 @@
 
 .aa_lien a{ 
   background-color: white;
+  margin:70px auto;
 }
 .a_lien a { 
   background-color: var(--midnight);
