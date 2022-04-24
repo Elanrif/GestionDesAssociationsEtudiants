@@ -1,7 +1,7 @@
 @extends("../../admin/home")
 @section('admin')
 
-<form action="{{ route('admin-asso.update',$association->id)}} " method="post">
+<form action="{{ route('admin-asso.update',$association->id)}} " method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 

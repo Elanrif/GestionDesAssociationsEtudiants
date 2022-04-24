@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('evenements', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('type');
             $table->date('date');
-            $table->string('Lieu');
+            $table->string('heure');
+            $table->string('lieu');
+            $table->string('description')->nullable() ; 
+            $table->string('image') ;
             $table->foreignId('association_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

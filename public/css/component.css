@@ -20,34 +20,60 @@
  font-family: 'Poppins', sans-serif;
  /* font-family: 'Lobster', cursive; */
 }
+/*membre du bureau qui était static
 
+.bureau-asso{ 
+  background:linear-gradient(rgba(40, 7, 10, 0.6),rgb(4, 2, 59)),url(../images/association_default/esma.jpg) center / cover no-repeat  ;;
+  
+}
+
+
+
+*/
+ .hoover:hover { 
+   transform: translateX(-15px);
+ }
 /* pour les images en card des associations */ 
 /* pour l'association en violet de grand */
-
-.aa_lien a{ 
-  background-color: white;
-  margin:70px auto;
-}
-.a_lien a { 
-  background-color: var(--midnight);
-  color:white ;
-  border-radius:0% 100% 0% 100% / 100% 55% 45% 0%  ;
+.decouvrir-asso:hover{ 
+  transform : translateX(25px) ;
+  box-shadow: 0px 4px 10px 3px blue ;
+  padding:auto 50px;
+  
+  
 }
 
-.a_lien a:hover{ 
-  background-color: var(--bleu_ciel--);
+/* pour le footer les liens de facebook etc...... */
+
+.suivre >* { 
    
+      color:white; 
+      
 }
-.aa_lien a:hover{ 
-  background-color: var(--dark-orchid);
+.suivre a { 
+
+  transition: 1,5s ease-in;
+}
+
+.suivre a:hover { 
+
+  color: #e6391b;
+}
+
+/* pour le bouton savoir plus */ 
+.savoir-hover:hover{ 
+
+  background-color: #0f084b;
   color:white;
-}
-.imgs{ 
-
-  height:70vh;
-  background: linear-gradient(rgba(13, 6, 36, 0.5),rgb(36, 8, 74)) , url(../images/fete.jpeg) center / cover no-repeat  ;
+  
 
 }
+.admin-assohover:hover{ 
+  border:solid 1px blue ;
+
+}
+
+
 .foot{ 
   height:15vh;
   border-radius: 100% 0% 100% 0% / 55% 96% 4% 45%  ;
@@ -156,7 +182,7 @@
   flex:1 1 100%;
 }
       .ileme_link2::-webkit-scrollbar{
-        display:none; 
+        
       }
 
      .ileme_link2 {

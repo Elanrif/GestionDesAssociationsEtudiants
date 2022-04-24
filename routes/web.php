@@ -4,7 +4,8 @@ use App\Http\Controllers\AssociationController;
 use App\Models\Association;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController ; 
+use App\Http\Controllers\Auth\RegisterController ;
+use App\Http\Controllers\BureauController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -25,7 +26,7 @@ Route::get('/default-laravel', function () {
 });
 
 Route::get('/',function(){ 
-    $associations = Association::all()->take(3) ; 
+    $associations = Association::all() ; 
     return view('welcome',compact('associations')) ; 
 })->name('welcome');
 
@@ -63,7 +64,39 @@ Route::post('/users-image',[UserController::class,'images'])->name('users-image.
 Route::post('/users-comment',[UserController::class,'comments'])->name('users-comment.save');
 Route::get('/home/user-message',[UserController::class,'messages'])->name('messages') ;
 
+
 Route::resource('admin-asso',AssociationController::class)->parameters([
     'admin-asso' => 'association'
 ]); 
 
+Route::get('/admin-asso/create/{association}/bureau',[BureauController::class,'create'])->name('create.bureau');
+// j'ai ajouté {association} voir la vue bureau/create; avant d'aller au controller on passe par ici d'abord
+// la raison est simple , je veux une fois créer le membre du bureau revenir a la view show , pour cela je dois avoir l'association
+Route::post('/admin-asso/{association}/store/bureau',[BureauController::class,'store'])->name('store.bureau');
+Route::delete('/admin-asso/delete/{bureau}',[BureauController::class,'delete'])->name('delete.bureau') ; 
+
+Route::get('/admin-asso/MembreBureau/id/{bureau}/edit',[BureauController::class,'edit'])->name('edit.bureau') ;
+Route::put('/admin-asso/update/{bureau}',[BureauController::class, 'update'])->name('update.bureau') ; 
+
+//'search' pour la recherche des utilisateur 
+Route::get('/user/Search',[AssociationController::class,'search'])->name('admin.userSearch') ; 
+
+
+Route::get('/admin-asso/association/{association}',[BureauController::class,'userindex'])->name('user.association') ; 
+Route::post('association/{association}/suivis',[BureauController::class , 'suivisUser'])->name('suivis.attach');
+Route::delete('association/suivis/{association}',[BureauController::class , 'suivisDelete'])->name('suivis.delete');
+
+Route::post('/admin-asso/membreCreate',[BureauController::class,'membreCreate'])->name('admin-asso.membre_create') ; 
+Route::delete('/admin-asso/membreDestroy/{user}',[BureauController::class,'membreDestroy'])->name('admin-asso.membre_destroy') ;
+
+// pour les évènements 
+
+Route::post('/admin-asso/evenements' ,[AssociationController::class , 'eventStore'])->name('adminevent.store') ; 
+Route::put('admin-asso/evenement/update',[AssociationController::class , 'eventUpdate'])->name('update.evenement');
+Route::delete('/admin-asso/evenement/delete/{evenement}',[AssociationController::class,'eventDelete'])->name('delete.event');
+//pour le contact
+Route::get('contact',function() { 
+
+    $associations = Association::all() ; 
+    return view('contact.index',['associations'=>$associations]) ; 
+});

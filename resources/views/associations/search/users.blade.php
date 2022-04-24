@@ -19,8 +19,25 @@
     @endif  
 <!-- fin des message -->
 
- <div class="container d-flex justify-content-center mt-2 mb-3 bg-body shadow shadow-3 w-25 p-2 rounded-1  fs-4 fw-bold"> <i class="fa-solid p-2 fs-5 shadow shadow-xl  me-3 fa-users-between-lines"></i>Liste des Utilisateurs </div>
-       
+   <!-- pour utiliser align-items-center il faut avoir une hauteur sinon on le créer avec height:?vh; --> 
+
+   @if($count== 0 )
+   <div class="d-flex justify-content-center align-items-center" style="height:80vh;">
+    
+        <a class="nav-link w-50 text-dark" href="{{ route('admin-users') }}"> <h1 style="border-right-width: 0px;">
+            
+            <strong>Recherche : {{ $q }} </strong>
+            <h3> <span class="text-primary fw-bold"> {{ $count }} utilisateur</span>  trouvé(e).</h3>
+            <br> <br> <button class="btn btn-dark fw-bold">Retourner</button> </h1>
+
+        </a>
+   </div>
+
+   @else
+
+  <div class="container d-flex justify-content-center mt-2 mb-3 bg-body shadow shadow-3 w-25 p-2 rounded-1  fs-4 fw-bold"> <i class="fa-solid p-2 fs-5 shadow shadow-xl  me-3 fa-users-between-lines"></i>Liste des Utilisateurs </div>
+
+
  <!-- pour la barre de recherche --> 
        <div class="float-end me-5 mb-4">
           <form action = "{{ route('admin.userSearch') }}" class="d-flex">
@@ -116,6 +133,7 @@
   </tbody>
 </table>
 
+@endif
 
 
 

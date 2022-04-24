@@ -57,4 +57,16 @@ class User extends Authenticatable
          
          return $this->hasOne(Comment::class) ; //signifie que c'est dans comment que j'ai une foreignKey reférençant la table "User"
      }
+
+       public function suit($association) 
+    { 
+        // associations() avec parenthèse , je fais la relation dans le model pas dans le controller 
+       // et la methode association avec () , car on parle de la methode ,ici je vais sur les associations de la personne connecté et je ver
+       //verife si il y'a une associations qui a le même id que l'association passé en paramètre dans la vue index , car dans ce dernier j'avais bien l'association
+       // association_id comme si on etait la table pivot , car il va faire des inner join etc.....
+
+        return $this->associations()->where('association_id',$association->id)->exists() ;
+        
+        //exists return un booléan 
+    }
 }

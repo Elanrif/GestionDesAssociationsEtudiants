@@ -10,9 +10,9 @@
   <div class="d-flex justify-content-center">
     <h2 class="text-center px-5 mx-5" style="padding-top:0px;color:var(--blanc--); font-size:80px;font-family: 'Lobster', cursive;">Les associations Etudiants de la Facultés Abdelmalek Essaâdi Tetouan</h2>
   </div>
+</div>
    fin texte --> 
   
-</div>
 <!-- Carousel image des associations -->
 <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
   <!-- indique les petits bar/tiréts en bas -->
@@ -23,7 +23,7 @@
   </div>
   <!-- fin -->
   <div class="carousel-inner">
-    <div class="img1 carousel-item active" data-bs-interval="120000" style="height:75vh;">
+    <div class="img1 carousel-item active" data-bs-interval="5000" style="height:75vh;">
       <div class="carousel-caption d-none d-md-block">
         <h2 class="fw-bold" style="padding-bottom:140px;"><a  href="#"> Les Associations Etudiants de L'université Abdelmalek Essâadi de Tétouan </a></h2>
         <p style="margin-left-right: 100px;font-size:18px;">
@@ -33,14 +33,14 @@
       </div>
     </div>
     
-    <div class="img2 carousel-item" data-bs-interval="7000" style="height:75vh;">
+    <div class="img2 carousel-item" data-bs-interval="3000" style="height:75vh;">
      
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
-    <div class="img3 carousel-item" data-bs-interval="7000" style="height:75vh;">
+    <div class="img3 carousel-item" data-bs-interval="3000" style="height:75vh;">
   
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
@@ -59,14 +59,12 @@
 </div>
 <!-- fin --> 
 
-
-<div class="d-flex justify-content-center px-5 mx-5">
-  <div class="row" style="margin:auto 200px;">
-    <!-- en bas de carousel -->
-    
-       <h4 class="mt-5 ms-3" style="font-family:'Poppins', sans-serif;margin-bottom:5px; font-size:40px; font-weight:bold;">Tout savoir sur les Associations Etudiants <i class="fa-solid fa-lightbulb" style="color:rgb(229,82,33);"></i> .</h4>.
+<div class="container-fluid justify-content-center d-flex">
+  <div class="w-75">
+    <h4 id = "ancre" class="mt-5" style="font-family:'Poppins', sans-serif;margin-bottom:5px; font-size:40px; font-weight:bold;">Tout savoir sur les Associations Etudiants <i class="fa-solid fa-lightbulb" style="color:rgb(229,82,33);"></i> .</h4>
    
-<!-- accordion -->
+    <!-- debut accordion -->
+
   <div class="accordion accordion-flush" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
@@ -74,24 +72,24 @@
 
      <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
     
-     <hr class="fw-bold mb-5" style="height:5px;color:rgb(229, 82, 33);width:700px;">
+     <hr class="fw-bold mb-5" style="height:5px;color:rgb(229, 82, 33);width:400px;">
      <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark fw-bold">C'est quoi une Association Étudiantes ?  </span>
     </div>
 
       </button>
     </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" >
       <div class="accordion-body fs-5">
-         <ul>
-         <li class ="my-3"> <span class="text-dark">   C’est une association qui est constituée d’étudiants. Le nombre peut varier selon les activités exercées par cette dernière. De plus, les étudiants proviennent de différents niveaux et de différentes filières. L’association peut exister à différentes échelles : école, université, ville, région, pays, continent et le monde. Il faut savoir qu’il existe plusieurs sortes d’associations pour les causes humanitaires, les enfants, l’éducation, le sport, la vie étudiante, le logement étudiant et bien d’autres.
+         <ul class="nav">
+         <li class ="my-3"> <span class="text-dark"> 👌  C’est <span class="text-primary fw-bold"> une association  </span> qui est constituée d’étudiants. Le nombre peut varier selon les activités exercées par cette dernière. De plus, les étudiants proviennent de différents niveaux et de différentes filières. L’association peut exister à différentes échelles : école, université, ville, région, pays, continent et le monde. Il faut savoir qu’il existe <span class="text-primary fw-bold"> plusieurs sortes d’associations </span>  pour les causes humanitaires, les enfants, l’éducation, le sport, la vie étudiante, le logement étudiant et bien d’autres.
            </span>
            </li>
 
-             <li class ="my-3"> <span class="text-dark">Une asso étudiante te permet de faire tout un tas de rencontres et parfois même te constituer un bon groupe de potes si l’ambiance est vraiment cool ! Dans presque toutes les assos, tu pourras te rendre à des événements internes (uniquement entre membres d’une même asso) mais aussi des événements ouverts aux autres étudiants. Autant d’occasions de faire plein de belles rencontres !
+             <li class ="my-3"> <span class="text-dark">👌 Une <span class="text-primary fw-bold"> asso étudiante  </span> te permet de faire tout un tas de rencontres et parfois même te constituer un bon groupe de potes si l’ambiance est vraiment cool ! Dans presque toutes les assos, tu pourras te rendre à <span class="text-primary fw-bold"> des événements </span>  internes (uniquement entre membres d’une même asso) mais aussi des événements ouverts aux autres étudiants. Autant d’occasions de faire plein de <span class="text-primary fw-bold"> belles rencontres ! </span> 
            </span>
            </li>
 
-             <li class ="my-3"> <span class="text-dark">  Dans toutes les associations, tu as des postes définis, souvent réunis au sein de ce qu’on appelle un « bureau d’asso« . Ce bureau comprend un président, un secrétaire général, un trésorier, avec éventuellement d’autres postes (c’est selon la taille et les besoins de l’asso) comme le poste de vice-président. Il peut aussi y avoir des statuts hors bureau comme des responsables de pôles. Ces pôles peuvent concerner des domaines différents : pôle partenariats, ou un pôle consacré à un événement régulier de l’asso (un festival pour une asso de théâtre par exemple).
+             <li class ="my-3"> <span class="text-dark">👌  Dans toutes les <span class="text-primary fw-bold"> associations </span> , tu as des postes définis, souvent réunis au sein de ce qu’on appelle un <span class="text-dark fw-bold"> « bureau d’asso« </span>  . Ce bureau comprend <span class="text-dark fw-bold">un président, un secrétaire général, un trésorier,</span> avec éventuellement d’autres postes (c’est selon la taille et les besoins de l’asso) comme le poste de vice-président. Il peut aussi y avoir des statuts hors bureau comme des responsables de pôles. Ces pôles peuvent concerner des domaines différents : pôle partenariats, ou un pôle consacré à un événement régulier de l’asso (un festival pour une asso de théâtre par exemple).
            </span>
            </li>
 
@@ -114,28 +112,73 @@
 
       </button>
     </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" >
       <div class="accordion-body fs-5">
-       <ul>
-         <li class ="my-3"> <span class="text-dark"> Dans un premier temps, elles servent à réunir les étudiants autour d'une cause qui leur tient à cœur. En effet, vous allez rencontrer de nouvelles personnes qui ont des intérêts similaires aux vôtres. Dans cette ambiance, vous serez capable de construire un projet et de vous fixer des objectifs réalisables.
+       <ul class="nav">
+         <li class ="my-3"> <span class="text-dark"> Dans un premier temps, elles servent à <span class="text-dark fw-bold">réunir les étudiants</span> autour d'une cause qui leur tient à cœur. En effet, vous allez <span class="fw-bold text-dark">rencontrer de nouvelles personnes</span> qui ont des intérêts similaires aux vôtres. Dans cette ambiance, vous serez capable de construire un projet et de vous fixer des objectifs réalisables.
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> Ensuite, nous pouvons dire qu’elles permettent d’avoir un regard nouveau sur une activité ou une cause qui nous était encore inconnue. Vous allez être confronté à différents cas et différentes situations selon l’activité que vous pratiquez ou la cause que vous défendez. Si vous êtes dans une association d’aide humanitaire par exemple, vous serez en mesure de voir le monde sous un autre angle compte tenu des choses que vous allez découvrir et d’adapter le message que vous voulez transmettre.
+            <li class ="my-3"> <span class="text-dark"> Ensuite, nous pouvons dire qu’elles <span class="text-dark fw-bold">permettent d’avoir un regard nouveau</span> sur une activité ou une cause qui nous était encore inconnue. Vous allez <span class="text-primary fw-bold"> être confronté à différents cas et différentes situations</span> selon l’activité que vous pratiquez ou la cause que vous défendez. Si vous êtes dans une <span class="text-primary fw-bold">association</span> d’aide humanitaire par exemple, vous serez en mesure de voir le monde sous un autre angle compte tenu des choses que vous allez découvrir et d’adapter le message que vous voulez transmettre.
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> Elles nous permettent de nous dépasser car elles suscitent énormément d’implication. Grâce à la détermination et à l’esprit d’équipe, vous serez capable d’aller au-delà de vos objectifs et d’élever votre association à un statut plus élevé.
+            <li class ="my-3"> <span class="text-dark"> Elles nous permettent de nous dépasser car <span class="text-dark fw-bold"> elles suscitent énormément d’implication</span>. Grâce à la détermination et à l’esprit d’équipe, vous serez capable d’aller au-delà de vos objectifs et d’élever votre association à un statut plus élevé.
            </span>
            </li>
 
-           <li class ="my-3"> <span class="text-dark"> Pour finir, elle vous donne la possibilité de vivre une expérience étudiante exceptionnelle qui vous offre des avantages tels que de nouvelles compétences et de nouveaux contacts. Avec l’association étudiante, vous aurez l’occasion de faire ce que vous aimez et de faire partager ce sentiment à autrui. C’est bénéfique pour tout le monde !
+           <li class ="my-3"> <span class="text-dark"> Pour finir, elle vous donne la possibilité de vivre une expérience étudiante exceptionnelle qui vous offre des avantages tels que de <span class="text-dark fw-bold">nouvelles compétences et de nouveaux contacts</span>. Avec l’association étudiante, vous aurez l’occasion de faire ce que vous aimez et de faire partager ce sentiment à autrui <span class="text-primary fw-bold"> C’est bénéfique pour tout le monde !</span> 
               Sachez que vous pouvez aussi créer votre propre association. Libérez votre créativité ! Et puis si vous aimez faire plusieurs choses/ la diversité, alors essayez le plus d’associations possibles.
            </span>
            </li>
           </ul> 
       </div>
     </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingeight">
+      <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseeight" aria-expanded="false" aria-controls="collapsefor">
+       
+     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+    
+    
+     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Les postes existantes dans les associations étudiantes ? </span>
+  
+   </div>
+
+      </button>
+    </h2>
+    <div id="collapseeight" class="accordion-collapse collapse" aria-labelledby="headingeight" >
+      <div class="accordion-body fs-5">
+        <ul class="nav">
+         <li class ="my-3"> <span class="text-dark">  
+           <h3 class="fw-bold text-primary">« Président »</h3> Il y a d’abord le président, qui s’occupe en général de tout ce qui relève de l’administration, mais pas que ! Il donne la ligne directrice de l’asso, tranche dans les débats et dans les grandes prises de décision. C’est un poste avec de grandes responsabilités et très formateur  <br><br>
+
+           Dans certains bureaux, il y a le poste de <span class="text-dark fw-bold">vice-président</span>  , qui est en général le “couteau suisse” du président. Autrement dit, il est là pour soutenir le président et l’aider dans les tâches importantes qu’il n’a pas le temps de faire. Il est là pour prendre le relais en cas d’absence prolongée du président.
+           </span>
+           </li>
+
+           <li class ="my-3"> <span class="text-dark">  
+           <h3 class="fw-bold text-primary">« Trésorier »</h3>
+           
+           Il y a ensuite le trésorier : c’est le magicien de la comptabilité ! 💰 Il gère les dépenses, trouve des solutions pour faire gagner de l’argent à l’association, choisit les tarifs lorsque l’asso vend des produits (ou autres) aux étudiants, de sorte à tirer un certain bénéfice à réinvestir dans les autres projets de l’asso.
+
+           </span>
+           </li>
+
+            <li class ="my-3"> <span class="text-dark">  
+           <h3 class="fw-bold text-primary">« Secrétaire Général »</h3>
+           
+       Le secrétaire général, enfin, est la personne chargée de la communication avec l’extérieur (ça peut être l’administration, les entreprises partenaires…) et avec les autres membres de l’asso. Il est là pour tenir au courant des décisions prises par le bureau et aussi pour organiser les réunions (les assemblées générales).
+           
+           </span>
+           </li>
+          </ul>
+  
+      </div>
+    </div>
+     
   </div>
 
   <div class="accordion-item">
@@ -151,22 +194,22 @@
 
       </button>
     </h2>
-    <div id="collapsefor" class="accordion-collapse collapse" aria-labelledby="headingfor" data-bs-parent="#accordionExample">
+    <div id="collapsefor" class="accordion-collapse collapse" aria-labelledby="headingfor" >
       <div class="accordion-body fs-5">
-        <ul>
+        <ul class="nav">
          <li class ="my-3"> <span class="text-dark">  
-           <h3 class="fw-bold text-primary">Un « plus » sur le CV :</h3> Faire partie d'une association étudiante vous donnera l'occasion de vivre une expérience enrichissante mais aussi d'ajouter une précieuse ligne à votre CV. On peut tout à fait considérer que certains postes associatifs sont aussi valorisants sur un CV qu’un stage.Dans ce sens, l’expérience associative peut se révéler être une véritable expérience professionnelle.
+           <h3 class="fw-bold text-primary">Un « plus » sur le CV :</h3> Faire partie d'une <span class="text-primary fw-bold">  association étudiante</span> vous donnera l'occasion de vivre une expérience enrichissante mais aussi d'ajouter une précieuse ligne à votre <span class="text-primary fw-bold">CV </span> . On peut tout à fait considérer que <span class="text-dark fw-bold"> certains postes associatifs </span>  sont aussi valorisants sur un CV qu’un stage.Dans ce sens, l’expérience associative peut se révéler être une véritable <span class="text-dark fw-bold">expérience professionnelle</span>.
            </span>
            </li>
 
            <li class ="my-3"> <span class="text-dark">  
            <h3 class="fw-bold text-primary">Une expérience humaine enrichissante :</h3>
            
-           Appartenir à une association étudiante renforce les liens de solidarité en stimulant les sentiments d’appartenance à la communauté universitaire et à la société. Ces associations œuvrent dans des domaines aussi variés que l’animation du campus, la culture artistique, la culture scientifique et technique, l’environnement, l’humanitaire, la solidarité, la santé, le handicap, le sport, mais aussi la vie des filières <br><br>
+           Appartenir à une association étudiante renforce les liens de solidarité en stimulant les sentiments d’appartenance à <span class="text-primary fw-bold"> la communauté universitaire </span>   et à la société. Ces associations œuvrent dans des <span class="text-primary fw-bold"> domaines</span> aussi variés que <span class="text-dark fw-bold"> l’animation du campus </span>, <span class="text-dark fw-bold"> la culture artistique </span>, <span class="text-dark fw-bold">la culture scientifique et technique</span> , <span class="text-dark fw-bold">l’environnement</span>, <span class="text-dark fw-bold">l’humanitaire</span>, <span class="text-dark fw-bold">la solidarité</span>,<span class="text-dark fw-bold"> la santé</span>, <span class="text-dark fw-bold">le handicap</span>, <span class="text-dark fw-bold">le sport</span>, mais aussi <span class="text-dark fw-bold">la vie des filières</span> <br><br>
 
-           Intégrer une association étudiante sera une très bonne occasion de te changer les idées, et d’avoir quelque chose dans lequel t’investir en-dehors de tes cours, à la fois pour t’amuser et te faire des potes, et t’impliquer sérieusement dans des projets qui t’enthousiasment. <br><br>
+            <span class="text-dark fw-bold">Intégrer une association étudiante</span> sera une très bonne occasion de te changer les idées, et d’avoir quelque chose dans lequel t’investir en-dehors de tes cours, à la fois pour t’amuser et te faire des potes, et t’impliquer sérieusement dans des projets qui t’enthousiasment. <br><br>
 
-           Comme par exemple ,  tu peux participer à plein d’événements organisés par les associations étudiantes, que tu en sois membre ou non d’ailleurs : pièces de théâtre, loisirs, événements sportifs, courses (athlétisme), et même des voyages…
+           Comme par exemple ,  tu peux <span class="text-dark fw-bold">participer à plein d’événements</span>  organisés par les associations étudiantes, que tu en sois membre ou non d’ailleurs : pièces de théâtre, loisirs, événements sportifs, courses (athlétisme), et même des voyages…
            </span>
            </li>
           </ul>
@@ -188,37 +231,32 @@
 
       </button>
     </h2>
-    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingThree" >
       <div class="accordion-body fs-5">
         <h4>Il y a une multitude de domaines d’activité associative.</h4>
        <ul class="nav">
-         <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a les associations culturelles, qui ont des activités et des projets orientés vers l’art et la culture : troupes de théâtre, troupes de comédie musicale, Bureau des Arts, association de danse, de chant, de musique…Tu peux même trouver dans certaines écoles des associations orientées vers une culture étrangère
+         <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a <span class="text-dark fw-bold">les associations culturelles</span>, qui ont des activités et des projets orientés vers l’art et la culture : troupes de théâtre, troupes de comédie musicale, Bureau des Arts, association de danse, de chant, de musique…Tu peux même trouver dans certaines écoles des associations orientées vers une culture étrangère
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a également les associations sportives, comme les assos de foot, de basketball, de rugby, de handball, de badminton…Parfois, ce ne sont pas des associations à proprement parler mais plutôt des équipes sportifs.
+            <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a également <span class="text-dark fw-bold">les associations sportives</span>, comme les assos de foot, de basketball, de rugby, de handball, de badminton…Parfois, ce ne sont pas des associations à proprement parler mais plutôt des équipes sportifs.
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a aussi, bien sûr, les associations chargées de la gestion de la vie étudiante, avec notamment le Bureau des élèves. Le BDE a pour rôle d’organiser la vie étudiante au sein de l’école, de réguler le système associatif, d’organiser les soirées, de s’occuper de l’accueil de nouveaux étudiants… Sans oublier le BDS, Bureau des sports, qui s’occupe de l’organisation d’événements sportifs avec les équipes sportives de l’école voire des équipes issues d’autres écoles.
+            <li class ="my-3"> <span class="text-dark"> 👉🏻 Il y a aussi, bien sûr, <span class="text-dark fw-bold">les associations chargées de la gestion de la vie étudiante</span>, avec notamment le Bureau des élèves. Le <span class="text-primary fw-bold">BDE </span>a pour rôle d’organiser la vie étudiante au sein de l’école, de réguler le système associatif, d’organiser les soirées, de s’occuper de l’accueil de nouveaux étudiants… Sans oublier le BDS, Bureau des sports, qui s’occupe de l’organisation d’événements sportifs avec les équipes sportives de l’école voire des équipes issues d’autres écoles.
            </span>
            </li>
 
-           <li class ="my-3"> <span class="text-dark"> 👉🏻 Il existe parfois des associations qui touchent à la vie étudiante de façon plus spécifique, comme les assos vidéos qui se chargent de filmer les moments forts de la vie étudiante (surtout pendant les soirées…).
+           <li class ="my-3"> <span class="text-dark"> 👉🏻 Il existe parfois des associations qui touchent à la vie étudiante de façon plus spécifique, comme <span class="text-primary fw-bold">les assos vidéos</span> qui se chargent de filmer les moments forts de la vie étudiante (surtout pendant les soirées…).
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> 👉🏻 Certains étudiant s’intéressent aux assos plus professionnelles. Il y a notamment les Junior Entreprises, qui sont des associations à but non lucratif mais avec un but économique et pédagogique. 📊 Ces assos effectuent des travaux rémunérés pour des entreprises de tous secteurs. Il y a aussi des associations comme Enactus ou Le Noise, présentes dans de nombreux établissements d’enseignement supérieur, et qui a pour objectif de promouvoir l’entrepreneuriat social.
-           </span>
-           </li>
-
-           
-            <li class ="my-3"> <span class="text-dark">👉🏻 Tu trouveras sûrement des associations humanitaires dans ton école, avec dans chacune un projet humanitaire en France ou orienté vers un pays à l’étranger. Souvent ces associations organisent des événements sur le campus leur permettant de récolter de l’argent pour financer leurs projets humanitaires.
+            <li class ="my-3"> <span class="text-dark"> 👉🏻 Certains étudiant s’intéressent aux <span class="text-dark fw-bold">assos plus professionnelles </span>. Il y a notamment les Junior Entreprises, qui sont des associations à but non lucratif mais avec un but économique et pédagogique. 📊 Ces assos effectuent des travaux rémunérés pour des entreprises de tous secteurs. Il y a aussi des associations comme Enactus ou Le Noise, présentes dans de nombreux établissements d’enseignement supérieur, et qui a pour objectif de promouvoir l’entrepreneuriat social.
            </span>
            </li>
 
            
-            <li class ="my-3"> <span class="text-dark">👉🏻 Il existe parfois des associations qui touchent à la vie étudiante de façon plus spécifique, comme les assos vidéos qui se chargent de filmer les moments forts de la vie étudiante (surtout pendant les soirées…).
+            <li class ="my-3"> <span class="text-dark">👉🏻 Tu trouveras sûrement <span class="text-primary fw-bold">des associations humanitaires</span> , avec dans chacune un projet humanitaire en France ou orienté vers un pays à l’étranger. Souvent <span class="text-dark fw-bold">ces associations organisent des événements</span> sur le campus leur permettant de récolter de l’argent pour financer leurs projets humanitaires.
            </span>
            </li>
 
@@ -241,19 +279,19 @@
 
       </button>
     </h2>
-    <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+    <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingThree" >
       <div class="accordion-body fs-5">
        
        <ul class="nav">
-         <li class ="my-3"> <span class="text-dark"> Une liste d’association, c’est un ensemble d’étudiants travaillant ensemble en compétition contre d’autres groupes d’étudiants pour devenir une association sur le campus. Très souvent, l’élection du BDE se fait par un système de listes, où deux ou trois groupes d’étudiants sont en concurrence pour devenir le BDE de leur école. Ça peut fonctionner de la même manière parfois pour le BDA (Bureau des Arts), le BDS ou même parfois les Junior Entreprises (plus rare, quand même).
+         <li class ="my-3"> <span class="text-dark"> Une <span class="text-dark fw-bold">liste d’association</span>, c’est un ensemble d’étudiants travaillant ensemble en compétition contre d’autres groupes d’étudiants pour devenir une association sur le campus. Très souvent, <span class="text-dark fw-bold">l’élection du BDE</span> se fait par un <span class="text-dark fw-bold">système de listes</span>, où deux ou trois groupes d’étudiants sont <span class="text-primary fw-bold">en concurrence pour devenir le BDE</span> de leur école. Ça peut fonctionner de la même manière parfois pour le BDA (Bureau des Arts), le BDS ou même parfois les Junior Entreprises (plus rare, quand même).
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> Les affrontements de listes se font au cours de ce qu’on appelle une « campagne ». Une campagne dure plusieurs semaines voire plusieurs mois, et pendant cette campagne, les listes se confrontent avec pour objectif de paraître comme la liste la plus dynamique, la plus festive, celle qui organise le plus d’événements et qui est la plus efficace. A l’issue de cette campagne, les étudiants votent pour élire le nouveau BDE, ou le nouveau BDA, etc.
+            <li class ="my-3"> <span class="text-dark"> Les affrontements de listes se font au cours de ce qu’on appelle <span class="text-dark fw-bold">une « campagne »</span>. Une campagne dure plusieurs semaines voire plusieurs mois, et pendant cette campagne, les listes se confrontent avec pour objectif de <span class="text-dark fw-bold">paraître</span> comme la liste <span class="text-dark fw-bold">la plus dynamique</span>, la plus festive, celle qui organise le plus d’événements et qui est la plus efficace. A l’issue de cette campagne, <span class="text-dark fw-bold">les étudiants votent pour élire le nouveau BDE</span>, ou le nouveau BDA, etc.
            </span>
            </li>
 
-            <li class ="my-3"> <span class="text-dark"> Ce système de listes peut être très cool, parce que ça stimule la vie sur le campus : les listes, quand elles sont vraiment motivées, rivalisent avec des événements de grande ampleur, de grosses soirées, et se donnent à fond pour trouver de bons partenariats avec des entreprises et pouvoir faire des distributions de « goodies » par exemple…Les étudiants adorent !
+            <li class ="my-3"> <span class="text-dark"> Ce système de listes peut être très cool, parce que ça <span class="text-dark fw-bold">stimule la vie sur le campus</span> : les listes, quand elles sont vraiment motivées, rivalisent avec <span class="text-dark fw-bold">des événements de grande ampleur</span>, de grosses soirées, et se donnent à fond pour trouver de bons partenariats avec des entreprises et pouvoir faire des distributions de « goodies » par exemple…Les étudiants adorent !
            </span>
            </li>
 
@@ -276,13 +314,13 @@
 
       </button>
     </h2>
-    <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingfor" data-bs-parent="#accordionExample">
+    <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingfor" >
       <div class="accordion-body fs-5">
         <ul class="nav">
          <li class ="my-3"> <span class="text-dark">  
-           <h3 class="fw-bold text-primary">Le domaine d’activité des associations :</h3> Bien sûr, la première chose à prendre en compte, c’est le domaine d’activité de l’asso. Celui-ci doit t’intéresser un minimum, sinon ça n’a aucun intérêt ! Choisis une asso qui te parle, ou un domaine dans lequel tu veux t’investir et qui peut t’apporter de l’expérience (par exemple, si tu veux travailler dans le développement durable plus tard, pourquoi ne pas tenter une association écolo comme le Noise ?) <br><br>
+           <h3 class="fw-bold text-primary">Le domaine d’activité des associations :</h3> Bien sûr, la première chose à prendre en compte, c’est <span class="text-primary fw-bold">le domaine d’activité de l’asso</span>. Celui-ci doit t’intéresser un minimum, sinon ça n’a aucun intérêt ! <span class="text-dark fw-bold">Choisis une asso qui te parle</span>, ou un domaine dans lequel tu veux t’investir et qui peut t’apporter de l’expérience (par exemple, si tu veux travailler dans le développement durable plus tard, pourquoi ne pas tenter une association écolo comme le Noise ?) <br><br>
 
-           Mais on te conseille de rester ouvert à des activités que tu n’as jamais expérimentées avant. Être en à l'Université , c’est aussi l’occasion de te découvrir une passion insoupçonnée pour une activité artistique à laquelle tu n’avais jamais pensée, ou un sport que tu n’avais jamais essayé auparavant. Il n’est jamais trop tard pour commencer de nouvelles choses !
+           Mais on te conseille de rester ouvert à des activités que tu n’as jamais expérimentées avant. Être  à l'Université , c’est aussi l’occasion de te découvrir une passion insoupçonnée pour une activité artistique à laquelle tu n’avais jamais pensée, ou un sport que tu n’avais jamais essayé auparavant. <span style="font-weight:100;font-style:italic">Il n’est jamais trop tard pour commencer de nouvelles choses</span> !
            </span>
            </li>
 
@@ -315,7 +353,7 @@
 
       </button>
     </h2>
-    <div id="collapsesevens" class="accordion-collapse collapse" aria-labelledby="headingfor" data-bs-parent="#accordionExample">
+    <div id="collapsesevens" class="accordion-collapse collapse" aria-labelledby="headingfor" >
       <div class="accordion-body fs-5">
         <ul class="nav">
          <li class ="my-3"> <span class="text-dark">  
@@ -340,81 +378,47 @@
   </div>
 
 
-   <hr class="fw-bold my-5" style="height:5px;color:rgb(229, 82, 33);width:700px;">
+   <hr class="fw-bold my-5" style="height:5px;color:rgb(229, 82, 33);width:400px;">
 
+</div><!-- fin accordion --> 
+
+
+  </div>
 </div>
-</div>
-</div>
+
+
     <!-- fin --> 
     
-<div class="container-fluid">
-  
-        <div class="card my-3 mx-5 px-5">
-       <div class="card-img-top imgs mt-5 pt-5 mx-5 px-5 d-flex align-items-center justify-content-center">
-       
-        <p class="aa_lien px-5 mx-5 fs-5 text-white ">
-          <span style="font-size:40px;font-weight:bold ;color:var(--bleu_ciel--);">Bureau Des Etudiants</span> <br>
-          Le BDE, acronyme signifiant « Bureau des étudiants » est le relais entre les associations et l'administration au sein de notre Université Abdlemalek Essâadi . Nous avons la charge la redistribution des subventions associatives, défend les intérêts des différentes associations et des étudiants et les soutient dans leurs différents projets. <br>
-          <a href="#" class="btn bureau mt-5 fw-bold btn  p-4">EN SAVOIR PLUS </a>
-        </p>
 
-      </div>
-        
-      </div>    
-</div>
 
 <div class="container-fluid py-4" style="background-color:var(--gold-crayola)">
 
-<h4 style="margin:14px 400px ; font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
+  
+<h4 class="text-center px-5"  style="font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
 
-<div class="card mb-3 rounded-2" style="margin:70px auto ;border: var(--gold-crayola); max-width: 940px;">
+@foreach ($associations as $association )
+  
+
+<div class="card mb-3 rounded-2 decouvrir-asso" style="transition:0.6s ease-in-out ; margin:70px auto ;border: var(--gold-crayola); max-width: 940px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ asset("images/association_default/DEVE-VE-Association_etudiantes.jpg") }}" class="img-fluid rounded-start" alt="..." style="height:100%">
+      <div class="img-fluid rounded-start" alt="..." style="height:100%;background:linear-gradient(rgba(26, 15, 26, 0.3),rgb(20, 26, 79)),url({{ asset('storage/'.$association->image) }}) center / cover no-repeat  ;"></div>
     </div>
     <div class="col-md-8"  style="font-size:30px; background-color:var(--gold-crayola)">
       <div class="card-body" >
         
-        <p class="card-text fs-3 fw-bold">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a class="btn fw-bold rounded-3 border border-dark">Savoir Plus</a>
-        <a class="btn fw-bold rounded-4 border border-dark text-body">Suivre</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="card mb-3 rounded-2" style="margin: 70px auto ;border: var(--gold-crayola); max-width: 940px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{ asset("images/association_default/DEVE-VE-Association_etudiantes.jpg") }}" class="img-fluid rounded-start" alt="..." style="height:100%">
-    </div>
-    <div class="col-md-8"  style="font-size:30px; background-color:var(--gold-crayola)">
-      <div class="card-body">
+        <p class="card-text fs-1 fw-bold">Association {{ $association->nom }}</p>
+        <p class="card-text fs-3 fw-bold">Crée le {{ $association->date }}</p>
+        <!-- overflow:hidden pour cacher le depassage ; aussi on doit faire le height --> 
+        <p class="card-text fs-3 fw-bold" style="height:40px;overflow:hidden">{{ $association->description }}</p> 
+        <a href = "{{ route('user.association',$association->id) }}" class="btn savoir-hover px-3 fs-5" style="box-shadow:0 3px 2px 2px rgb(9, 5, 94);">Savoir Plus</a>
         
-        <p class="card-text fs-3 fw-bold">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a class="btn fw-bold rounded-3 border border-dark">Savoir Plus</a>
-        <a class="btn fw-bold rounded-4 border border-dark text-body">Suivre</a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="card rounded-2" style="margin: 70px auto ;border: var(--gold-crayola); max-width: 940px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{ asset("images/association_default/DEVE-VE-Association_etudiantes.jpg") }}" class="img-fluid rounded-start" alt="..." style="height:100%">
-    </div>
-    <div class="col-md-8"  style="font-size:30px; background-color:var(--gold-crayola)">
-      <div class="card-body">
-        
-        <p class="card-text fw-bold fs-3">Lorem ipsum dolor sit, amet consectetur adipisicing..</p>
-        <a class="btn fw-bold rounded-3 border border-dark">Savoir Plus</a>
-        <a class="btn fw-bold rounded-4 border border-dark text-body">Suivre</a>
-      </div>
-    </div>
-  </div>
-
-</div>
+@endforeach
  
 </div>
 

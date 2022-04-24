@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('email')->unique();
+            $table->string('filiere'); 
             $table->unsignedBigInteger('Tel')->unique();
             $table->date('date_mandat');
             $table->string('Poste');
-            $table->foreignId('association_id')->constrained()->onDelete('cascade');
-            $table->unique(['Poste','association_id']);
+            $table->foreignId('association_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->unique(['Poste','association_id','email']);
             $table->timestamps();
         });
     }

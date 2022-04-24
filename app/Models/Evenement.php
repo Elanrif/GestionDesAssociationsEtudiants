@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Evenement extends Model
 {
     use HasFactory;
+   
+    protected $table = 'evenements' ; 
+    
+    protected $guarded = [] ; 
+
+    public function association() { 
+
+        return $this->belongsTo(Association::class) ;
+    }
 }

@@ -24,7 +24,7 @@ class UserController extends Controller  // dans le parent on doit avoir les mê
     }
 
     // $associations = Association::all() ; 
-    $users = User::where('id','<>',auth()->user()->id)->get() ; // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
+    $users = User::where('id','<>',auth()->user()->id)->orderBy('nom')->get(); // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     $associations = Association::all() ; 
     return view('users.admin.index',compact(['users','associations'])) ;
 
@@ -116,4 +116,6 @@ class UserController extends Controller  // dans le parent on doit avoir les mê
 
          return redirect()->route('admin-users')->with('delete','L\'utilisateur a été supprimer avec succès ! ') ;//ne jamais faire directement view(..) car on aura une erreur . donc il faut toujours redirigé pour echapper ça 
     }
+
+ 
 }

@@ -43,7 +43,7 @@
 
     @foreach ($associations as $association )
       
-    <li><a class="dropdown-item py-2" href="#">{{ $association->nom }} {{ $association->date }}</a></li>
+    <li><a class="dropdown-item py-2" href="{{ route('admin-asso.show',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
 
     @endforeach
 

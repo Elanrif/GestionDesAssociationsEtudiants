@@ -1,12 +1,17 @@
-@extends('layouts.app')
+@extends("../../admin/home")
+@section('admin')
 
-@section('content')
-
-
+<!-- la vue create connais déja l'association->id puisque avant de venir ici il a été passé sur la route voir dans la view asso../admin/show ligne 58 : 55..59 -->
+ <!-- pour désactiver le modal seulement supprimer la class modal du parent . car c'est elle qui ouvre tout les modals --> 
 <div class="container">
-<form class="row g-3 gx-5 mx-5 mt-5" method="POST" action="{{ route('register') }}">
+    <div class="container d-flex justify-content-center mt-4 bg-body shadow shadow-3 py-2 px-1 rounded-1 fs-4 fw-bold" style="width:30%;"> <i class="fa-solid fa-clone p-1 me-1 fs-4 shadow shadow-3"></i>Ajouter un Membre Du Bureau </div>
+    <!-- je dois passer l'association pour le recuperer dans la methode store --> 
+<form class="form" method="POST" action="{{ route('store.bureau',$association->id) }}">
+  <!-- maintenant la store methode connaitra l'association aussi dans le web je dois l'ajouter ce paramètre $association --> 
+    <span class="row g-3 gx-5 d-flex justify-content-center mt-3">
     @csrf
-  <div class="col-md-6">
+    
+  <div class="col-md-5">
     <label for="inputEmail4" class="form-label fw-bold">Nom</label>
     <input type="text" name="nom" value="{{ old('nom') }}" required class="form-control border  @error('nom') is-invalid @enderror"  id="inputEmail4" placeholder="saisir votre nom">
      @error('nom')
@@ -15,7 +20,7 @@
            </span>
      @enderror
   </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
     <label for="inputEmail42" class="form-label fw-bold">Prenom</label>
     <input type="text" name="prenom" value="{{ old('prenom') }}" required class="form-control @error('prenom') is-invalid @enderror" id="inputEmail42" placeholder="saisir votre Prenom">
      @error('prenom')
@@ -25,26 +30,35 @@
      @enderror
   </div>
 
-  <div class="col-md-6">
-    <label for="inputEmail14" class="form-label fw-bold">Code Etudiant</label>
-    <input type="number" name="code_apogée" value="{{ old('code_apogée') }}" required class="form-control @error('code_apogée') is-invalid @enderror"  id="inputEmail14" placeholder="saisir votre code apogée">
-     @error('code_apogée')
-          <span class="invalid-feedback" role="alert">
+  <div class="col-md-5">
+    <label for="inputEmaiel4" class="form-label fw-bold">Poste</label>
+    <select id="inputEmaiel4" type="Post" class="form-select @error('Poste') is-invalid @enderror" name="Poste" value="{{ old('Poste') }}" required autocomplete="Poste">
+                               <option selected><span class="btn disabled text-muted">sélectionner la filiere</span></option>
+                               <option value="President" class="fw-bold">Président</option>
+                               <option value="Tresorier" class="fw-bold">Trésorier</option>
+                               <option value="Secretaire"
+                               class="fw-bold">Sécrétaire</option>   
+                               <option value="autre"
+                               class="fw-bold">autre...</option>   
+                                 
+                            </select>
+     @error('Poste')
+          <span class="invalid-feedback " role="alert">
                     <strong>{{ $message }}</strong>
            </span>
      @enderror
   </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
     <label for="num_tel" class="form-label fw-bold">Tel</label>
-    <input type="number" name="num_tel" value="{{ old('num_tel') }}" required class="form-control @error('num_tel') is-invalid @enderror" id="num_tel" placeholder="saisir votre Numéro">
-     @error('num_tel')
+    <input type="number" name="Tel" value="{{ old('Tel') }}" required class="form-control @error('Tel') is-invalid @enderror" id="num_tel" placeholder="saisir votre Numéro">
+     @error('Tel')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
            </span>
      @enderror
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-5">
     <label for="inputEmaiel4" class="form-label fw-bold">Filière</label>
     <select id="inputEmaiel4" type="filiere" class="form-select @error('filiere') is-invalid @enderror" name="filiere" value="{{ old('filiere') }}" required autocomplete="filiere">
                                <option selected><span class="btn disabled">sélectionner la filiere</span></option>
@@ -65,7 +79,7 @@
      @enderror
   </div>
  
-    <div class="col-md-6">
+    <div class="col-md-5">
     <label for="email" class="form-label fw-bold">Email</label>
     <input type="email" name="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror" id="email" placeholder="saisir votre email">
      @error('email')
@@ -75,27 +89,28 @@
      @enderror
   </div>
 
-  <div class="col-md-6">
-    <label for="password" class="form-label fw-bold">Mot de passe</label>
-    <input type="password" name="password" value="{{ old('password') }}" required class="form-control @error('password') is-invalid @enderror"  id="password" placeholder="+8 charactères">
-     @error('password')
+  <div class="col-md-5">
+    <label for="email" class="form-label fw-bold">Date Mandat</label>
+    <input type="date" name="date_mandat" value="{{ old('date_mandat') }}" required class="form-control @error('date_mandat') is-invalid @enderror" id="email" >
+     @error('date_mandat')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
            </span>
      @enderror
   </div>
-    <div class="col-md-6">
-    <label for="confirmation" class="form-label fw-bold">confirmation</label>
-    <input type="password" name="password_confirmation" required class="form-control @error('password_confirmation') is-invalid @enderror" id="confirmation" placeholder="confimer le mot de passe">
-    
+
+  <div class="col-md-5">
+    <label for="email" class="form-label fw-bold">Association</label>
+    <input type="text" name="association_id" value="{{ $association->id}}" required class="form-control @error('association_id') is-invalid @enderror" id="email" placeholder="saisir votre email" >
+     @error('association_id')
+          <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+           </span>
+     @enderror
   </div>
-   <div class="col-md-6">
-      
-                  <button type="submit" class="btn me-2" style="background-color:var(--bleu--);color:var(--blanc--)">
-                                    {{ __('S\'inscrire') }}
-                    </button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rénitialiser</button>
-   </div>
+
+  
+
    <!-- Button trigger modal -->
 
 
@@ -108,22 +123,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body fw-bold d-flex justify-content-center">
-       Voulez-vous <span class = "text-primary mx-1"> réinitialiser </span> tout vos informations   ! 
+       Voulez-vous <span class = "text-primary mx-1">tout abandonner et revenir  </span> à la page préçedente   ! 
       </div>
       <div class="modal-footer" style="margin-right:150px;">
-       <a href="{{ route('register') }}"> <button type="reset" onClick="history.go(0)" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>
+       <a  class="nav-link" href="#"> <button  onClick="history.back()" class="btn d-inline px-4 btn-info"> Oui </button> </a>
         <button type="button" class="btn d-inline px-4  btn-danger" data-bs-dismiss="modal">Non</button>
       </div>
     </div>
   </div>
 </div>
+
+</span>
+        <div class="col-md-5 mt-5" style="margin-left:113px;">
+     
+                 <button type="submit" class="btn me-2" style="background-color:var(--bleu--);color:var(--blanc--)">
+                                   Enregistrer
+                   </button>
+                   <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Annuler</button>
+                   
+         </div>
 </form>
 
+</div>
 
-    </div>
-     
 
+<!-- fin -->
 @endsection
-
-
-
