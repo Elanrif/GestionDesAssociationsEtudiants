@@ -1,18 +1,7 @@
 @extends('source.layout')
 @section('content')
- 
-<!-- image avec linear gradient -->
-<!-- <div class="linear container-fluid"> // ici il y'a l'image en des etudiants voir liens CSS //
-  <div class="pt-2">
-    <img src="images/Université-Abdelmalek-Essaâdi.jpg" > // le logo de la FAC 
-  </div>
-//pour le texte sur la photo  
-  <div class="d-flex justify-content-center">
-    <h2 class="text-center px-5 mx-5" style="padding-top:0px;color:var(--blanc--); font-size:80px;font-family: 'Lobster', cursive;">Les associations Etudiants de la Facultés Abdelmalek Essaâdi Tetouan</h2>
-  </div>
-</div>
-   fin texte --> 
-  
+
+
 <!-- Carousel image des associations -->
 <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
   <!-- indique les petits bar/tiréts en bas -->
@@ -389,7 +378,7 @@
 
     <!-- fin --> 
     
-
+<!-- debut des associatoins --> 
 
 <div class="container-fluid py-4" style="background-color:var(--gold-crayola)">
 
@@ -429,6 +418,14 @@
 </div>
 <!-- https://www.helloasso.com/blog/quel-evenement-associatif-creer/  ; c'est le site que j'ai copier le model-->
 
+<!-- Début des Evènements -->
+
+<div class="fw-bold fs-3 text-center my-3"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes au sein de la faculté </div>
+  <div class="container-fluid  mt-4" style="min-height:80vh;">
+    
+    @include('evenements.index')
+     
+  </div>
 
 
 

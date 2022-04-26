@@ -30,14 +30,22 @@ class LoginController extends Controller
     if($user){ 
       if(request('password') == $user->password){ //verifie si le mot de passe pris est == aux mot de passe de l'utilisateur avec l\'email saisie
 
-        if($user->active == 1) { // pour activer ou désactiver le compte 
+        if($user->active == 1 && $user->role == 'admin' ) { // admin
+
+            Auth::login($user)  ;
+            $request->session()->regenerate();  // regenere la session()
+          
+          return redirect()->route('monCompte')->with('login',' Bienvenu dans votre page utilisateur '); 
+        }
+        elseif($user->active == 1 && $user->role == 'utilisateur') {// si c'est un simple utilisateur 
 
             Auth::login($user)  ;
             $request->session()->regenerate();  // regenere la session()
 
           return redirect()->route('home')->with('login',' Bienvenu dans votre page utilisateur '); 
-        }
 
+        }
+        else // sinon 
         return redirect()->route('login')->with('danger','votre compte a été désactivé pour le moment') ;
          
       }

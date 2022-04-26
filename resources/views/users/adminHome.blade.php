@@ -1,11 +1,8 @@
+@extends('admin.home')
+@section('admin')
 
-
-
-@extends('user_layouts.app')
-
-@section('user_content')
-
-            <!-- Modal -->
+<div class="container-fluid">
+              <!-- Modal -->
 <div class="modal fade" id="exampleModal00c" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -198,34 +195,11 @@
     <h5 id="offcanvasRightLabel">Tous mes informations</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <ul class="nav flex-column text-black">
 
-      
-      <li class="nav-item">
-        <a href="" class="nav-link"> Messages</a>
-      </li>
-      <li class="nav-item">
-        <a href="" class="nav-link"> Messages</a>
-      </li>
-      <li class="nav-item">
-        <a href="" class="nav-link"> Messages</a>
-      </li>
-      <li class="nav-item">
-        <a href="" class="nav-link"> Messages</a>
-      </li>
-
-    </ul>
-    <i class="fa-solid fa-street-view"></i> 
-  </div>
 </div>
 
   </div>
 </div>
+  </div>
 
-@endsection
-
-
-
-
-
+    @endsection

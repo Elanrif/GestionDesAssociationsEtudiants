@@ -28,7 +28,7 @@
       <div class="pt-4 d-flex justify-content-center bg-dark">
         <p class="text-light fw-bold fs-5">{{ auth()->user()->nom }} {{ auth()->user()->prenom }}</p>
       </div>
-  <div class="d-flex justify-content-center"><!-- permet aux élement enfant de prendre automatiquement la largeur --> 
+  <div class=""><!-- permet aux élement enfant de prendre automatiquement la largeur --> 
   <ul class="nav uuid flex-column">
   <li class="nav-item">
     <a class="nav-link fw-bold text-light btn  btn-outline-primary {{ request()->is('admin-users*') ? 'active':'' }} border-dark" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-users-line me-2 fs-5"></i>Les utilisateurs</a>
@@ -59,8 +59,28 @@
     <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark" href="#"><i class="fa-solid fa-calendar-days fs-5 me-2"></i>Les Evènements</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a>
+    <a class="nav-link fw-bold text-light btn  btn-outline-primary border-dark"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a> 
   </li>
+
+     <div class="dropend">
+  <button class="btn btn-black dropdown-toggle nav-link fw-bold text-light btn  btn-outline-primary {{ request()->is('admin-moncompte*') ? 'active':'' }} border-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear  fs-5 me-2"></i>Gérer mon compte
+  </button>
+  <ul class="dropdown-menu  fw-bold px-4 py-3" aria-labelledby="dropdownMenuButton1">
+
+     <li><a class="dropdown-item py-2 {{ request()->is('admin-moncompte/monCompte') ? 'active' : ''}} fw-bold" href="{{ route('monCompte') }}">Mon compte</a></li>
+
+    <li><a class="dropdown-item py-2 fw-bold" href="{{ route('admin-asso.show',$association->id) }}">Confidentialité</a></li>
+
+    <li><a class="dropdown-item py-2 fw-bold" href="{{ route('admin-asso.show',$association->id) }}">Modifier mes informations</a></li>
+
+   
+    <hr>
+    <li><a class="dropdown-item py-2 fw-bold text-danger" href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal001">Déconnexion</a></li>
+
+  
+  </ul>
+</div>
+
 </ul>
            
     </div>
@@ -75,12 +95,12 @@
         <h5 class="modal-title" id="exampleModalLabel001"><i class="fa-solid fa-triangle-exclamation me-1 text-danger"></i> Attention</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-       <div class="modal-body fw-bold d-flex justify-content-center">
-        vous allez être  <span class="text-primary px-2">déconnecté</span>  du site  ? 
+       <div class="modal-body fw-bold d-flex fs-4 justify-content-center">
+        vous allez être  <span class="text-danger px-2">déconnecté</span>  du site  ? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <a type="button" href="{{ route('logout') }}" class="btn btn-primary px-4 fw-bold">OK</a>
+        <button type="button" class="btn btn-secondary px-2 fw-bold px-3" data-bs-dismiss="modal">Non</button>
+        <a type="button" href="{{ route('logout') }}" class="btn btn-danger px-4 fw-bold">Oui</a>
       </div>
     </div>
   </div>
@@ -88,7 +108,7 @@
 
   <!-- fin Modal --> 
 
-  <nav class="navbar navbar-expand-lg"  style="background-color:rgb(5, 15, 62)">
+  <nav class="navbar navbar-expand-lg"  style="position:fixed; width:100%;background-color:rgb(5, 15, 62);z-index:18;">
   <div class="container-fluid px-4" style="padding:auto 100px;">
     <a class="navbar-brand ps-4 ms-4" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
@@ -113,13 +133,14 @@
       <form class="d-flex me-3 " >
   
         @auth
-        <a href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal001" class="btn btn-outline-danger fw-bold"> Deconnexion </a>
+        <a href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal001" class="btn btn-outline-danger fw-bold"> Déconnexion </a>
         @endauth
       </form>
       </div>
     </div>
   </div>
 </nav>
+<div style="height:14vh;"></div> <!-- pour eloigner le navbar -->
         @yield('admin')
 
     </div>

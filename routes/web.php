@@ -30,7 +30,22 @@ Route::get('/',function(){
     return view('welcome',compact('associations')) ; 
 })->name('welcome');
 
+// compte admin 
+Route::get('/admin-moncompte' ,[HomeController::class , 'compte'])->name('admin-moncompte') ; 
+
+// pour  la page home de l'utilisateur 
 Route::get('/home',[HomeController::class,'index'])->name('home') ; 
+
+// ici j'herite d'un autre @yield 
+Route::get('/home/general',[HomeController::class,'general'])->name('home.general');
+Route::put('/home/general/{general}',[HomeController::class,'UpdateGeneral'])->name('register.general');
+Route::get('/home/editer',[HomeController::class,'edit'])->name('home.edit');
+Route::get('/home/password',[HomeController::class,'password'])->name('home.password');
+Route::put('/home/Register/password',[HomeController::class,'UpdatePassword'])->name('register.password');
+Route::get('/home/delete',[HomeController::class,'showdelete'])->name('showdelete');
+
+// pour l'admin connecté 
+Route::get('/admin-moncompte/monCompte',[HomeController::class,'moncompte'])->name('monCompte') ;
 
 Route::group(['namespace' => 'Auth'], function() { 
     Route::get('register',[RegisterController::class,'create'])->name('register');
@@ -61,6 +76,8 @@ Route::put('/admin-users/{user}',[UserController::class,'update'])->name('admin-
 Route::delete('/admin-users/{user}',[UserController::class,'destroy'])->name('admin-users.destroy');
 
 Route::post('/users-image',[UserController::class,'images'])->name('users-image.store') ;//ici c'est pas l'administrateur qui va modifier mais la personne authentifié  . normalement cette ligne doit etre dans le namesapce Auth() mais bon 
+
+Route::delete('users-delete',[UserController::class,'deleteimages'])->name('users-image.delete');
 Route::post('/users-comment',[UserController::class,'comments'])->name('users-comment.save');
 Route::get('/home/user-message',[UserController::class,'messages'])->name('messages') ;
 
@@ -100,3 +117,4 @@ Route::get('contact',function() {
     $associations = Association::all() ; 
     return view('contact.index',['associations'=>$associations]) ; 
 });
+

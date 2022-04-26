@@ -1,41 +1,11 @@
 
+
+
 @extends('user_layouts.app')
 
 @section('user_content')
-<div class="mt-5">
 
-<!-- Modla pour les message -->
-<div class="cont-ain">
-  <div class="cont-ain1">
-     <ul class="nav">
-      
-         <li class="nav-item dropend px-3">
-          <a class="nav-link btn-outline-primary mt-3 text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Associations
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
-           
-               <li><a class="dropdown-item " href="#">Associations</a></li>
-          
-
-             <hr>
-            
-             <li><a class="dropdown-item py-2" href="#">Toutes les Associations </a></li>
-
-          </ul>
-        </li>
-       
-       <li class="nav-item">
-         <a  class="nav-link" href="#"></a>
-       </li>
-       <li class="nav-item">
-         <a  class="nav-link" href="#"></a>
-       </li>
-     </ul>
-  </div>
-  <div class="cont-ain2">
-
-    <!-- Modal -->
+            <!-- Modal -->
 <div class="modal fade" id="exampleModal00c" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -67,7 +37,7 @@
 <!-- Modal pour la photo -->
 <div class="modal fade" id="xampleModal" tabindex="-1" aria-labelledby="xampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-black text-light">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title  fs-5" id="xampleModalLabel"> Mettre à jour votre photo ! </h5>
         <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -77,13 +47,13 @@
     
     <div class="modal-body">
         <div class="mb-3">
-          <input class="form-control" type="file" id="formFile" name="image" required> <!-- le photo --> 
+          <input class="form-control fw-bold" type="file" id="formFile" name="image" required> <!-- le photo --> 
         </div>
       </div>  
    
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="submit" class="btn btn-primary">Modifier</button>
+        <button type="button" class="btn btn-danger fw-bold" data-bs-dismiss="modal">Non</button>
+        <button type="submit" class="btn btn-primary fw-bold">Oui</button>
       </div>
    </form>
     </div>
@@ -142,7 +112,7 @@
       <div class="mb-3">
   <i class="fa-solid fa-camera-retro fs-3 position-auto d-inline"></i> <!-- icons de la photo -->
 </div>
-<img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:250px; width:250px;">
+<img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:150px; width:150px;">
 </div>
 </a>
 <div class="col ms-3 d-flex  align-items-center pt-1 ps-5 fs-5"> 
@@ -252,7 +222,10 @@
 
   </div>
 </div>
+
 @endsection
+
+
 
 
 

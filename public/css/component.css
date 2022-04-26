@@ -20,16 +20,59 @@
  font-family: 'Poppins', sans-serif;
  /* font-family: 'Lobster', cursive; */
 }
-/*membre du bureau qui était static
 
-.bureau-asso{ 
-  background:linear-gradient(rgba(40, 7, 10, 0.6),rgb(4, 2, 59)),url(../images/association_default/esma.jpg) center / cover no-repeat  ;;
-  
+
+.slider { 
+
+  height:50vh; 
+  position: relative ; 
+}
+
+.slider .image { 
+  object-fit:  cover;
+  height:100%; 
+  width:100% ; 
+  position : absolute ; 
+  top:0 ; 
+  left: 0 ; 
+  opacity: 0;
+  transition: opacity .5s;
+
+}
+
+.slider  .active { 
+  opacity: 1; 
+}
+
+.suivant, .precedent { 
+  position : absolute ; 
+  color : black ; 
+  font-size : 3rem ;
+  top : 50% ; 
+  transform: translateY(-50%);
+}
+
+.suivant { 
+
+    right : 3rem ;
+    cursor:pointer ; 
+}
+
+.precedent { 
+    left : 3rem ; 
+    cursor : pointer ;
 }
 
 
 
-*/
+
+
+
+
+
+
+
+
  .hoover:hover { 
    transform: translateX(-15px);
  }
@@ -60,6 +103,24 @@
   color: #e6391b;
 }
 
+.lien-general { 
+  transition: 1,5s ease-in-out ;
+  color:#721817;
+}
+
+.lien-active { 
+    border-bottom-style: solid;
+  border-bottom-width: 5px;
+  color:blue ; 
+  width:170px;
+}
+
+.lien-general:hover { 
+  color:blue;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  width:170px;
+}
 /* pour le bouton savoir plus */ 
 .savoir-hover:hover{ 
 
@@ -202,7 +263,20 @@
  .us-ser a:hover { 
         color: blue ;
   }
+
+  /* pour 0 ---- 576px;*/
   
+  @media (max-width: 576px) { 
+
+    .general { 
+
+      visibility:hidden;
+      height:0 ; 
+
+    }
+  }
+
+
 @media screen and (max-width:970px) {
 
   .us-er{ 

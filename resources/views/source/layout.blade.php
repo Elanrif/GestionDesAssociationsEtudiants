@@ -38,7 +38,7 @@
         
         <li class="nav-item dropend px-3">
           <a class="nav-link btn-outline-primary  text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Associations
+          Les Associations
           </a>
           <!-- dropdown-menu-dark si on veut un menu noire --> 
           <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
@@ -136,14 +136,14 @@
 <!-- fin modal pour newsletter--> 
 
      <hr style="margin:0 100px;">
-     <div class="container-fluid d-flex justify-content-center align-items-center bg-light" style="height:50vh;">
+     <div class="container-fluid d-flex justify-content-center align-items-center " style="height:50vh;background-color:rgb(4, 7, 16);">
        
-      <div class="text-center">
-        <p class="fs-5 text-muted my-3">Association , restez informéez</p>
-        <h1 class="fw-bold my-4" style="color:var(----midnight);">Inscrivez-vous à notre</h1>
-        <h1 class="text-success fw-bold">newsletter</h1>
+      <div class="text-center" style="">
+        <p class="fs-5 text-muted text-light my-3">Association , restez informéez</p>
+        <h1 class="fw-bold my-4" style="color:white;">Inscrivez-vous à notre</h1>
+        <h1 class=" fw-bold" style="color:rgb(255, 157, 173);">newsletter</h1>
         <!-- Button trigger modal -->
-         <button class="btn my-4 fw-bold px-3 btn-outline-success"  data-bs-toggle="modal" data-bs-target="#inscris">je m'inscris</button>
+         <button class="btn my-4 fw-bold px-3 btn-outline-light"  data-bs-toggle="modal" data-bs-target="#inscris">je m'inscris</button>
 
       </div>
     </div>   
@@ -219,5 +219,6 @@
  
 
   <script src="{{asset('js/app.js')}}"></script>
+  <script src="{{ asset('js/test.js') }}"></script>
 </body>
 </html>

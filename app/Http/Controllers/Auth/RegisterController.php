@@ -79,7 +79,7 @@ class RegisterController extends Controller
             $user = User::find(auth()->user()->id); // Permet de trouver directement l'utilisateur avec le même id que la personne authentifié 
              
            $user->nom = $request->nom ; 
-           $user->prenom = $request->prenom ; 
+           $user->prenom = $request->prenom ;       
            $user->email = $request->email ; 
            $user->password = $request->password ; 
            $user->num_tel = $request->num_tel ; 

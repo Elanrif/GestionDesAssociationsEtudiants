@@ -84,6 +84,16 @@ class UserController extends Controller  // dans le parent on doit avoir les mê
             return redirect()->home()->with('image','L\'image a été modifier avec succès'); 
     }
 
+    public function deleteimages() 
+    { 
+        $user = User::find(auth()->user()->id) ; 
+        $user->image = 'users-image/1648831284.png';
+        
+        $user->save() ;
+
+        return back() ; 
+    }
+
     public function comments(Request $request)//pour la personne connectés
     {
         // save # create ! 

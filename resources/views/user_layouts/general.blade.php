@@ -97,8 +97,42 @@
     </div>
   </div>
 </nav>
+
  <div style="height:13vh;"></div>
-    @yield('user_content')
+
+ <div class="container-fluid d-flex justify-content-center">
+    <div style="width:90vh;min-height:40vh;margin-top:30px;">
+        <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:100px; width:100px;">
+        <span class="fw-bold fs-4"> {{ auth()->user()->nom }}</span> <a  href="{{ route('home') }}"> <span class="fw-bold fs-5 ms-3 border btn text-light" style="background-color:rgb(246, 21, 160);">Mon compte</span></a>
+        <div class="text-muted fw-bold" style="margin-left:90px;">Mettez à jour votre nom d'utilisateur et gérez votre compte</div>
+
+        <div class="row" style="margin-top:7vh;">
+            <div class="col-12 col-md-4 general">
+                <ul class="nav  flex-column">
+                   
+      
+                    <a class="nav-link fw-bold my-2 lien-general {{request()->is('home/general') ? 'lien-active':''}} text-black" href="{{ route('home.general') }}">Génerale</a>
+                 
+                    <a class="nav-link fw-bold my-2 lien-general text-black {{request()->is('home/editer') ? 'lien-active':''}}" href="{{ route('home.edit') }}">Editer profile</a>
+                    <a class="nav-link fw-bold my-2 lien-general text-black {{request()->is('home/password') ? 'lien-active':''}} " href="{{ route('home.password') }}">Mot de passe</a>
+                    <div style="height:15vh;"></div>
+                    <hr>
+                    
+                    <a class="nav-link fw-bold text-danger lien-general {{request()->is('home/delete') ? 'lien-active':''}}" href="{{ route('showdelete') }}">Supprimer<span class="text-light">_</span>compte
+                    </a>
+                </ul>
+            </div>
+            <div class="col">
+              
+               @yield('general')
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+   
 
  </div>
   <!-- js button autoclose après 5000 '5 secondes' ; tout les enfants qui auront des alert ils les fermera après les x secondes definis --> 
