@@ -12,7 +12,7 @@
 
 
 <!-- 1eme barre --> 
-<nav class="navbar navbar-expand-lg " style="position:fixed ; z-index:8 ; width:100%;background-color:rgb(255, 255, 255);border-bottom-width:25px; border-bottom-style: solid;border-bottom-color:rgb(239, 246, 254);">
+<nav class="navbar navbar-expand-lg " style="position:fixed ; z-index:8 ; width:100%;background-color:rgb(255, 255, 255);">
   <div class="container-fluid">
      <a class="navbar-brand ps-5" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
