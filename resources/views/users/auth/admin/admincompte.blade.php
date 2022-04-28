@@ -58,11 +58,7 @@
             
         </ul>
       </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <div><a class="nav link btn btn-danger" style="text-decoration:none;" href="{{ route('register.edit',auth()->user()->id) }}"> <i class="fas fa-user-edit fs-4 me-2"></i> Modifier</a></div>
-        <button type="button" class="btn d-inline px-4  btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        
-      </div>
+  
     </div>
   </div>
 </div>

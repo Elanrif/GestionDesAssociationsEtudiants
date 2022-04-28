@@ -420,7 +420,7 @@
 
 <!-- Début des Evènements  @include('evenements.index')-->
 
-<div class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
+<div id="eventss" class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
  
 <div class="container-fluid my-5">
  
@@ -445,7 +445,7 @@
         @auth <!-- personne doit être connecté pour voir -->
         <div class="d-flex ms-3 mb-3">
           <!-- le boutton savoir plus --> 
-           <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold" style="color:var(--pink)">Participé(e)</button></a>
+         <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">En savoir Plus</button></a>
          @if(auth()->user()->participe($evenement)) <!-- une methode que je vais créer sur le model user , toujours et je recupere directement l'evenement concerné puisque je suis dedans -->   
       <!-- pour supprimer la participation -->
       <form action="{{ route('deleteParticipe')}}" method = "post">

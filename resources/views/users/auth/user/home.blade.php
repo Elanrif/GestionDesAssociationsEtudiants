@@ -225,10 +225,10 @@
               
               <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
             
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Aucune mention j'aime ! </a></li>
+                 <li><a class="dropdown-item fw-bold my-2 mt-4" > Aucune mention j'aime ! </a></li>
             
                     <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
+                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#eventss') }}">Toutes les évènements</a></li>
               </ul>
             </div>
 
@@ -246,12 +246,12 @@
               
                 <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:30vh;position:relative">
                    @foreach (auth()->user()->evenement_s as $evenement)
-                     
-                   <li><a class="dropdown-item fw-bold my-2" href="#">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
+         <!-- je repete encore , ici on accede a chaque evenement puis on passe par une autre relation 'association' belongTo puis aller aux association ; voir dans le model 'Evenement' -->           
+                   <li><a class="dropdown-item fw-bold my-2" href="{{ route('user.association',$evenement->association->id) }}">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
               
                    @endforeach
                       <li><hr class="dropdown-divider"></li>
-                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
+                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#eventss') }}">Toutes les évènements</a></li>
                 </ul>
               </div>
       @endif
@@ -273,7 +273,7 @@
                  <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous ne participez a aucun évènement ! </a></li>
             
                     <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
+                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#eventss') }}">Toutes les évènements</a></li>
               </ul>
 
               </div>
@@ -294,11 +294,11 @@
                 <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton17" style="min-width:60vh;min-height:30vh;position:relative">
                    @foreach (auth()->user()->evenements as $evenement)
                      
-                   <li><a class="dropdown-item fw-bold my-2" href="#">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
+                   <li><a class="dropdown-item fw-bold my-2" href="{{ route('user.association',$evenement->association->id) }}">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
               
                    @endforeach
                       <li><hr class="dropdown-divider"></li>
-                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
+                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#eventss') }}">Toutes les évènements</a></li>
                 </ul>
               </div>
       
@@ -321,7 +321,7 @@
                  <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous ne suivez  aucune association ! </a></li>
             
                     <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les Associations</a></li>
+                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#associations') }}">Toutes les Associations</a></li>
               </ul>
               </div>
       
@@ -340,7 +340,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark mt-2 fw-bold" aria-labelledby="dropdownMenuButton17" style="min-width:60vh;min-height:30vh;position:relative">
                    @foreach (auth()->user()->associations as $association)
                      
-                   <li><a class="dropdown-item fw-bold my-2" href="{{ route('user.association',$association->id) }}">{{ $association->nom }} {{ $evenement->date }} </a></li>
+                   <li><a class="dropdown-item fw-bold my-2" href="{{ route('user.association',$association->id) }}">{{ $association->nom }} {{ $association->date }} </a></li>
               
                    @endforeach
                       <li><hr class="dropdown-divider"></li>
