@@ -17,4 +17,14 @@ class Evenement extends Model
 
         return $this->belongsTo(Association::class) ;
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'participes') ;
+    }
+
+    public function user_s() 
+    { 
+        return $this->belongsToMany(User::class ,'likes') ; 
+    }
 }

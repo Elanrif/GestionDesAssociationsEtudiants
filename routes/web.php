@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController ;
 use App\Http\Controllers\BureauController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Models\Evenement;
 use App\Models\User;
 
 /*
@@ -20,6 +21,11 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/layouts/app',function() { 
+    $associations = Association::all() ; 
+
+    return view('layouts.app',compact('assocations')); 
+});
 
 Route::get('/default-laravel', function () {
     return view('default-laravel');
@@ -27,7 +33,8 @@ Route::get('/default-laravel', function () {
 
 Route::get('/',function(){ 
     $associations = Association::all() ; 
-    return view('welcome',compact('associations')) ; 
+    $evenements = Evenement::all() ; 
+    return view('welcome',compact(['associations','evenements'])) ; 
 })->name('welcome');
 
 // compte admin 
@@ -36,13 +43,14 @@ Route::get('/admin-moncompte' ,[HomeController::class , 'compte'])->name('admin-
 // pour  la page home de l'utilisateur 
 Route::get('/home',[HomeController::class,'index'])->name('home') ; 
 
-// ici j'herite d'un autre @yield 
-Route::get('/home/general',[HomeController::class,'general'])->name('home.general');
+// ici j'herite d'un autre @yield: ici /home/editer la route c'est route('home.general) et vice-versa 
+Route::get('/home/editer',[HomeController::class,'general'])->name('home.general');
 Route::put('/home/general/{general}',[HomeController::class,'UpdateGeneral'])->name('register.general');
-Route::get('/home/editer',[HomeController::class,'edit'])->name('home.edit');
+Route::get('/home/general',[HomeController::class,'edit'])->name('home.edit');
 Route::get('/home/password',[HomeController::class,'password'])->name('home.password');
 Route::put('/home/Register/password',[HomeController::class,'UpdatePassword'])->name('register.password');
-Route::get('/home/delete',[HomeController::class,'showdelete'])->name('showdelete');
+Route::get('/home/show/delete',[HomeController::class,'showdelete'])->name('showdelete');
+Route::post('/home/delete',[HomeController::class,'delete'])->name('deleteAccount');
 
 // pour l'admin connecté 
 Route::get('/admin-moncompte/monCompte',[HomeController::class,'moncompte'])->name('monCompte') ;
@@ -98,7 +106,18 @@ Route::put('/admin-asso/update/{bureau}',[BureauController::class, 'update'])->n
 //'search' pour la recherche des utilisateur 
 Route::get('/user/Search',[AssociationController::class,'search'])->name('admin.userSearch') ; 
 
+// pour les likes et les particpes 
+Route::post('evenement/participes',[BureauController::class,'participe'])->name('participe');
+Route::delete('evenement/participes/delete',[BureauController::class,'deleteParticipe'])->name('deleteParticipe');
 
+Route::post('evenement/like',[BureauController::class , 'like'])->name('like');
+Route::delete('evenement/like/delete',[BureauController::class , 'deleteLike'])->name('deleteLike');
+
+
+
+
+
+// pour les suivis des associations 
 Route::get('/admin-asso/association/{association}',[BureauController::class,'userindex'])->name('user.association') ; 
 Route::post('association/{association}/suivis',[BureauController::class , 'suivisUser'])->name('suivis.attach');
 Route::delete('association/suivis/{association}',[BureauController::class , 'suivisDelete'])->name('suivis.delete');

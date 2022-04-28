@@ -15,9 +15,9 @@ class HomeController extends Controller
     }
 
     public function index() { 
- 
-       
-        return view('users.auth.user.home') ; 
+        
+       $associations = Association::all() ;
+        return view('users.auth.user.home',compact('associations')) ; 
     }
     public function compte() 
     { 
@@ -102,6 +102,21 @@ class HomeController extends Controller
          $associations  = Association::all() ; 
 
          return view('users.auth.user.delete',compact('associations')) ;
+     }
+
+     public function delete() { 
+
+        
+        // je prends la personne connecté et je met le role au booléan 0 pour désactiver son compte 
+        $user = User::find(auth()->user()->id); 
+        $user->active = 0 ;
+        $user->save() ;
+        // je le déconnecte
+        auth()->logout() ; 
+
+        $associations = Association::all() ; 
+        
+        return back() ;
      }
 }
 

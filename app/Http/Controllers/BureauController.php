@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\User;
 use App\Models\Bureau;
 use App\Models\Membre;
+use App\Models\Evenement;
+use App\Models\Participe;
 use App\Models\Association;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -150,4 +153,41 @@ class BureauController extends Controller
         $membre->delete() ; 
         return back()->with('suivisDelete','vous ne suivez plus l\'association ! ') ;
     }
+
+    // pour les likes et les participes des utilisateurs connecté 
+
+    public function participe(Request $request) 
+     { 
+        
+       Participe::create($request->all()) ; 
+    
+      return back()   ; 
+     }
+
+     public function deleteParticipe(Request $request)
+     { 
+
+         $participe = Participe::where('user_id',$request->user_id)
+         ->where('evenement_id',$request->evenement_id) ; 
+
+         $participe->delete() ; 
+      
+         return back() ; 
+     }
+
+     public function like(Request $request)
+     { 
+         Like::create($request->all()) ; 
+         return back() ; 
+     }
+
+     public function deleteLike(Request $request)
+     { 
+         $like = Like::where('user_id',$request->user_id)
+         ->where('evenement_id',$request->evenement_id) ;
+
+         $like->delete() ; 
+
+         return back() ; 
+     }
 }

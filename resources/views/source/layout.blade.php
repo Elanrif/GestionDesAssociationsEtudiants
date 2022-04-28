@@ -12,7 +12,7 @@
 
 
 <!-- 1eme barre --> 
-<nav class="navbar navbar-expand-lg " style="position:fixed ; z-index:8 ; width:100%;background-color:rgb(3, 19, 73);">
+<nav class="navbar navbar-expand-lg " style="position:fixed ; z-index:8 ; width:100%;background-color:rgb(255, 255, 255);border-bottom-width:25px; border-bottom-style: solid;border-bottom-color:rgb(239, 246, 254);">
   <div class="container-fluid">
      <a class="navbar-brand ps-5" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
@@ -23,21 +23,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        <li class="nav-item px-5">
-          <a class="nav-link btn-outline-primary text-light fs-5 rounded-2 {{request()->is('/') ? 'active':''}} " aria-current="page" href="/">Acceuil</a>
+          <a class="nav-link  nav-lien fw-bold  fs-5 rounded-2 {{request()->is('/') ? 'nav-liens':''}} " aria-current="page" href="/">Acceuil</a>
         </li>
         <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
           @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="nav-item px-5">
-          <a class="nav-link text-light fs-5 btn-outline-primary rounded-2 " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+          <a class="nav-link  fs-5  nav-lien fw-bold rounded-2  {{request()->is('admin*') ? 'nav-liens':''}} " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
         </li>
         @endif
         <li class="nav-item px-5">
-          <a class="nav-link btn-outline-primary text-light fs-5 rounded-2 {{request()->is('contact') ? 'active':''}}" href="{{ url('contact') }}"><i class="fas text-primary fa-envelope text-light me-2"></i> Contactez-nous </a>
+          <a class="nav-link nav-lien fw-bold  fs-5 rounded-2 {{request()->is('contact') ? 'nav-liens':''}}" href="{{ url('contact') }}"><i class="fas  fa-envelope  me-2"></i> Contactez-nous </a>
         </li>
        
         
         <li class="nav-item dropend px-3">
-          <a class="nav-link btn-outline-primary  text-light fs-5 rounded-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link  fw-bold nav-lien  fs-5 rounded-2 dropdown-toggle  {{request()->is('admin-asso/association*') ? 'nav-liens':''}}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
           Les Associations
           </a>
           <!-- dropdown-menu-dark si on veut un menu noire --> 
@@ -68,11 +68,11 @@
         @guest
         <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link btn btn-outline-success text-light {{request()->is('register') ? 'active':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user text-light fw-bold me-2"></i>s'inscrire</a> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
+        <a class="nav-link fw-bold nav-lien  fs-5  {{request()->is('register') ? 'nav-liens':''}} fw-bold me-3 " aria-current="page" href="{{ route('register') }}"> <i class="fas fa-user fw-bold me-2"></i>s'inscrire</a> <!-- sur les modal il y'a obligatoire un lien comme ça '?#' sinon sans ça il gènere un probleme -->
         </li>
         
          <li class="nav-item">
-         <a class="nav-link text-light btn btn-outline-primary {{request()->is('login') ? 'active':''}} fw-bold me-3" aria-current="page" href="{{ route('login') }}"> <i class="fas fa-user-check fw-bold text-light me-2"></i>se connecter</a>
+         <a class="nav-link fw-bold nav-lien  fs-5  {{request()->is('login') ? 'nav-liens':''}} fw-bold me-3" aria-current="page" href="{{ route('login') }}"> <i class="fas fa-user-check fw-bold  me-2"></i>se connecter</a>
         
         </li>
         </ul>
@@ -80,13 +80,46 @@
 
         @auth
          <ul class="togle navbar-nav me-auto mb-2 mb-lg-0">
+          
+          @if(Route::has('blbl'))
         <li class="nav-item">
          
-         <a class="nav-link active fs-4" aria-current="page" href="{{ route('home') }}">
-          <i class="fas fa-door-open text-light fs-2"></i>
-         <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:70px; width:70px;">   
+         <a class="nav-link nav-lien fw-bold fs-4 {{request()->is('home*') ? 'nav-liens':''}} " aria-current="page"  href="{{ route('home') }}">
+         
+         <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:40px; width:40px;">   Mon compte
         </a>
         </li>
+        @endif
+
+         <li class="nav-item  dropstart px-3">
+          <a class="nav-link  fw-bold nav-lien  fs-5 rounded-2 {{request()->is('home*') ? 'nav-liens':''}}" href="#" id="navbarDropdowns" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: default;">
+          
+         <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">   Mon compte
+          </a>
+          <!-- dropdown-menu-dark si on veut un menu noire --> 
+          <ul class="dropdown-menu dropdown-menu-darkd fw-bold text-center  py-3" aria-labelledby="navbarDropdowns" style="min-width:300px;">
+            
+          <li> <img class="me-2" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:70px; width:70px;"> </li>
+              <li><a class="dropdown-item fw-bold add py-2" href="#"> {{ auth()->user()->nom }} {{ auth()->user()->prenom }}</a></li>
+
+              <li><a class="dropdown-item add py-2" href="#"> {{ auth()->user()->email }}</a></li>
+
+              
+              <hr>
+              <span class="bg-light">
+               <li><a class="dropdown-item fw-bold  suivre py-2" href="{{ route('home') }}"><i class="fa-solid fa-user-tie me-2"></i>mon compte</a></li>
+             <li><a   href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal091" class="dropdown-item fw-bold text-danger suivre py-2" >Déconnexion</a></li>
+           </span>
+          </ul>
+        </li>
+        
+
+        @if(Route::has('hllome'))
+         <li class="nav-item">
+        <a href="{{ route('logout') }}" data-bs-toggle="modal" data-bs-target="#exampleModal091" class="nav-link text-danger nav-lien fs-4 fw-bold"> Deconnexion </a>
+        </li>
+    
+       @endif
      
         </ul>
         @endauth
@@ -95,6 +128,26 @@
     </div>
   </div>
 </nav>
+
+    <div class="modal fade" id="exampleModal091" tabindex="-1" aria-labelledby="exampleModalLabel001" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel001"><i class="fa-solid fa-triangle-exclamation me-1 text-danger"></i> Attention</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+       <div class="modal-body fw-bold d-flex justify-content-center">
+        vous allez être  <span class="text-danger fw-bold px-2">déconnecté</span>  du site  ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+        <a type="button" href="{{ route('logout') }}" class="btn btn-primary px-4 fw-bold">Oui</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- fin Modal -->
 
 <div class="" style="height:13vh;"></div>
 <!-- fin --> 
@@ -136,7 +189,7 @@
 <!-- fin modal pour newsletter--> 
 
      <hr style="margin:0 100px;">
-     <div class="container-fluid d-flex justify-content-center align-items-center " style="height:50vh;background-color:rgb(4, 7, 16);">
+     <div class="container-fluid d-flex justify-content-center align-items-center " style="height:50vh;background-color:black;">
        
       <div class="text-center" style="">
         <p class="fs-5 text-muted text-light my-3">Association , restez informéez</p>
@@ -156,51 +209,61 @@
       
      <!--liens-->
         <div class="row gy-3 mx-5 px-5">
-          <div class="col-md-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium et qui sequi commodi maxime, vero nulla animi laborum in doloribus.</div>
+           <div class="col-md-3">
+           <h4 class="fw-bold">Qui sommes nous ? </h4> <hr class="w-50 " style="height:5px;color:var(--pink)">
+
+           <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis iusto odio sapiente nobis beatae ex enim molestiae, neque voluptas? Animi molestias provident id ducimus tenetur velit necessitatibus minima, at sequi.
+           </p>
+          
+        </div>
 
           <div class="col-md-3">
-           <h4 class="fw-bold">Dernier acutalité</h2> <hr class="w-25 " style="height:5px;color:var(--bisque--)">
+           <h4 class="fw-bold">Dernier acutalité</h4> <hr class="w-50 " style="height:5px;color:var(--pink)">
 
-           <i class="far fa-arrow-alt-circle-right me-2 mt-3"></i><a href="#ancre" style="text-decoration:none; color: var(--blanc--);">Les Associations etudiants. </a> <br>
+           <ul class="nav suivre flex-column">
+              <a class="nav-link" href="#ancre" style="text-decoration:none; "><i class="far fa-arrow-alt-circle-right me-2 mt-2"></i>Les Associations etudiants. </a> 
 
-            <i class="far fa-arrow-alt-circle-right  me-2 mt-3"></i><a href="" style="text-decoration:none;color: var(--blanc--);">Consultez tout les Evenements </a> <br>
+            <a class="nav-link" href="" style="text-decoration:none;"><i class="far fa-arrow-alt-circle-right  me-2 mt-2"></i>Consultez tout les Evenements </a> 
 
-             <i class="far fa-arrow-alt-circle-right me-2 mt-3"></i><a href="" style="text-decoration:none;color: var(--blanc--);">Plus d'informations.... </a> <br>
-</div>
+             <a class="nav-link" href="" style="text-decoration:none;color:"><i class="far fa-arrow-alt-circle-right me-2 mt-2"></i>Plus d'informations.... </a> 
+           </ul>
+          
+        </div>
 
           <div class="col-md-2">
-           <h4 class="fw-bold">Nous suivre</h4> <hr class="w-25 " style="height:5px;color:var(--bisque--)">
+           <h4 class="fw-bold">Nous suivre</h4> <hr class="w-50 " style="height:5px;color:var(--pink);">
            <ul class="nav suivre flex-column">
            <a href="#" class="nav-link">
-           <i class="fab fa-facebook-square fs-5 me-2"></i> <span class="text-light fs-5 pb-1"> Facebook </span> </a>
+           <i class="fab fa-facebook-square  me-2"></i> <span class="pb-1"> Facebook </span> </a>
            
            <a href="#" class="nav-link">
-           <i class="fab fa-twitter fs-5 me-2"></i> <span class="text-light fs-5 pb-1"> Twitter </span> </a> 
+           <i class="fab fa-twitter me-2"></i> <span class=" pb-1"> Twitter </span> </a> 
  
            <a href="#" class="nav-link">
-           <i class="fab fa-google-plus-g fs-5 me-2"></i> <span class="text-light fs-5 pb-1"> Google </span> </a> 
+           <i class="fab fa-google-plus-g  me-2"></i> <span class=" pb-1"> Google </span> </a> 
 
            <a href="#" class="nav-link">
-           <i class="fab fa-linkedin-in fs-5 me-2"></i> <span class="text-light fs-5 pb-1"> Linkedin </span> </a> 
+           <i class="fab fa-linkedin-in me-2"></i> <span class=" pb-1"> Linkedin </span> </a> 
    
            </ul>          
        </div>
 
           <div class="col-md-4 mb-3">
-            <h4 class="fw-bold">Contactez-nous</h2> <hr class="w-25 " style="height:5px;color: var(--bisque--);">
+            <h4 class="fw-bold">Contactez-nous</h2> <hr class="w-50 " style="height:5px;color: var(--pink);">
             <ul class="nav suivre flex-column">
            <a href="#" class="nav-link">
-           <i class="fa-solid fa-location-dot me-2"></i> <span class="text-light fs-5 pb-1">Avenue de Sebta, Mhannech II
+           <i class="fa-solid fa-location-dot me-2"></i> <span class="pb-1">Avenue de Sebta, Mhannech II
             <br/>93002 - Tétouan - Maroc  </span> </a>
            
            <a href="#" class="nav-link">
-     <i class="fa-solid fa-phone me-2"></i> <span class="text-light fs-5 pb-1">  (+212) 5 39 99 64 32 </span> </a> 
+     <i class="fa-solid fa-phone me-2"></i> <span class="pb-1">  (+212) 5 39 99 64 32 </span> </a> 
  
            <a href="#" class="nav-link">
-                 <i class="fas fa-tty me-2 mt-3"></i> <span class="text-light fs-5 pb-1">(+212) 5 39 99 45 00 </span> </a> 
+                 <i class="fas fa-tty me-2 mt-3"></i> <span class="pb-1">(+212) 5 39 99 45 00 </span> </a> 
 
            <a href="#" class="nav-link">
-          <i class="fas fa-envelope mt-3 me-1"></i> <span class="text-light fs-5 pb-1">  fs.tetouan.contact@gmail.com  </span> </a> 
+          <i class="fas fa-envelope mt-3 me-1"></i> <span class="pb-1">  fs.tetouan.contact@gmail.com  </span> </a> 
    
            </ul>
          </div>
@@ -220,5 +283,22 @@
 
   <script src="{{asset('js/app.js')}}"></script>
   <script src="{{ asset('js/test.js') }}"></script>
+
+    <!-- js button autoclose après 5000 '5 secondes' ; tout les enfants qui auront des alert ils les fermera après les x secondes definis --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+ 
+window.setTimeout(function() {
+    $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+        $(this).remove(); 
+    });
+}, 10000);
+ 
+});
+</script>
+<!-- fin --> 
 </body>
 </html>

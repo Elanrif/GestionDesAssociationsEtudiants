@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Association;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,8 @@ class RegisterController extends Controller
 
     public function create() { 
  
-        return view('users.auth.register') ; 
+        $associations = Association::all() ;
+        return view('users.auth.register',compact('associations')) ; 
     }
 
     public function store(Request $request) { 
@@ -57,6 +59,7 @@ class RegisterController extends Controller
 
     
     public function edit(User $user){ 
+
 
         return view('users.auth.edit',compact('user'));
     }

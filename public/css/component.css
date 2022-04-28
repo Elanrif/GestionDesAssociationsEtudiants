@@ -15,7 +15,17 @@
  --gold-crayola :#f7efe4;
  --persian:#721817;
  --orange-red:#ff5a5f;
+ --orange:#e6391b;
 
+ 
+ /* utiliser soit le bleu : --pink:blue;  */
+ --pink_old: rgb(255, 0, 157); 
+ --pink_oldest:blue;
+ --pink:rgb(255, 0, 157);
+ --blue: rgb(60, 46, 214);
+ --adminsidebar:rgb(195, 195, 195);
+ --blanc:#ffff;
+ 
 
  font-family: 'Poppins', sans-serif;
  /* font-family: 'Lobster', cursive; */
@@ -63,18 +73,34 @@
     cursor : pointer ;
 }
 
+/* pour les évenements */ 
+.nav-evenement { 
+  color:var(--blue);
+ }
 
+ .nav-evenement:hover { 
 
+  background-color: var(--pink);
+  color: var(--blanc) ; 
 
+ }
 
+ /* la survole de l'evenement */
+ .eventhoover:hover { 
 
+    box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+-webkit-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+-moz-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+  
+ }
 
-
-
-
-
+/* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2); sur le site css */ 
  .hoover:hover { 
-   transform: translateX(-15px);
+   transform: translateY(-15px);
+   box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+-webkit-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+-moz-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+  
  }
 /* pour les images en card des associations */ 
 /* pour l'association en violet de grand */
@@ -83,14 +109,32 @@
   box-shadow: 0px 4px 10px 3px blue ;
   padding:auto 50px;
   
-  
+}
+
+/* pour editer de l'user */ 
+.eiter:hover { 
+  color:var(--pink);
+}
+/* pour dropdwon page d'acceuil */ 
+.add:hover
+{
+  cursor : default ; 
+  background-color:white;
+}
+
+/* pour les membres du bureau */ 
+.membre-lien p:hover { 
+
+  color:var(--pink) ;
+
 }
 
 /* pour le footer les liens de facebook etc...... */
 
 .suivre >* { 
    
-      color:white; 
+      color:black;
+      font-weight: bold; 
       
 }
 .suivre a { 
@@ -100,7 +144,7 @@
 
 .suivre a:hover { 
 
-  color: #e6391b;
+  color: var(--pink);
 }
 
 .lien-general { 
@@ -120,6 +164,48 @@
   border-bottom-style: solid;
   border-bottom-width: 5px;
   width:170px;
+}
+
+/* pour liens du sidebar admin */
+
+.admin-lien { 
+color:black ;
+}
+
+.admin-lien:hover{ 
+    border-bottom-style: solid; 
+  border-bottom-width: 5px;
+  color:var(--blue);
+}
+
+.admin-liens { 
+ border-bottom-style: solid; 
+  border-bottom-width: 5px;
+  color:var(--blue); 
+}
+
+
+/*pour les autres lien du site */
+
+.nav-lien { 
+  color:black;
+}
+
+.nav-lien:hover { 
+  border-bottom-style: solid; 
+  border-bottom-width: 5px;
+  color:var(--pink);
+}
+
+.nav-liens { 
+ border-bottom-style: solid; 
+  border-bottom-width: 5px;
+  color:var(--pink); 
+}
+
+
+.nav-i { 
+  color:var(--pink);
 }
 /* pour le bouton savoir plus */ 
 .savoir-hover:hover{ 
@@ -162,8 +248,8 @@
   margin-right:100px;
 }
 .liens{
-  background-color: var(--noir--);
-  color:var(--blanc--);
+  background-color: white;
+  color:black;
   padding-top:50px;
 }
 
@@ -231,7 +317,7 @@
 .ileme_link1{ 
 
   flex:1 0 200px ;
-  height:100vh;
+  min-height:100vh;
   
 
 }
@@ -253,6 +339,7 @@
 
 .uuid > * { 
   margin-top: 40px;
+  text-align: left;
 }
 /* */
 .voix{
@@ -326,7 +413,7 @@
 
 .img1 { 
 
-  background: linear-gradient(rgb(0,0,0,0.5),#02022c) , url(../images/association_default/esma.jpg) center / cover no-repeat  ;
+  background: linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) , url(../images/association_default/esma.jpg) center / cover no-repeat  ;
   
 }
 .img1 a { 
@@ -339,11 +426,11 @@
 }
 .img2 { 
 
-  background: linear-gradient(rgba(2, 2, 13, 0.5),#02022c) , url(../images/association_default/DEVE-VE-Association_etudiantes.jpg) center / cover no-repeat  ;
+  background:  linear-gradient(rgba(0, 0, 0, 0.1),var(--pink))  , url(../images/association_default/DEVE-VE-Association_etudiantes.jpg) center / cover no-repeat  ;
 
 }
 .img3 { 
 
-  background: linear-gradient(rgb(0,0,0,0.5),#02022c) , url(../images/association_default/POL_1028-1-1024x683-1.jpg) center / cover no-repeat  ;
+  background: linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) , url(../images/association_default/POL_1028-1-1024x683-1.jpg) center / cover no-repeat  ;
   
 }

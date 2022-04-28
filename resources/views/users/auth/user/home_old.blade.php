@@ -120,8 +120,8 @@
 <!-- les autre liens --> 
 
 <div class="container-fluid d-flex " style="background-color:rgb(255, 255, 255);">
-  <div style="min-height:40vh;margin-top:10px;">
-   
+  <hr>
+    <div style="min-height:40vh;margin-top:10px;">
   
   <!-- pour s'être connecter --> 
     @if ($message = Session::get('nom'))
@@ -212,153 +212,92 @@
 <div class="col ms-3 d-flex  align-items-center pt-1 ps-5 fs-5"> 
    
   @if(auth()->user()->evenement_s->count()==0 ) <!-- juste je vais faire une condition que si on a pas de ligne le texte soit en noir , il suffit de sortir ' nav-liens  ' -->
-  
-         <div class="dropup">
-  
-         <button  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
+       <a href="#" class="nav-link me-2">
+         <button type="submit" class="btn  position-relative border border-black fw-bold">
            <i class="fa-solid  fa-thumbs-up"></i> j'aime
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenement_s->count() }} <!-- pour le model Like ; dans le model user il y'a la methode evenement_s qui relient avec les evenement via le pivot like : j'ai répeté les memes choses , seulement il suffit d'aller voir dans le model user ces relations -->
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
-              
-              <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
-            
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Aucune mention j'aime ! </a></li>
-            
-                    <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
-              </ul>
-            </div>
+
+         </a>
 
          @else <!-- sinon la couleur sera pink -->
 
-         <div class="dropup">
-  
-         <button  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  nav-liens  border border-black fw-bold">
+            <a href="#" class="nav-link dropdown me-2">
+         <button type="submit" class="btn position-relative  nav-liens  border border-black fw-bold" >
            <i class="fa-solid  fa-thumbs-up"></i> j'aime
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenement_s->count() }} <!-- pour le model Like ; dans le model user il y'a la methode evenement_s qui relient avec les evenement via le pivot like : j'ai répeté les memes choses , seulement il suffit d'aller voir dans le model user ces relations -->
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
-              
-                <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:30vh;position:relative">
-                   @foreach (auth()->user()->evenement_s as $evenement)
-                     
-                   <li><a class="dropdown-item fw-bold my-2" href="#">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
-              
-                   @endforeach
-                      <li><hr class="dropdown-divider"></li>
-                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
-                </ul>
-              </div>
-      @endif
 
-  @if(auth()->user()->evenements->count() == 0) <!-- attention ici c'est les évènements pour les participes --> 
-       
-              <div class="dropup mx-3">
-  
-         <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
+         </a>
+
+
+  @endif
+
+  @if(auth()->user()->evenements->count() == 0) <!-- attention ici c'est les évènements pour les particpes --> 
+          <a href="#" class="nav-link me-2">
+         <button type="submit" class="btn position-relative   border border-black fw-bold">
             évènements(participé)
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenements->count() }} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
-              
-               <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
-            
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous ne participez a aucun évènement ! </a></li>
-            
-                    <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
-              </ul>
 
-              </div>
-      
+         </a>
 
          @else 
-     
-          <div class="dropup mx-3">
-  
-         <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  nav-liens  border border-black fw-bold">
+           <a href="#" class="nav-link me-2">
+         <button type="submit" class="btn position-relative nav-liens border border-black fw-bold">
             évènements(participé)
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenements->count() }} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
-              
-                <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton17" style="min-width:60vh;min-height:30vh;position:relative">
-                   @foreach (auth()->user()->evenements as $evenement)
-                     
-                   <li><a class="dropdown-item fw-bold my-2" href="#">{{ $evenement->type }} {{ $evenement->date }} {{ $evenement->heure }}</a></li>
-              
-                   @endforeach
-                      <li><hr class="dropdown-divider"></li>
-                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les évènements</a></li>
-                </ul>
-              </div>
-      
+
+         </a>
 
          @endif
 
-         @if( auth()->user()->associations->count() == 0)<!-- pour les associations -->
+         @if( auth()->user()->associations->count() == 0)
 
-         <div class="dropup mx-3">
-  
-         <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
+           <a href="#" class="nav-link me-2">
+         <button type="submit" class="btn position-relative  border border-black fw-bold">
             associations(suivie)
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
-            {{ auth()->user()->associations->count()}} <!-- pour le model Like -->
-             <span class="visually-hidden">unread messages</span>
-               </span>
-              </button>
-            <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
-            
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous ne suivez  aucune association ! </a></li>
-            
-                    <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="#evenement">Toutes les Associations</a></li>
-              </ul>
-              </div>
-      
-           @else
-       
-          <div class="dropup mx-3">
-  
-         <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  nav-liens  border border-black fw-bold">
-             associations(suivie)
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->associations->count() }} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
-              
-                <ul class="dropdown-menu dropdown-menu-dark mt-2 fw-bold" aria-labelledby="dropdownMenuButton17" style="min-width:60vh;min-height:30vh;position:relative">
-                   @foreach (auth()->user()->associations as $association)
-                     
-                   <li><a class="dropdown-item fw-bold my-2" href="{{ route('user.association',$association->id) }}">{{ $association->nom }} {{ $evenement->date }} </a></li>
-              
-                   @endforeach
-                      <li><hr class="dropdown-divider"></li>
-                  <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#associations') }}">Toutes les Associations</a></li>
-                </ul>
-              </div>
+
+         </a>
+           @else
+             <a href="#" class="nav-link me-2">
+         <button type="submit" class="btn position-relative nav-liens  border border-black fw-bold">
+            associations(suivie)
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+            {{ auth()->user()->associations->count() }} <!-- pour le model Like -->
+             <span class="visually-hidden">unread messages</span>
+               </span>
+              </button>
+
+         </a>
          @endif
-      <a class="me-3" href="#"> <button class="col btn eiter border border-black fw-bold" data-bs-toggle="modal" data-bs-target="#staticBjkackdrop1re1">  <i class="fa-solid fa-lock"></i> &nbsp;autre</button></a>
+      <a class="me-3" href="#"> <button class="col btn eiter border border-black fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop1re1">  <i class="fa-solid fa-lock"></i> &nbsp;autre</button></a>
    
    
     </div>
 
 </div>
-<hr style="width:100%;">
     </div>
 
-    
-  </div>
+</div>
 
 
 @endsection

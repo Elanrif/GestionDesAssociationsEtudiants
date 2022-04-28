@@ -58,6 +58,16 @@ class User extends Authenticatable
          return $this->hasOne(Comment::class) ; //signifie que c'est dans comment que j'ai une foreignKey reférençant la table "User"
      }
 
+     public function evenements() // pour les evenements et utilisateurs
+    {
+        return $this->belongsToMany(Evenement::class, 'participes') ;
+    }
+
+    public function evenement_s() 
+    { 
+        return $this->belongsToMany(Evenement::class , 'likes');
+    }
+
        public function suit($association) 
     { 
         // associations() avec parenthèse , je fais la relation dans le model pas dans le controller 
@@ -69,4 +79,21 @@ class User extends Authenticatable
         
         //exists return un booléan 
     }
+
+    //pour les particpe
+    public function participe($evenement)
+    { 
+        return $this->evenements()->where('evenement_id',$evenement->id)->exists() ; 
+    }
+
+    //pour les likes 
+
+    public function like($evenement)
+    { 
+        return $this->evenement_s()->where('evenement_id',$evenement->id)->exists();
+    }
+  
+
+
+
 }

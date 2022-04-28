@@ -1,9 +1,8 @@
-@extends('layouts.app')
-
+@extends('source.layout')
 @section('content')
 
 
-<div class="container">
+<div class="container" style="min-height:70vh;padding-top:30px;">
 <form class="row g-3 gx-5 mx-5 mt-5" method="POST" action="{{ route('register') }}">
     @csrf
   <div class="col-md-6">

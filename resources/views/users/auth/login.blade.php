@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('source.layout')
 @section('content')
 
  <!-- pour s'être déconnecter --> 
@@ -12,7 +11,7 @@
 
     
 <!-- le body du modal -->
- <div class="container">
+ <div class="container" style="height:60vh;padding-top:15px;">
 <form class="row g-3 d-flex justify-content-center mx-5 mt-5" method="post" action="{{ route('login') }}">
     @csrf
     <div class="col-md-7">

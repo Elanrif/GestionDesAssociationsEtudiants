@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Association;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class LoginController extends Controller
 
     public function create() { 
 
-        return view('users.auth.login') ; 
+      $associations = Association::all() ;
+        return view('users.auth.login',compact('associations')) ; 
     }
 
     public function store(Request $request) // la personne va être connecté 
@@ -46,7 +48,7 @@ class LoginController extends Controller
 
         }
         else // sinon 
-        return redirect()->route('login')->with('danger','votre compte a été désactivé pour le moment') ;
+        return redirect()->route('login')->with('danger','Ce compte a été supprimer définitivement') ;
          
       }
       return back()->with('danger','Ces informations d\'identification ne corresponds pas à nos enregistrements') ; 

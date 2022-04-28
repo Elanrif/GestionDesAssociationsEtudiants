@@ -50,7 +50,7 @@
 
 <div class="container-fluid justify-content-center d-flex">
   <div class="w-75">
-    <h4 id = "ancre" class="mt-5" style="font-family:'Poppins', sans-serif;margin-bottom:5px; font-size:40px; font-weight:bold;">Tout savoir sur les Associations Etudiants <i class="fa-solid fa-lightbulb" style="color:rgb(229,82,33);"></i> .</h4>
+    <h4 id = "ancre" class="mt-5" style="font-family:'Poppins', sans-serif;margin-bottom:5px; font-size:40px; font-weight:bold;">Tout savoir sur les Associations Etudiants <i class="fa-solid fa-lightbulb" style="color:var(--pink);"></i> .</h4>
    
     <!-- debut accordion -->
 
@@ -59,10 +59,10 @@
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
-     <hr class="fw-bold mb-5" style="height:5px;color:rgb(229, 82, 33);width:400px;">
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark fw-bold">C'est quoi une Association Étudiantes ?  </span>
+     <hr class="fw-bold mb-5" style="height:5px;color:var(--pink);width:400px;">
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark fw-bold">C'est quoi une Association Étudiantes ?  </span>
     </div>
 
       </button>
@@ -92,10 +92,10 @@
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
      
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">À quoi servent les Associations etudiante ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">À quoi servent les Associations etudiante ? </span>
   
    </div>
 
@@ -129,10 +129,10 @@
     <h2 class="accordion-header" id="headingeight">
       <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseeight" aria-expanded="false" aria-controls="collapsefor">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
     
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Les postes existantes dans les associations étudiantes ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">Les postes existantes dans les associations étudiantes ? </span>
   
    </div>
 
@@ -174,10 +174,10 @@
     <h2 class="accordion-header" id="headingfor">
       <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefor" aria-expanded="false" aria-controls="collapsefor">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
     
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Pourquoi intégrer une association ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">Pourquoi intégrer une association ? </span>
   
    </div>
 
@@ -211,10 +211,10 @@
     <h2 class="accordion-header" id="headingfive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
      
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Les domaines d'Activités des Associations ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">Les domaines d'Activités des Associations ? </span>
   
    </div>
 
@@ -259,10 +259,10 @@
     <h2 class="accordion-header" id="headingsix">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsefive">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
      
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Le système des listes ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">Le système des listes ? </span>
   
    </div>
 
@@ -294,10 +294,10 @@
     <h2 class="accordion-header" id="headingseven">
       <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapsefor">
        
-     <div class="my-4" style="font-size:28px;color:rgb(229, 82, 33)">
+     <div class="my-4" style="font-size:28px;color:var(--pink)">
     
     
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(229, 82, 33)"></i> <span class="text-dark mb-5 fw-bold">Comment choisir son association étudiante  ? </span>
+     <i class="fa-solid fa-message" style="font-size:28px;color:var(--pink)"></i> <span class="text-dark mb-5 fw-bold">Comment choisir son association étudiante  ? </span>
   
    </div>
 
@@ -367,7 +367,7 @@
   </div>
 
 
-   <hr class="fw-bold my-5" style="height:5px;color:rgb(229, 82, 33);width:400px;">
+   <hr class="fw-bold my-5" style="height:5px;color:var(--pink);width:400px;">
 
 </div><!-- fin accordion --> 
 
@@ -380,10 +380,10 @@
     
 <!-- debut des associatoins --> 
 
-<div class="container-fluid py-4" style="background-color:var(--gold-crayola)">
+<div id="associations" class="container-fluid py-4" style="background-color:var(--gold-crayola)">
 
   
-<h4 class="text-center px-5"  style="font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
+<h4  class="text-center px-5"  style="font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
 
 @foreach ($associations as $association )
   
@@ -391,7 +391,7 @@
 <div class="card mb-3 rounded-2 decouvrir-asso" style="transition:0.6s ease-in-out ; margin:70px auto ;border: var(--gold-crayola); max-width: 940px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <div class="img-fluid rounded-start" alt="..." style="height:100%;background:linear-gradient(rgba(26, 15, 26, 0.3),rgb(20, 26, 79)),url({{ asset('storage/'.$association->image) }}) center / cover no-repeat  ;"></div>
+      <div class="img-fluid rounded-start" alt="..." style="height:100%;background:linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) ,url({{ asset('storage/'.$association->image) }}) center / cover no-repeat  ;"></div>
     </div>
     <div class="col-md-8"  style="font-size:30px; background-color:var(--gold-crayola)">
       <div class="card-body" >
@@ -418,13 +418,189 @@
 </div>
 <!-- https://www.helloasso.com/blog/quel-evenement-associatif-creer/  ; c'est le site que j'ai copier le model-->
 
-<!-- Début des Evènements -->
+<!-- Début des Evènements  @include('evenements.index')-->
 
-<div class="fw-bold fs-3 text-center my-3"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes au sein de la faculté </div>
-  <div class="container-fluid  mt-4" style="min-height:80vh;">
-    
-    @include('evenements.index')
+<div class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
+ 
+<div class="container-fluid my-5">
+ 
+    <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
+ 
+    @foreach ($evenements as $evenement ) <!-- ici j'ai les evenements --> 
+      
+    <div class="col pb-5"> 
+      <div class="card  eventhoover" style="transition:1s ease-in-out;"> <!-- 2s c'est mieux -->
+        <div class="card-img-top" alt="..."  style="height:20vh; background: linear-gradient(rgba(38, 35, 66, 0.5),#0e0324) , url({{ asset('storage/'.$evenement->image) }} ) center / cover no-repeat  ;"></div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold ms-3" style="color:var(--pink)"> {{ $evenement->type }}</h5>
+          <p class="card-text">
+            <ul class="nav suivre flex-column">
+              <a  class="nav-link my-2 fw-bold"> <span style="color:var(--blue)"> <i class="fa-solid fa-calendar"></i> Date : </span> {{ $evenement->date }}</a>
+              <a  class="nav-link my-2 fw-bold"><span style="color:var(--blue)"> <i class="fa-solid fa-clock"></i> Heure : </span> {{ $evenement->heure }}</a>
+              <a  class="nav-link my-2  fw-bold"><span style="color:var(--blue)"> <i class="fa-solid fa-location-dot"></i> Lieu : </span>  {{ $evenement->lieu }}</a>
+            </ul>
+          </p>
+        </div>
+        
+        @auth <!-- personne doit être connecté pour voir -->
+        <div class="d-flex ms-3 mb-3">
+          <!-- le boutton savoir plus --> 
+           <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold" style="color:var(--pink)">Participé(e)</button></a>
+         @if(auth()->user()->participe($evenement)) <!-- une methode que je vais créer sur le model user , toujours et je recupere directement l'evenement concerné puisque je suis dedans -->   
+      <!-- pour supprimer la participation -->
+      <form action="{{ route('deleteParticipe')}}" method = "post">
+      @csrf
+      @method('DELETE')
+      <input type="text" class="visually-hidden" name="evenement_id" value={{ $evenement->id }}><!-- je prends la ligne id de chaque evenement -->
+      <input type="text" class="visually-hidden" name="user_id" value={{ auth()->user()->id }}><!-- et l' utilisateur connecté -->
+       <a href="#" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold" style="color:var(--pink)">Participé(e)</button></a>
+     </form>
+       
+       @else <!-- sinon -->
+
+     <form action="{{ route('participe')}}" method = "post">
+      @csrf
+      <input type="text" class="visually-hidden" name="evenement_id" value={{ $evenement->id }}><!-- je prends la ligne id de chaque evenement -->
+      <input type="text" class="visually-hidden" name="user_id" value={{ auth()->user()->id }}><!-- et l' utilisateur connecté -->
+       <a href="#" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold text-dark">Participer</button></a>
+     </form>
+    @endif <!-- fin de condition -->
+
+
+    @if(auth()->user()->like($evenement))
+     <!--pour les likes --> 
+
+      <form action="{{  route('deleteLike') }}" method="post">
+        @csrf
+        @method('DELETE')
+        
+        <input type="text" class="visually-hidden" name="evenement_id" value={{ $evenement->id }}><!-- je prends la ligne id de chaque evenement -->
+      <input type="text" class="visually-hidden" name="user_id" value={{ auth()->user()->id }}><!-- et l' utilisateur connecté -->
+
+        <a href="#" class="nav-link">
+         <button type="submit" class="btn position-relative nav-liens   border border-black fw-bold">
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+            {{ $evenement->user_s->count() }} <!-- pour le model Like -->
+             <span class="visually-hidden">unread messages</span>
+               </span>
+              </button>
+
+         </a>
+     </form>
+
      
+
+     @else 
+        <form action="{{ route('like') }}" method ="post"> <!-- pour liker un evenement-->
+          @csrf
+
+          <input type="text" class="visually-hidden" name="evenement_id" value={{ $evenement->id }}><!-- je prends la ligne id de chaque evenement -->
+      <input type="text" class="visually-hidden" name="user_id" value={{ auth()->user()->id }}><!-- et l' utilisateur connecté -->
+
+          <a href="#" class="nav-link ">
+        <button type="submit" class="btn position-relative nav-lien mx-1 border border-black fw-bold">
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+             <!-- a partir de evenent j'accede a la relation manytomany et je prends le count --> 
+              {{ $evenement->user_s->count() }}
+            
+         <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+        </a>
+      </form>
+
+     @endif <!-- fin pour le like -->
+
+    </div>
+    @endauth
+
+            @guest<!-- pour un simple utilisateur -->
+        <div class="d-flex ms-4 mb-3">  <!-- ici dans le lien j'aimerais aller a l'association puis vers la place de l'evenement --> 
+          <!-- puisque je recupere l'evenent il suffit de passer par la relation qu'il y'a entre les deux et ..-->  
+
+  <!-- donc puisque je veux l'association->id il suffit de passer par la méthode pour trouver cette association-->        
+ <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">En savoir Plus</button></a>
+                      <!-- Modal pour la personne qui veut suivre mais est un invité -->
+<div class="modal fade" id="guest" tabindex="-1" aria-labelledby="exampleModalLabeler" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger fw-bold" id="exampleModalLabeler"><i class="fa-solid text-danger fw-bold fa-triangle-exclamation"></i> À savoir  </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body fs-5 text-dark">
+       Vous devez vous <a style="text-decoration:none;" href="{{ route('register') }}">inscrire</a>  ou  <a style="text-decoration:none;" href="{{ route('login') }}">vous connecter</a> pour pouvoir <span class="fw-bold" style="color:var(--pink)">participer</span> à cette évènement ! 
+      </div>
+      <div class="modal-footer">
+       <a href="{{ route('register') }}"> <button type="button" class="btn btn-outline-primary fw-bold" data-bs-dismiss="modal">S'inscire</button> </a>
+       <a href="{{ route('login') }}"><button type="submit" class="btn btn-outline-success fw-bold">Se connecter</button> </a> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                     <!-- Modal pour la personne qui veut suivre mais est un invité -->
+<div class="modal fade" id="like" tabindex="-1" aria-labelledby="exampleModalLabeler" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger fw-bold" id="exampleModalLabeler"><i class="fa-solid text-danger fw-bold fa-triangle-exclamation"></i> À savoir  </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body fs-5 text-dark">
+       Vous devez vous <a style="text-decoration:none;" href="{{ route('register') }}">inscrire</a>  ou  <a style="text-decoration:none;" href="{{ route('login') }}">vous connecter</a> pour laisser un <span class="text-primary fw-bold"> &nbsp; <i class="fa-solid nav-liens fa-thumbs-up"></i>&nbsp; </span> à cette évènement ! 
+      </div>
+      <div class="modal-footer">
+       <a href="{{ route('register') }}"> <button type="button" class="btn btn-outline-primary fw-bold" data-bs-dismiss="modal">S'inscire</button> </a>
+       <a href="{{ route('login') }}"><button type="submit" class="btn btn-outline-success fw-bold">Se connecter</button> </a> 
+      </div>
+    </div>
+  </div>
+</div>
+      <!-- pour supprimer la participation -->
+      <form action="#" method = "post">
+      @csrf
+      @method('DELETE')
+   
+    
+     <form action="#" method = "post">
+      @csrf
+      
+       <a class="nav-link"><button data-bs-toggle="modal" data-bs-target="#guest" type="button" href="#" class="btn border border-black fw-bold nav-lien">Participer</button></a>
+     </form>
+ 
+     <!--pour les likes --> 
+
+        <form action="#" method ="post"> <!-- pour liker un evenement-->
+          @csrf
+
+          <a  class="nav-link ">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#like" class="btn position-relative nav-lien  border border-black fw-bold">
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+             <!-- a partir de evenent j'accede a la relation manytomany et je prends le count --> 
+              {{ $evenement->users->count() }}
+            
+         <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+        </a>
+      </form>
+
+    </div>
+    @endguest
+
+      </div>
+    </div>
+
+    @endforeach
+</div>
+
+</div>
+     </div>
   </div>
 
 
