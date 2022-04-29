@@ -39,6 +39,12 @@
 </div>
  </div>
 <!-- saisie de formulaire --> 
+
+@guest
+    
+   <form action="{{ route('guest.contact') }}" method="post"> <!-- autre formulaire pour des invités --> 
+     @csrf
+
  <div class="container-fluid d-flex justify-content-center">
      <div class="card" style="width:68%;min-height:50vh;">
          <div class="card-body mt-4">
@@ -47,7 +53,7 @@
                      
                     <div class="mb-4">
                          <label for="exampleFo" class="form-label fw-bold"><span class="me-1" style="color:rgb(187, 18, 18);">*</span>Nom et Prenom</label>
-                         <input type="text" class="form-control" id="exampleFo" placeholder="Saisir votre nom et prenom">
+                         <input type="text" class="form-control" id="exampleFo" placeholder="Saisir votre nom et prenom" name="nom" required>
                        </div>
 
                  </div>
@@ -55,7 +61,7 @@
                      
                     <div class="mb-4">
                          <label for="exampleFos" class="form-label fw-bold"><span style="color:rgb(187, 18, 18);" class="me-1">*</span>Télephone</label>
-                         <input type="numeric" class="form-control" id="exampleFos" placeholder="saisir votre Numéro Tel">
+                         <input type="numeric" class="form-control" id="exampleFos" placeholder="saisir votre Numéro Tel" name="num_tel" required>
                        </div>
 
                  </div>
@@ -63,13 +69,13 @@
 
                     <div class="mb-4">
                          <label for="exampleFor" class="form-label fw-bold"><span style="color:rgb(187, 18, 18);" class="me-1">*</span>E-mail</label>
-                         <input type="email" class="form-control" id="exampleFor" placeholder="nom@example.com">
+                         <input type="email" class="form-control" id="exampleFor" placeholder="nom@example.com" required name="email">
                        </div>
 
                  </div>
                  <div class="col-12">
                      <div class="form-floating">
-                        <textarea class="form-control mb-4" placeholder="Leave a comment here" id="floatingTextarea" style="height:20vh;"></textarea>
+                        <textarea class="form-control mb-4" placeholder="Leave a comment here" id="floatingTextarea" style="height:20vh;" required name="message"></textarea>
                         <label for="floatingTextarea">écrire quelque chose ...</label>
                         </div>
                  </div>
@@ -85,5 +91,100 @@
      </div>
  </div>
  <div style="height:10vh;"></div> <!-- juste pour l'espacement --> 
+
+   </form>
+ @endguest
+
+
+ @auth <!-- si la personne est connecté --> 
+
+ @if(auth()->user()->role == "admin") <!-- si c'est l'admin --> 
+ 
+  <form action="{{ route('auth.contact') }}" method="post"> <!-- autre formulaire -->
+     @csrf
+ <div class="container-fluid d-flex justify-content-center">
+     <div class="card" style="width:68%;min-height:50vh;">
+         <div class="card-body mt-4">
+
+            <p class="text-desabled text-center" style="margin-top:12px;min-height:13vh;text-decoration:line-through"><span class="fw-bold fs-1 text-muted"> Envoyer votre message ! </span> </p>
+             <div class="row">
+                 
+                 <div class="col-md-4 col-12 visually-hidden "> <!-- je cache ces champs -->
+                     
+                    <div class="mb-4">
+                         <label for="exampleFo" class="form-label fw-bold"><span class="me-1" style="color:rgb(187, 18, 18);">*</span>id_utilisateur connecté</label> <!-- je prends la personne connecté --> 
+                         <input type="text" class="form-control" id="exampleFo" placeholder="Saisir votre nom et prenom" value="{{ auth()->user()->id }}" name = "user_id">
+                       </div>
+
+                 </div>
+           
+                 <!-- pour l'envoie du message -->
+                 <div class="col-12">
+                     <div class="form-floating">
+                        <textarea class="form-control is-invalid mb-1" placeholder="Leave a comment here" id="floatingTextarea" style="height:20vh;" required name="message"></textarea>
+                            <div id="floatingTextareaFeedfdback" class="invalid-feedback fw-bold mb-3">
+                         l'admin ne peut pas envoyer un message à lui même !.
+                  </div>
+                        <label for="floatingTextarea">écrire quelque chose ...</label>
+                        </div>
+                 </div>
+               
+             </div>
+
+             <div class="d-flex" style="justify-content:space-between">
+                 <p class="fw-bold"> <span style="color:rgb(187, 18, 18);">*</span> champs obligatoire</p>
+        <!-- seulement faire type button -->
+                 <button type = "button" class="btn text-end btn-outline-success fw-bold">Envoyer mon message </button>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div style="height:10vh;"></div> <!-- juste pour l'espacement --> 
+</form>
+
+ @else  <!-- sinon pour un simple utilisateur --> 
+
+  <form action="{{ route('auth.contact') }}" method="post"> <!-- autre formulaire -->
+     @csrf
+ <div class="container-fluid d-flex justify-content-center">
+     <div class="card" style="width:68%;min-height:50vh;">
+         <div class="card-body mt-4">
+
+            <p class="fs-1 fw-bold text-center" style="margin-top:12px;min-height:13vh;">Envoyer votre message ! </p>
+             <div class="row">
+                 
+                 <div class="col-md-4 col-12 visually-hidden "> <!-- je cache ces champs -->
+                     
+                    <div class="mb-4">
+                         <label for="exampleFo" class="form-label fw-bold"><span class="me-1" style="color:rgb(187, 18, 18);">*</span>id_utilisateur connecté</label> <!-- je prends la personne connecté --> 
+                         <input type="text" class="form-control" id="exampleFo" placeholder="Saisir votre nom et prenom" value="{{ auth()->user()->id }}" name = "user_id">
+                       </div>
+
+                 </div>
+           
+                 <!-- pour l'envoie du message -->
+                 <div class="col-12">
+                     <div class="form-floating">
+                        <textarea class="form-control mb-4" placeholder="Leave a comment here" id="floatingTextarea" style="height:20vh;" required name="message"></textarea>
+                     
+                        <label for="floatingTextarea">écrire quelque chose ...</label>
+                        </div>
+                 </div>
+               
+             </div>
+
+             <div class="d-flex" style="justify-content:space-between">
+                 <p class="fw-bold"> <span style="color:rgb(187, 18, 18);">*</span> champs obligatoire</p>    
+       
+                 <button type = "submit" class="btn text-end btn-outline-success fw-bold">Envoyer mon message </button>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div style="height:10vh;"></div> <!-- juste pour l'espacement --> 
+</form>
+    @endif
+ @endauth
+
  
 @endsection

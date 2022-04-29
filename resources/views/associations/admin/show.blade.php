@@ -143,7 +143,7 @@
         </div>
 
        <div class="d-flex ms-4 mb-3">
-     <!-- pour la suppression d'un membe du bureau  --> 
+     <!-- pour la suppression d'un evenement et l'edition  --> 
 
      @include('associations.bureau.evenement.delete')
 

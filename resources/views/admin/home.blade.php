@@ -36,8 +36,8 @@
   </li>
   <li class="nav-item">
     
-    <div class="dropend">
-  <a class="dropdown-toggle nav-link fw-bold admin-lien {{ request()->is('admin-asso*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>
+    <div class="dropend mb-5">
+  <a  href="" class="dropdown-toggle nav-link fw-bold admin-lien {{ request()->is('admin-asso*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>
     Les Associations
   </a>
   <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="dropdownMenuButton1">
@@ -55,16 +55,32 @@
   </ul>
 </div>
 
+   <div class="dropend mt-3">
+  <a href="" class="dropdown-toggle nav-link fw-bold admin-lien {{ request()->is('admin-evenement*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-calendar-days fs-5 me-2"></i>Les évènements 
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="dropdownMenuButton1">
+    <li class="nav-liens mb-2"><a class="fw-bold fs-3 nav-link active" href="3" style="cursor: default;">Associations</a></li>
+    @foreach ($associations as $association )
+      
+    <li><a class="dropdown-item py-2" href="{{ route('evenement.show',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
+
+    @endforeach
+
+    <hr>
+    <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}" href="#">rien</a></li>
+
+  
+  </ul>
+</div>
+
   </li>
-  <li class="nav-item">
-    <a class="nav-link fw-bold admin-lien" href="#"><i class="fa-solid fa-calendar-days fs-5 me-2"></i>Les Evènements</a>
-  </li>
+
   <li class="nav-item">
     <a class="nav-link fw-bold admin-lien" href="#"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a> 
   </li>
 
      <div class="dropend">
-  <a class="dropdown-toggle nav-link admin-lien fw-bold   {{ request()->is('admin-moncompte*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear  fs-5 me-2"></i>Gérer mon compte
+  <a href="" class="dropdown-toggle nav-link admin-lien fw-bold   {{ request()->is('admin-moncompte*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear  fs-5 me-2"></i>Gérer mon compte
   </a>
   <ul class="dropdown-menu  fw-bold px-4 py-3" aria-labelledby="dropdownMenuButton1">
 
@@ -174,7 +190,7 @@ window.setTimeout(function() {
     $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
         $(this).remove(); 
     });
-}, 3000);
+}, 10000);
  
 });
 </script>

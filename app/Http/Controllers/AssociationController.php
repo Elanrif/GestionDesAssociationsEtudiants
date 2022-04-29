@@ -170,8 +170,19 @@ class AssociationController extends Controller
     }
 
 
-      // pour les evenements 
+      // POUR LES EVENEMENTS 
 
+      // evenenement index ; vue generale 
+      public function eventindex(Association $association) { 
+
+        $associations = Association::all() ;
+        $users = User::all() ; 
+
+        return view('evenements.admin.index',compact(['association','associations','users'])) ; 
+    
+      }
+    
+    //le store , creation 
         public function eventStore(Request $request ) 
         { 
               $event = Evenement::all() ;

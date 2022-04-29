@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController ;
 use App\Http\Controllers\BureauController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\Evenement;
@@ -89,10 +90,15 @@ Route::delete('users-delete',[UserController::class,'deleteimages'])->name('user
 Route::post('/users-comment',[UserController::class,'comments'])->name('users-comment.save');
 Route::get('/home/user-message',[UserController::class,'messages'])->name('messages') ;
 
+// gestion des associations avec resource 
 
 Route::resource('admin-asso',AssociationController::class)->parameters([
     'admin-asso' => 'association'
 ]); 
+
+//evenements des associations 
+
+Route::get('/admin-evenement/{association}',[AssociationController::class , 'eventindex'])->name('evenement.show');
 
 Route::get('/admin-asso/create/{association}/bureau',[BureauController::class,'create'])->name('create.bureau');
 // j'ai ajouté {association} voir la vue bureau/create; avant d'aller au controller on passe par ici d'abord
@@ -130,10 +136,11 @@ Route::delete('/admin-asso/membreDestroy/{user}',[BureauController::class,'membr
 Route::post('/admin-asso/evenements' ,[AssociationController::class , 'eventStore'])->name('adminevent.store') ; 
 Route::put('admin-asso/evenement/update',[AssociationController::class , 'eventUpdate'])->name('update.evenement');
 Route::delete('/admin-asso/evenement/delete/{evenement}',[AssociationController::class,'eventDelete'])->name('delete.event');
-//pour le contact
-Route::get('contact',function() { 
 
-    $associations = Association::all() ; 
-    return view('contact.index',['associations'=>$associations]) ; 
-});
+
+//pour le contact
+
+Route::get('contact',[ContactController::class,'indexContact'])->name('contact.index');
+Route::post('contact/invite/message/admin',[ContactController::class,'guestContact'])->name('guest.contact');
+Route::post('contact/utilisateur/message/admin',[ContactController::class,'authContact'])->name('auth.contact');
 
