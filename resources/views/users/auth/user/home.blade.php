@@ -348,6 +348,48 @@
                 </ul>
               </div>
          @endif
+
+         <!-- message non-envoyé < 0 je le cache pour l'instant --> 
+          <div class="dropup mx-3 ">
+  
+         <button  id="dropdownMenuButton170" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
+             message<i class="fa-brands fs-3 fa-facebook-messenger"></i>
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger"> <!-- ici usercontact est le nom d' une methode  --> 
+            {{ auth()->user()->usercontacts->count()}} <!-- pour le model Like -->
+             <span class="visually-hidden">unread messages</span>
+               </span>
+              </button>
+            <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
+            
+                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous n'avez envoyé aucun message  ! </a></li>
+            
+                    <li><hr class="dropdown-divider"></li>
+                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ url('/contact#floatingTextarea') }}">envoyé un message à l'administrateur</a></li>
+              </ul>
+              </div>
+              <!-- fin --> 
+
+              <!-- message envoyé >0 -->
+               <div class="dropup mx-3">
+  
+         <button  id="dropdownMenuButton179" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
+             message<i class="fa-brands fs-3 fa-facebook-messenger"></i>
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+            0 <!-- pour le model Like -->
+             <span class="visually-hidden">unread messages</span>
+               </span>
+              </button>
+            <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
+            
+                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Message envoyé  ! </a></li>
+            
+                    <li><hr class="dropdown-divider"></li>
+                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#associations') }}">Toutes les Associations</a></li>
+              </ul>
+              </div> 
+              <!-- fin --> 
+
+
       <a class="me-3" href="#"> <button class="col btn eiter border border-black fw-bold" data-bs-toggle="modal" data-bs-target="#staticBjkackdrop1re1">  <i class="fa-solid fa-lock"></i> &nbsp;autre</button></a>
    
    

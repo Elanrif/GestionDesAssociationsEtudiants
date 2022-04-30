@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Association;
 use App\Models\Evenement;
+use App\Models\Association;
+use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +22,8 @@ class AssociationController extends Controller
          Gate::authorize('admin-user');
          
         $associations = Association::latest()->get() ; 
-
-        return view('associations.admin.index', compact('associations'));
+        $count_message =  Usercontact::count() ;
+        return view('associations.admin.index', compact('associations','count_message'));
     }
 
     /**
@@ -84,7 +85,8 @@ class AssociationController extends Controller
     {
         $associations = Association::all() ;
         $users = User::all() ; 
-        return view('associations.admin.show',compact(['association','associations','users'])) ; 
+        $count_message =  Usercontact::count() ;
+        return view('associations.admin.show',compact(['association','associations','users','count_message'])) ; 
     }
 
     /**
@@ -97,8 +99,8 @@ class AssociationController extends Controller
     {
         $associations = Association::all() ;
          Gate::authorize('admin-user');
-
-        return view('associations.admin.edit',compact(['association','associations'])); 
+        $count_message =  Usercontact::count() ;
+        return view('associations.admin.edit',compact(['association','associations','count_message'])); 
     }
 
     /**
@@ -177,8 +179,8 @@ class AssociationController extends Controller
 
         $associations = Association::all() ;
         $users = User::all() ; 
-
-        return view('evenements.admin.index',compact(['association','associations','users'])) ; 
+        $count_message =  Usercontact::count() ;
+        return view('evenements.admin.index',compact(['association','associations','users','count_message'])) ; 
     
       }
     
@@ -258,7 +260,8 @@ class AssociationController extends Controller
          ->get()  ; 
 
          $count = $users->count() ; 
-         return view('associations.search.users',compact('users','associations','count','q')) ; 
+         $count_message =  Usercontact::count() ;
+         return view('associations.search.users',compact('count_message','users','associations','count','q')) ; 
 
         }
 

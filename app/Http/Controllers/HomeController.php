@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Association;
+use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -29,8 +30,8 @@ class HomeController extends Controller
     public function moncompte() 
      { 
          $associations = Association::all() ; 
-
-         return view('users.auth.admin.admincompte',['associations'=>$associations]) ;
+        $count_message =  Usercontact::count() ;
+         return view('users.auth.admin.admincompte',['associations'=>$associations,'count_message'=>$count_message]) ;
      }
 
      public function general() 

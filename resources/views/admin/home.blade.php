@@ -76,7 +76,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link fw-bold admin-lien" href="#"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a> 
+    <a class="nav-link fw-bold admin-lien {{ request()->is('admin/contact/generale*') ? 'admin-liens':'' }}" href="{{ route('admin.contact') }}"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a> 
   </li>
 
      <div class="dropend">
@@ -143,7 +143,8 @@
           <a  class="nav-link fw-bold admin-lien text-primary position-relative">
             message
             <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
-              99+
+               {{ $count_message }} 
+              
               <span class="visually-hidden">unread messages</span>
             </span>
           </a>

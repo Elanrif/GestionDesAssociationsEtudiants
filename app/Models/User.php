@@ -94,6 +94,10 @@ class User extends Authenticatable
     }
   
 
+    public function usercontacts() // ici dans la migration Usercontact il y'a user_id 
+     { 
+         return $this->hasMany(Usercontact::class) ; 
+     }
 
 
 }

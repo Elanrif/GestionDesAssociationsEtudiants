@@ -38,16 +38,16 @@
             <div class="col-12 col-md-4 general">
                 <ul class="nav  flex-column">
                    
-      
-                  <a class="nav-link fw-bold my-2 lien-general text-black {{request()->is('home/general') ? 'lien-active':''}}" href="{{ route('home.edit') }}">Génerale</a>
+         <!-- pour cursor au début c'était : lien-general  --> <!--lien-active --> 
+                  <a class="nav-link fw-bold my-2 nav-lien  {{request()->is('home/general') ? 'nav-liens':''}}" href="{{ route('home.edit') }}">Génerale</a>
 
-                    <a class="nav-link fw-bold my-2 lien-general {{request()->is('home/editer') ? 'lien-active':''}} text-black" href="{{ route('home.general') }}">Editer</a>
+                    <a class="nav-link fw-bold my-2 nav-lien {{request()->is('home/editer') ? 'nav-liens':''}} " href="{{ route('home.general') }}">Editer</a>
                  
-                    <a class="nav-link fw-bold my-2 lien-general text-black {{request()->is('home/password') ? 'lien-active':''}} " href="{{ route('home.password') }}">Mot de passe</a>
+                    <a class="nav-link fw-bold my-2 nav-lien {{request()->is('home/password') ? 'nav-liens':''}} " href="{{ route('home.password') }}">Mot de passe</a>
                     <div style="height:15vh;"></div>
                     <hr>
                     
-                    <a class="nav-link fw-bold text-danger lien-general {{request()->is('home/delete') ? 'lien-active':''}}" href="{{ route('showdelete') }}">Supprimer<span class="text-light">_</span>compte
+                    <a class="nav-link fw-bold text-danger lien-general {{request()->is('home/show/delete') ? 'lien-active':''}}" href="{{ route('showdelete') }}">Supprimer<span class="text-light">_</span>compte
                     </a>
                 </ul>
             </div>

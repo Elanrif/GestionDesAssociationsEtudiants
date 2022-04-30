@@ -144,3 +144,6 @@ Route::get('contact',[ContactController::class,'indexContact'])->name('contact.i
 Route::post('contact/invite/message/admin',[ContactController::class,'guestContact'])->name('guest.contact');
 Route::post('contact/utilisateur/message/admin',[ContactController::class,'authContact'])->name('auth.contact');
 
+Route::get('admin/contact/generale',[ContactController::class,'admincontact'])->name('admin.contact');
+Route::delete('admin/contact/delete',[ContactController::class,'contactdelete'])->name('contactuser.delete');
+

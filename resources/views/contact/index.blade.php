@@ -1,7 +1,7 @@
 @extends('source.layout')
 
 @section('content')
-
+ <div style="background:linear-gradient(rgba(32, 106, 217, 0.5),rgb(147, 13, 13)),url({{ asset("images/message.jpg")}})center/cover;">
 <div class="" style="height:8vh;"></div>
     <div class="container-fluid d-flex justify-content-center " style="min-height:0vh;">
     
@@ -40,7 +40,7 @@
  </div>
 <!-- saisie de formulaire --> 
 
-@guest
+@guest <!-- pour l'invité --> 
     
    <form action="{{ route('guest.contact') }}" method="post"> <!-- autre formulaire pour des invités --> 
      @csrf
@@ -186,5 +186,5 @@
     @endif
  @endauth
 
- 
+<div>
 @endsection

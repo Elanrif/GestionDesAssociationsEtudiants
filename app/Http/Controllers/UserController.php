@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Comment;
+use App\Models\Association;
+use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule ; 
 use App\Http\Controllers\Controller;
-use App\Models\Association;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller  // dans le parent on doit avoir les mêmes variables qui seront utilisé dans les controller
 {
 // le controller qui va être herité si il y'a une variable a ce controller alors tous ces enfants doivent obligatoirement herité de cette variable ('principe de l\'heritage') ; 
-    public function index() { 
+    
+public function index() { 
 
         // Gate::authorize('admin-user') ;  directement rediriger vers le abort en cas d'erreur 
     if(!Gate::allows('admin-user')){  // si la personne ne réponds pas au gate alors on va pas faire abort(403) ; sachant que le reste c'est  'ELSE '
@@ -26,7 +28,8 @@ class UserController extends Controller  // dans le parent on doit avoir les mê
     // $associations = Association::all() ; 
     $users = User::where('id','<>',auth()->user()->id)->orderBy('nom')->get(); // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     $associations = Association::all() ; 
-    return view('users.admin.index',compact(['users','associations'])) ;
+    $count_message =  Usercontact::count() ; // le nombre de message , juste il est dans le parent 'barre de l'admin' donc les enfants doit heriter tous de ça 
+    return view('users.admin.index',compact(['users','associations','count_message'])) ;
 
     }
 
@@ -34,7 +37,8 @@ class UserController extends Controller  // dans le parent on doit avoir les mê
 
         Gate::authorize('admin-user');
          $associations = Association::all() ; 
-        return view('users.admin.edit',compact(['user','associations'])) ; 
+         $count_message =  Usercontact::count() ;
+        return view('users.admin.edit',compact(['user','associations','count_message'])) ; 
     }
 
     public function update(Request $request, User $user) { 
