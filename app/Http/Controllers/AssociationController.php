@@ -35,7 +35,8 @@ class AssociationController extends Controller
     {
          Gate::authorize('admin-user');
         $associations = Association::all() ;
-        return view('associations.admin.create',['associations'=>$associations]) ; 
+        $count_message =  Usercontact::count() ;
+        return view('associations.admin.create',['associations'=>$associations ,'count_message' =>$count_message]) ; 
     }
 
     /**

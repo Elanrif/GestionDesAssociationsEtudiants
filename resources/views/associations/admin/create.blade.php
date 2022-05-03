@@ -1,10 +1,13 @@
 @extends("../../admin/home")
 @section('admin')
 
+<div class="container-fluid">
+
+
 <form action="{{ route('admin-asso.store')}} " method="post" enctype="multipart/form-data">
     @csrf
 
-    <div class="container mt-5  d-flex justify-content-center mt-2 bg-body shadow shadow-3 py-2 px-1 rounded-1 fs-4 fw-bold" style="width:30%;"> <i class="fa-solid fa-clone p-1 me-1 fs-4 shadow shadow-3"></i>Créer une Association Etudiante </div>
+    <div class="container mt-5  d-flex justify-content-center mt-2 bg-body shadow shadow-3 py-2 px-1 rounded-1 fs-4 fw-bold" style="width:40%;"> <i class="fa-solid fa-clone p-1 me-1 fs-4 shadow shadow-3"></i>Créer une Association Etudiante </div>
 
 <div class="row d-flex justify-content-center"> <!-- row a l'interieur de row . -->
   
@@ -79,5 +82,6 @@
 </div>
 
 <!--Modal -->
+</div>
 
 @endsection

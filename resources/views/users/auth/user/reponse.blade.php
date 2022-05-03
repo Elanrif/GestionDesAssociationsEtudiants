@@ -1,5 +1,8 @@
-@extends('admin/home')
-@section('admin')
+
+
+@extends('source.layout')
+
+@section('content')
 
  <div class="container-fluid d-flex justify-content-center">
      <div class="w-50">
@@ -25,29 +28,50 @@
             <div class="col">
 
                    <!-- ici puisque on va partir de la belongTo de la relation avec cardinalité 1:N ; on part de 1 donc PAS DE FOREACH-->
-                <img class="pe-2 d-iline" src="{{ asset('storage/'.$contact->user->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">
+                <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">
                 
-                <span class="fw-bold text-primary"> {{ $contact->user->nom }} {{ $contact->user->prenom }}</span> 
+                <span class="fw-bold text-primary"> moi </span> 
                 
                   <div class="fw-bold" style="margin-left:90px;">{{ $contact->message }} <span class="text-muted"> {{ $contact->created_at }} </span> </div>
              
               
-                  <!-- reponse de l'admin --> 
+                  <!-- reponse de l'admin   {{ $contact->user->reponses->count() }} --> 
                   <div class="accordion accordion-flush" id="accordionFlushExample" style="max-width:900px;">
     <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
     <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
-      Afficher les  <span class="text-primary px-1">  {{ $contact->reponses->count() }} </span> réponses
+     
+     
+       
+        @if ($contact->reponses->count() > 1 )
+
+         <span class="text-primary">
+             Afficher les  <span class="px-1" style="color:var(--pink)">   {{$contact->reponses->count()}} </span> réponses  </span>
+
+        @elseif ($contact->reponses->count() == 1)
+
+        Afficher la   <span class="text-primary px-1">   </span> réponses
+
+        @else
+          <span class="text-muted">    Aucune  <span class="text-primary px-1"> </span> réponses !  </span>
+        @endif
+          
+         
+        
+         
+        
+
+        
     </button>
   </h2>
   <div id="flush-collapseOne{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 
-    <!-- je fais la relation dans le modele User et directement ici , dans cette vue je recupere cet modele par $contact->user ; car le but c'est d'avoir ce model soit par le passer dans le controller ; mais puisque je l'ai déjà pas besoin de le passer dans le controller --> 
+    <!-- je fais la relation dans le modele User et directement ici , dans cette vue je recupere cet modele par $contact ; car le but c'est d'avoir ce model affecté par la variable user_contact soit par le passer dans le controller ; mais puisque je l'ai déjà pas besoin de le passer dans le controller --> 
     <!-- reponses c'est le nom de la relation --> 
     @foreach ($contact->reponses as $reponse )
         
           <div class="my-5">
-         <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">
+         <img class="pe-2 d-iline" src="{{ asset('storage/'.$admin->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">
               <span class="fw-bold">  {{ $reponse->pivot->created_at }} </span>  <br>
                 <span class="fw-bold text-dark ms-5"> {{ $reponse->pivot->message }}</span> 
      </div>
@@ -62,16 +86,21 @@
 
 
 
-                <div class="d-flex mt-3"> <!-- au lieu de faire que ici l'image de l'admin ; je peux laisser comme ça la personne connecté car il sera probablement l'admin --> 
+                <div class="d-flex mt-3"> <!--  --> 
 
-                      <form class="container-fluid" action="{{ route('reponse.admin') }}" method = "post">
+                      <form class="container-fluid" action="#" method = "post">
                             @csrf 
 
-                    <img class="ms-5 pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;">
                     
-                    <textarea type="text" class="form-control"  placeholder="Ajouter une réponse..." style="border-bottom-width:3px; border-style:solid;border-left-width:0px;border-right-width:0px;border-top-width:0px;width:70%;" rows="5" name="message"></textarea>
+                        <div class="col-md-4 col-12 visually-hidden "> <!-- je cache ces champs -->
+                     
+                    <div class="mb-4">
+                         <label for="exampleFo" class="form-label fw-bold"><span class="me-1" style="color:rgb(187, 18, 18);">*</span>id_utilisateur connecté</label> <!-- je prends la personne connecté --> 
+                         <input type="text" class="form-control" id="exampleFo" placeholder="Saisir votre nom et prenom" value="{{ auth()->user()->id }}" name = "user_id">
+                       </div>
 
-                
+                       </div>
+
 
                     <span class="dropup d-flex">
                <!-- suppression du message --> 
@@ -90,11 +119,15 @@
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-                        <li><a class="dropdown-item fw-bold text-danger" href="#">
-                            <input type="text" class="visually-hidden" value="{{$contact->user->id }}" name="user_id">
-                            <button class="btn fw-bold text-primary" type="submit">Envoyer</button></a></li>
+                        <li><a class="dropdown-item fw-bold text-danger" href="{{ url('contact#tom') }}">
+                       
+                            <button class="btn fw-bold text-primary" type="button">Envoyer un message </button></a></li>
                         
                       </ul>
+
+                      <button class="btn" type="button">
+                          <a href="{{ url('home') }}"><i class="fa-solid fa-arrow-rotate-left fs-3 text-success"></i></a>
+                      </button>
                       
                     </span>
                 </form>
@@ -109,14 +142,14 @@
                    @method('DELETE')
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title fw-bold text-danger" id="exampleModalLabel">supprimer</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body fw-bold">
 
            
                       <button class="btn fw-bold text-muted" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                       Êtes-vous sûr de <span class="text-danger">supprimé</span> le message de  <span class="text-dark">{{ $contact->user->nom }} {{ $contact->user->prenom }}</span>  <!-- une variable hors du foreach peut etre utilisé dans le foreach car existe comme un nom --> 
+                       Êtes-vous sûr de <span class="text-danger">supprimé</span>   <span class="text-dark">votre message ? </span>  <!--  --> 
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
@@ -146,4 +179,5 @@
  
     </div>
 </div>
+
 @endsection

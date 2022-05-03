@@ -8,13 +8,24 @@
      
         
   
-  <!-- pour s'être connecter --> 
+      <div class="container d-flex justify-content-center" style="min-height:7vh;">
+        <div style="max-width:500px;">
+          <!-- pour s'être connecter --> 
     @if ($message = Session::get('login'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
    <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif
+
+     <!-- pour s'être connecter --> 
+    @if ($message = Session::get('recover'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
 
         <!-- pour La création du compte --> 
     @if ($message = Session::get('register'))
@@ -23,6 +34,10 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif
+
+
+        </div>
+      </div>
 
     <!-- Modal02 -->
 <div class="modal fade" id="staticBackdrop1re1"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel11" aria-hidden="true">
@@ -217,7 +232,8 @@
   
          <button  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
            <i class="fa-solid  fa-thumbs-up"></i> j'aime
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+           <!-- visually-hidden pour l'icon --> 
+           <span class="position-absolute top-1 visually-hidden start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenement_s->count() }} <!-- pour le model Like ; dans le model user il y'a la methode evenement_s qui relient avec les evenement via le pivot like : j'ai répeté les memes choses , seulement il suffit d'aller voir dans le model user ces relations -->
              <span class="visually-hidden">unread messages</span>
                </span>
@@ -262,7 +278,7 @@
   
          <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
             évènements(participé)
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+           <span class="position-absolute top-1  visually-hidden start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->evenements->count() }} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
                </span>
@@ -311,7 +327,7 @@
   
          <button  id="dropdownMenuButton17" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
             associations(suivie)
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
+           <span class="position-absolute top-1 visually-hidden start-100 translate-middle badge rounded-pill bg-danger">
             {{ auth()->user()->associations->count()}} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
                </span>
@@ -349,45 +365,62 @@
               </div>
          @endif
 
+         @if(auth()->user()->role <> 'admin')
+
+    
+           @if($reponses == 0)  
+           
          <!-- message non-envoyé < 0 je le cache pour l'instant --> 
           <div class="dropup mx-3 ">
   
-         <button  id="dropdownMenuButton170" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
-             message<i class="fa-brands fs-3 fa-facebook-messenger"></i>
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger"> <!-- ici usercontact est le nom d' une methode  --> 
-            {{ auth()->user()->usercontacts->count()}} <!-- pour le model Like -->
+         <button  id="dropdownMenuButton170" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold" style="">
+           <i class="fa-brands fs-3 fa-facebook-messenger"></i>
+             réponse
+           <span class="position-absolute top-1 visually-hidden start-100 translate-middle badge rounded-pill bg-danger"> <!-- ici usercontact est le nom d' une methode  et VISUALLY-HIDDEN pour cacher l'icon en rouge  si c'est < 0  --> 
+              {{ $reponses}}  
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
             <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
             
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Vous n'avez envoyé aucun message  ! </a></li>
-            
-                    <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ url('/contact#floatingTextarea') }}">envoyé un message à l'administrateur</a></li>
+                 <li class="my-2"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ route('reponse') }}">Consulter tout les messages </a></li>
+              
+                 <li class="my-2">
+                   <a href="#" class="nav-link"> Aucune réponse de la part de l'administrateur</a>
+                 </li>
+                <li style="position:absolute;bottom:0px;width:100%;"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ url('/contact#floatingTextarea') }}">Envoyé un message a l'administrateur </a></li>
+
+             
               </ul>
               </div>
               <!-- fin --> 
-
-              <!-- message envoyé >0 -->
-               <div class="dropup mx-3">
+         
+         @else
+         <!-- message non-envoyé < 0 je le cache pour l'instant --> 
+          <div class="dropup mx-3 ">
   
-         <button  id="dropdownMenuButton179" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold">
-             message<i class="fa-brands fs-3 fa-facebook-messenger"></i>
-           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
-            0 <!-- pour le model Like -->
+         <button  id="dropdownMenuButton170" data-bs-toggle="dropdown" aria-expanded="false" class="btn position-relative  border border-black fw-bold" style="color:var(--pink)">
+           <i class="fa-brands fs-3 fa-facebook-messenger"></i>
+             réponse
+           <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger"> <!-- ici usercontact est le nom d' une methode  et VISUALLY-HIDDEN pour cacher l'icon en rouge  si c'est < 0  --> 
+              {{ $reponses}}  
              <span class="visually-hidden">unread messages</span>
                </span>
               </button>
             <ul class="dropdown-menu dropdown-menu-dark fw-bold" aria-labelledby="dropdownMenuButton2" style="min-width:60vh;min-height:20vh;position:relative">
             
-                 <li><a class="dropdown-item fw-bold my-2 mt-4" href="#"> Message envoyé  ! </a></li>
-            
-                    <li><hr class="dropdown-divider"></li>
-                <li style="position:absolute;bottom:3px;width:100%;"><a class="dropdown-item fw-bold text-primary" href="{{ url('/#associations') }}">Toutes les Associations</a></li>
+                 <li class="my-2"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ route('reponse') }}">Consulter tout les messages </a></li>
+              
+               
+                <li style="position:absolute;bottom:0px;width:100%;"><a class="dropdown-item mb-2 fw-bold text-warning" href="{{ url('/contact#floatingTextarea') }}">Envoyé un message a l'administrateur </a></li>
+
+             
               </ul>
-              </div> 
+              </div>
               <!-- fin --> 
+              @endif
+
+       @endif
 
 
       <a class="me-3" href="#"> <button class="col btn eiter border border-black fw-bold" data-bs-toggle="modal" data-bs-target="#staticBjkackdrop1re1">  <i class="fa-solid fa-lock"></i> &nbsp;autre</button></a>

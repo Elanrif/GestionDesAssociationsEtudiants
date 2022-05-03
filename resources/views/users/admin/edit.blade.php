@@ -146,7 +146,7 @@
          voulez-vous vraiment revenir a la <span class="text-primary fw-bold ">&nbsp; page préçedente </span> &nbsp;  ? 
       </div>
       <div class="modal-footer" style="margin-right:150px;">
-       <a href="{{ route('admin-users') }}"> <button type="button" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>
+       <a href="{{ route('admin-users') }}" class="nav-link"> <button type="button" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>
         <button type="button" class="btn d-inline px-4  btn-danger" data-bs-dismiss="modal">Non</button>
       </div>
     </div>
@@ -164,7 +164,7 @@
          Êtes-vous sûr de <span class="text-primary fw-bold ">&nbsp; vouloir Modifier vos informations ! </span> &nbsp; ? 
       </div>
       <div class="modal-footer" style="margin-right:150px;">
-       <a href="{{ route('home') }}"> <button type="submit" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>
+       <a href="{{ route('home') }}" class="nav-link"> <button type="submit" class="btn d-inline px-4 btn-info" data-bs-dismiss="modal"> Oui </button> </a>
         <button type="button" class="btn d-inline px-4  btn-danger" data-bs-dismiss="modal">Non</button>
       </div>
     </div>

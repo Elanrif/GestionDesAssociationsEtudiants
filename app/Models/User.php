@@ -99,5 +99,15 @@ class User extends Authenticatable
          return $this->hasMany(Usercontact::class) ; 
      }
 
+    
+
+
+     // d'abord user_id car c'est lui qui reference ce model user ; aussi dans la migration il a referencé 
+     // la with methode permet de prendre les colones via le pivot dans la vue 
+     
+      public function reponses(){ 
+
+        return $this->belongsToMany(Usercontact::class ,'reponses' ,'user_id', 'usercontact_id')->withPivot('message','created_at') ; 
+    }
 
 }

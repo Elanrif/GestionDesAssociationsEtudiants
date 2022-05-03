@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Association;
+use App\Models\Reponse;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -18,8 +19,25 @@ class HomeController extends Controller
     public function index() { 
         
        $associations = Association::all() ;
-        return view('users.auth.user.home',compact('associations')) ; 
+       $reponses = Reponse::where('user_id',auth()->user()->id)->count() ; 
+        return view('users.auth.user.home',compact('associations','reponses')) ; 
     }
+
+    public function reponseadmin() { 
+
+        // je pourrais faire find , mais puisque je veux utiliser @foreach passer direcement get() pour recuperer la collection
+     $user_contacts = Usercontact::where('user_id',auth()->user()->id)->get() ; 
+    
+     //admin pour recuperer sa photo 
+
+     $admin = User::where('role','admin')->first() ; 
+     $count_message = Usercontact::count() ;
+   
+      $associations = Association::all() ;
+        return view('users.auth.user.reponse',compact('associations','user_contacts','count_message','admin')) ; 
+     
+    }
+
     public function compte() 
     { 
         $associations = Association::all() ;

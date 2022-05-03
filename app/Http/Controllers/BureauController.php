@@ -10,6 +10,7 @@ use App\Models\Evenement;
 use App\Models\Participe;
 use App\Models\Association;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
 
 class BureauController extends Controller
@@ -116,7 +117,7 @@ class BureauController extends Controller
     public function membreCreate(Request $request){ 
 
           $request->validate([
-              'user_id'=>'required',
+              'user_id'=>['required',Rule::unique('membres')],
           ]) ; 
 
           Membre::create($request->all()) ; 

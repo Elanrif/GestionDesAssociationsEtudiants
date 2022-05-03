@@ -40,9 +40,9 @@
  </div>
 <!-- saisie de formulaire --> 
 
-@guest <!-- pour l'invité --> 
+@guest <!-- pour l'invité : c'était guest.contact mais je dois le supprimer--> 
     
-   <form action="{{ route('guest.contact') }}" method="post"> <!-- autre formulaire pour des invités --> 
+   <form action="#" method="post"> <!-- autre formulaire pour des invités --> 
      @csrf
 
  <div class="container-fluid d-flex justify-content-center">
@@ -85,7 +85,7 @@
              <div class="d-flex" style="justify-content:space-between">
                  <p class="fw-bold"> <span style="color:rgb(187, 18, 18);">*</span> champs obligatoire</p>
                  
-                 <button class="btn text-end btn-outline-success fw-bold">Envoyer mon message </button>
+                <a href="{{ route('login') }}"> <button type="button" class="btn text-end btn-outline-success fw-bold">Envoyer mon message </button> </a>
              </div>
          </div>
      </div>
@@ -100,7 +100,7 @@
 
  @if(auth()->user()->role == "admin") <!-- si c'est l'admin --> 
  
-  <form action="{{ route('auth.contact') }}" method="post"> <!-- autre formulaire -->
+  <form action="#" method="post"> <!-- autre formulaire -->
      @csrf
  <div class="container-fluid d-flex justify-content-center">
      <div class="card" style="width:68%;min-height:50vh;">
@@ -144,7 +144,7 @@
 
  @else  <!-- sinon pour un simple utilisateur --> 
 
-  <form action="{{ route('auth.contact') }}" method="post"> <!-- autre formulaire -->
+  <form id="tom" action="{{ route('auth.contact') }}" method="post"> <!-- autre formulaire -->
      @csrf
  <div class="container-fluid d-flex justify-content-center">
      <div class="card" style="width:68%;min-height:50vh;">

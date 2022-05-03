@@ -67,6 +67,10 @@ Route::group(['namespace' => 'Auth'], function() {
      
 });
 
+// Recupere mon compte 
+Route::get('recover',[ContactController::class , 'recover'])->name('recover.account');
+Route::post('recover',[ContactController::class , 'recoveraccount'])->name('recover.myaccount');
+
 // tout simplement cette view pour pouvoir passer des models a la vue c'est tout 
 // la vue show ne doit pas heriter de son père car alors il existerait la variable $associatoins avec (s) 
 // mais dans show on veut seulement association sans ('s) 
@@ -147,3 +151,9 @@ Route::post('contact/utilisateur/message/admin',[ContactController::class,'authC
 Route::get('admin/contact/generale',[ContactController::class,'admincontact'])->name('admin.contact');
 Route::delete('admin/contact/delete',[ContactController::class,'contactdelete'])->name('contactuser.delete');
 
+// user reponse 
+
+Route::get('message/admin/reponse',[HomeController::class , 'reponseadmin'])->name('reponse') ;
+
+// admin répond aux message 
+Route::post('message/admin/reponse',[ContactController::class , 'reponse'])->name('reponse.admin') ;

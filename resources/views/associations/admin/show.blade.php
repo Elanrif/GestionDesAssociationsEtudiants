@@ -120,13 +120,13 @@
 
 <!-- PARTIE DES ASSOCIATOINS --> 
 <div class="container-fluid  px-4" style="min-height:50vh;background-color:rgb(228, 230, 231);">
-  <p class="text-center fw-bold pt-4 fs-1">Les Évènements </p>
+  <p class="text-center fw-bold pt-4 fs-1">Les évènements </p>
 
   @include('associations.bureau.evenement.create') <!-- pour créer l'evenements --> 
 
   <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
  
-    @foreach ($association->evenements as $evenement )
+    @foreach ($association->evenements->sortByDesc('id') as $evenement )
       
     <div class="col pb-5">
       <div class="card">
@@ -227,9 +227,9 @@
   </thead>
   <tbody>
    
-      @foreach($association->users as $user) 
+      @foreach($association->users->sortByDesc('id') as $user) 
     <tr>
-      <th scope="row">{{ $user->id }}</th>
+      <th scope="row">{{ $loop->index + 1}}</th>
       <td>{{ $user->nom }}</td>
       <td>{{ $user->prenom }}</td>
       <div class="row">

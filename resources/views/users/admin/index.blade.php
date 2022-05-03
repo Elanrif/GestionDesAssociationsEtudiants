@@ -92,10 +92,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
        <div class="modal-body fw-bold d-flex justify-content-center">
-        êtes-vous sur de vouloir  <span class="text-primary px-2">supprimé</span> {{$user->nom}}  ? 
+        êtes-vous sur de vouloir  <span class="text-danger fw-bold px-2">supprimé</span> <span class="text-primary"> {{$user->nom}} </span>   ? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">non</button>
         <form action="{{ route('admin-users.destroy', $user->id) }}" method="post">
          @csrf
          @method('DELETE')
