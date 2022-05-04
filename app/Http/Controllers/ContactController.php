@@ -104,6 +104,14 @@ class ContactController extends Controller
     
     
     }
+    // supprimer mon contact admin 
+    public function admindelete(Usercontact $contact) { 
+
+        dd() ; 
+        $contact->delete() ; 
+
+        return back() ; 
+    }
 
     public function contactdelete(Request $request) 
     { 
@@ -115,9 +123,9 @@ class ContactController extends Controller
 
     public function reponse(Request $request) { 
 
-        $auth = auth()->user()->id ; 
+        
         Reponse::create([
-            'usercontact_id'=> $auth, 
+            'usercontact_id'=> $request->contact, 
             'user_id'=> $request->user_id, 
             'message'=> $request->message, 
         ]);

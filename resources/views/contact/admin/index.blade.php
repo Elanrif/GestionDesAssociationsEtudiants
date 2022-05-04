@@ -92,6 +92,7 @@
 
                         <li><a class="dropdown-item fw-bold text-danger" href="#">
                             <input type="text" class="visually-hidden" value="{{$contact->user->id }}" name="user_id">
+                            <input type="text" class="visually-hidden" value="{{$contact->id }}" name="contact">
                             <button class="btn fw-bold text-primary" type="submit">Envoyer</button></a></li>
                         
                       </ul>

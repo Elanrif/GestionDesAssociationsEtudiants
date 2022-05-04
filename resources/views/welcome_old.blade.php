@@ -28,21 +28,20 @@
       </div>
     </div>
     
-    @foreach ($evenements as $evenement )
-      
-      <div class="carousel-item">
-
-      <div class="img-fluid rounded-start" alt="..." style="height:75vh;background:linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) ,url({{ asset('storage/'.$evenement->image) }}) center / cover no-repeat  ;"  data-bs-interval="3000" ></div>
-
+    <div class="img2 carousel-item" data-bs-interval="3000" style="height:75vh;">
+     
       <div class="carousel-caption d-none d-md-block">
-        <h1 class="fw-bold" style="margin-bottom:200px;">Évènement {{ $evenement->type }}</h1>
+        <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
-
-    @endforeach
+    <div class="img3 carousel-item" data-bs-interval="3000" style="height:75vh;">
   
-    
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
     <span class="carousel-control-prev-icon w-25" aria-hidden="true"></span>
@@ -429,9 +428,9 @@
 
 <div id="eventss" class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
  
-<div class="container-fluid d-flex justfy-content-center" style="background-color: rgb(179, 150, 241);">
-   
-    <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
+<div class="container-fluid my-5">
+ 
+    <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
  
     @foreach ($evenements as $evenement ) <!-- ici j'ai les evenements --> 
       
@@ -452,7 +451,7 @@
         @auth <!-- personne doit être connecté pour voir -->
         <div class="d-flex ms-3 mb-3">
           <!-- le boutton savoir plus --> 
-         <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">savoir Plus</button></a>
+         <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">En savoir Plus</button></a>
          @if(auth()->user()->participe($evenement)) <!-- une methode que je vais créer sur le model user , toujours et je recupere directement l'evenement concerné puisque je suis dedans -->   
       <!-- pour supprimer la participation -->
       <form action="{{ route('deleteParticipe')}}" method = "post">
@@ -486,7 +485,7 @@
 
         <a href="#" class="nav-link">
          <button type="submit" class="btn position-relative nav-liens   border border-black fw-bold">
-           <i class="fa-solid  fa-thumbs-up"></i>
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
             {{ $evenement->user_s->count() }} <!-- pour le model Like -->
              <span class="visually-hidden">unread messages</span>
@@ -507,7 +506,7 @@
 
           <a href="#" class="nav-link ">
         <button type="submit" class="btn position-relative nav-lien mx-1 border border-black fw-bold">
-           <i class="fa-solid  fa-thumbs-up"></i> 
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
              <!-- a partir de evenent j'accede a la relation manytomany et je prends le count --> 
               {{ $evenement->user_s->count() }}
@@ -528,7 +527,7 @@
           <!-- puisque je recupere l'evenent il suffit de passer par la relation qu'il y'a entre les deux et ..-->  
 
   <!-- donc puisque je veux l'association->id il suffit de passer par la méthode pour trouver cette association-->        
- <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link fs-5"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">savoir Plus</button></a>
+ <a href="{{ route('user.association',$evenement->association->id) }}" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold nav-evenement">En savoir Plus</button></a>
                       <!-- Modal pour la personne qui veut suivre mais est un invité -->
 <div class="modal fade" id="guest" tabindex="-1" aria-labelledby="exampleModalLabeler" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -576,7 +575,7 @@
      <form action="#" method = "post">
       @csrf
       
-       <a class="nav-link"><button data-bs-toggle="modal" data-bs-target="#guest" type="button" href="#" class="btn border border-black  fw-bold nav-lien">Participer</button></a>
+       <a class="nav-link"><button data-bs-toggle="modal" data-bs-target="#guest" type="button" href="#" class="btn border border-black fw-bold nav-lien">Participer</button></a>
      </form>
  
      <!--pour les likes --> 
@@ -586,7 +585,7 @@
 
           <a  class="nav-link ">
         <button type="button" data-bs-toggle="modal" data-bs-target="#like" class="btn position-relative nav-lien  border border-black fw-bold">
-           <i class="fa-solid  fa-thumbs-up"></i> 
+           <i class="fa-solid  fa-thumbs-up"></i> j'aime
            <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
              <!-- a partir de evenent j'accede a la relation manytomany et je prends le count --> 
               {{ $evenement->users->count() }}

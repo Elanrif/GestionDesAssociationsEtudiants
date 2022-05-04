@@ -10,6 +10,7 @@ class Reponse extends Model
     // la réponse de l'administrateur 
 
     use HasFactory;
+    
     protected $guarded = [] ; 
 
   

@@ -22,6 +22,15 @@ use App\Models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/',function(){ 
+    $associations = Association::all() ; 
+    $evenements = Evenement::all() ; 
+    return view('welcome',compact(['associations','evenements'])) ; 
+})->name('welcome');
+
+
+
 Route::get('/layouts/app',function() { 
     $associations = Association::all() ; 
 
@@ -32,11 +41,6 @@ Route::get('/default-laravel', function () {
     return view('default-laravel');
 });
 
-Route::get('/',function(){ 
-    $associations = Association::all() ; 
-    $evenements = Evenement::all() ; 
-    return view('welcome',compact(['associations','evenements'])) ; 
-})->name('welcome');
 
 // compte admin 
 Route::get('/admin-moncompte' ,[HomeController::class , 'compte'])->name('admin-moncompte') ; 
