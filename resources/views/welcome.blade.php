@@ -18,26 +18,56 @@
   <!-- fin -->
   <div class="carousel-inner">
     <div class="img1 carousel-item active" data-bs-interval="5000" style="height:75vh;">
+      <a href="#carousel">
       <div class="carousel-caption d-none d-md-block">
-        <h2 class="fw-bold" style="padding-bottom:140px;"><a  href="#"> Les Associations Etudiants de L'université Abdelmalek Essâadi de Tétouan </a></h2>
+        <h2 class="fw-bold" style="padding-bottom:140px;font-size:40px;"> Les Associations Etudiants de L'université Abdelmalek Essâadi de Tétouan </h2>
         <p style="margin-left-right: 100px;font-size:18px;">
           
           Nous disposons de plusieurs associations qui sont a votre dispositions . Chaque associations est constituée des Membres du Bureau qui dirige l'association 
           
         </p>
       </div>
+    </a>
     </div>
     
     @foreach ($evenements as $evenement )
       
       <div class="carousel-item">
-
+        <!-- par défaut le lien est $association->id mais vu que je suis dans les évenements je dois passer par une methode pour trouver cette association -->
+        <a href="{{ route('user.association',$evenement->association->id) }}">
       <div class="img-fluid rounded-start" alt="..." style="height:75vh;background:linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) ,url({{ asset('storage/'.$evenement->image) }}) center / cover no-repeat  ;"  data-bs-interval="3000" ></div>
 
       <div class="carousel-caption d-none d-md-block">
-        <h1 class="fw-bold" style="margin-bottom:200px;">Évènement {{ $evenement->type }}</h1>
-        <p>Some representative placeholder content for the second slide.</p>
+        <h1 class="fw-bold" style="margin-bottom:100px;font-size:40px;">Évènement > {{ $evenement->type }} 
+         </h1>
+          
+         <ul class="nav flex-column text-start fs-4 text-black fw-bold">
+            <li class="nav-item text-black fw-bold">
+            <i class="fa-solid fa-calendar me-2 text-black"></i>  Date >  <span class="text-light">{{ $evenement->date }} 
+</span>            </li>
+            <li>
+             <i class="fa-solid fa-clock me-2 text-black"></i> Heure >  <span class="text-light"> {{ $evenement->heure }}</span>
+            </li>
+            <li>
+             <i class="fa-solid fa-location-dot me-2 text-black"></i>  Lieu >  <span class="text-light">{{ $evenement->lieu }}
+ </span>           </li>
+       
+          </ul>
+      
+
+               <p class="fw-bold fs-3 text-center">
+          <ul class="nav text-end">
+            
+            <li class="nav-item">
+               {{  $evenement->description }}
+            </li>
+          </ul>
+            
+         </p>
+          
       </div>
+
+      </a>
     </div>
 
     @endforeach
@@ -390,7 +420,7 @@
 <div id="associations" class="container-fluid py-4" style="background-color:var(--gold-crayola)">
 
   
-<h4  class="text-center px-5"  style="font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
+<h4  class="text-center px-5"  id ="carousel" style="font-size:70px;font-width:bold">Découvrir Toutes les Associations ! </h4>
 
 @foreach ($associations as $association )
   
@@ -429,7 +459,7 @@
 
 <div id="eventss" class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
  
-<div class="container-fluid d-flex justfy-content-center" style="background-color: rgb(179, 150, 241);">
+<div class="container-fluid d-flex justfy-content-center" style="background-color: rgb(104, 5, 72);">
    
     <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
  

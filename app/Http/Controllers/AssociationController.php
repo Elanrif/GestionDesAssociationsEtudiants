@@ -7,6 +7,7 @@ use App\Models\Evenement;
 use App\Models\Association;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -199,6 +200,7 @@ class AssociationController extends Controller
             'image' =>'required'
         ]);
 
+        // ne pas oublié ça avant dans la view avant STORAGE DISK ETC........ enctype="multipart/form-data"
           $path = Storage::disk('public')->put('event_image', $request->image);
       
       
@@ -221,21 +223,34 @@ class AssociationController extends Controller
         public function eventUpdate(Request $request , Evenement $evenement) 
         { 
 
-            $path = Storage::disk('public')->put('event_image', $request->image);
+            // methode classique 
+          
+          // $path = Storage::disk('public')->put('event_image', $request->image);
 
             $request->validate([
-            'type' => $request->type,
-            'date' =>  $request->date,
-            'heure' =>  $request->heure,
-            'lieu' =>  $request->lieu,
-            'description' => $request->description,
-            'association_id' => $request->association_id ,
-            'image' => $path 
+            'type' => 'required',
+            'date' =>  'required',
+            'heure' => 'required',
+            'lieu' =>  'required',
+            'description' => 'required',
+            'association_id' => 'required',
+            'image' => 'required' ,  
             ]); 
 
-            $evenement->update($request->all()) ; 
-            dd($evenement) ; 
+            
 
+             $path = Storage::disk('public')->put('event_image', $request->image);
+      
+             $evenement->type = $request->type ; 
+             $evenement->date = $request->date ;
+             $evenement->heure  = $request->heure ;
+             $evenement->lieu = $request->lieu ; 
+             $evenement->description = $request->description ; 
+             $evenement->association_id = $request->association_id ; 
+             $evenement->image = $path ; 
+             $evenement->save() ; 
+
+        
             return back() ; 
         }
 

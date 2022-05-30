@@ -15,7 +15,7 @@
       <div class="modal-body">
 
 
-        <form class="form" method="POST" action="{{ route('update.bureau',['bureau'=>$bureau->id]) }}">
+        <form class="form" method="POST" action="{{ route('update.bureau',['bureau'=>$bureau->id]) }}" enctype="multipart/form-data">
 
           @csrf
           @method('put')
@@ -110,10 +110,20 @@
      @enderror
   </div>
 
-  <div class="col-md-5">
+  <div class="col-md-5 visually-hidden">
     <label for="email" class="form-label fw-bold">Association</label>
     <input type="text" name="association_id" value="{{ $association->id}}" required class="form-control @error('association_id') is-invalid @enderror" id="email" placeholder="saisir votre email" >
      @error('association_id')
+          <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+           </span>
+     @enderror
+  </div>
+
+  <div class="col-md-5">
+    <label for="image" class="form-label fw-bold">Image</label>
+    <input type="file" name="image"  class="form-control @error('image') is-invalid @enderror" id="image">
+     @error('image')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
            </span>

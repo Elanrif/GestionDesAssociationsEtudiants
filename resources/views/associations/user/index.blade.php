@@ -17,7 +17,7 @@
   <div class="bureau-asso card-img" alt="..." style="overflow: hidden;min-height:80vh; background:linear-gradient(rgba(6, 6, 6, 0.6),rgb(2, 4, 65)),url({{ asset('storage/'.$association->image) }}) center / cover no-repeat  ;"></div>
   <div class="card-img-overlay ms-4" style="margin:50px;overflow:hidden;">                         
     <h3 class="card-title fs-1 fw-bold">Association <span class="text-uppercase">{{ $association->nom }}</span></h3>
-     <h3 class="card-title fs-1 my-4 fw-bold">Date <span class="text-primary text-uppercase">{{ $association->date }}</span></h3>
+     <h3 class="card-title fs-1 my-4 fw-bold">Date création :  <span class="text-primary text-uppercase">{{ $association->date }}</span></h3>
     <p class="card-text fs-3 fw-bold w-50"> {{ $association->description }}.</p>
    
     @auth
@@ -82,13 +82,13 @@
      </div>
      <div class="container-fluid d-flex justify-content-center">
 
-        <div style="max-width:1000px;min-height:400px;"> <!-- max-width pour maximum 1000px ne pas dépasser ça ; en revanche il continuera au centre en agrandissant et s'arrête a cette taille -->
+        <div style="max-width:1500px;min-height:400px;"> <!-- max-width pour maximum 1000px ne pas dépasser ça ; en revanche il continuera au centre en agrandissant et s'arrête a cette taille -->
        
-          <div class="row row-cols-1 row-cols-md-3 gy-5 mt-3">
+          <div class="row row-cols-1 row-cols-md-3 mt-3">
 
              @foreach ($association->bureaus as $bureau)
-            <div class="col hoover" style = "transition:0.6s ease-out;"> <!-- je vais centré les balises p seulement -->
-              <p class="text-center">  <img src="{{asset('images/association_default/DEVE-VE-Association_etudiantes.jpg') }}" class="img-fluid" alt="don't exist" style="height:60px; width:60px; border-radius:70px;">
+            <div class="col hoover px-5" style = "transition:0.6s ease-out;"> <!-- je vais centré les balises p seulement -->
+              <p class="text-center">  <img src="{{asset('storage/'.$bureau->image) }}" class="img-fluid" alt="don't exist" style="height:60px; width:60px; border-radius:70px;">
               </p>
               <p class="text-center fw-bold" style="font-size:18px;color:var(--pink)">{{ $bureau->Poste }}</p>
              <p class="text-center fw-bold" style="color:#26046a"><i class="fa-solid fa-envelope"></i> {{ $bureau->email }} </p>
@@ -113,12 +113,15 @@
 
 </div>
 
+
+
 <div class="container-fluid my-5">
     <!-- $association->id pour avoir l'instance de l'association dans le nouveau page $association -->
    
  <div id="evenement" class="text-center fs-1 fw-bold " style="color:var(--blue)">Les évènements </div> <br><br>
     <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
  
+
     @foreach ($association->evenements as $evenement )
       
     <div class="col pb-5">

@@ -17,7 +17,7 @@
       <div class="modal-body">
 
 
-        <form class="form" method="POST" action="{{ route('update.evenement') }}">
+        <form class="form" method="POST" action="{{ route('update.evenement',$evenement->id) }}" enctype="multipart/form-data">
         
             @csrf
             @method('put')
@@ -89,7 +89,7 @@
         <div class="col col-md-9">
           <div class="mb-3">
      <label for="exampleInputEmail11" class="form-label fw-bold">Image </label>
-     <input type="file" class="form-control" name = "image" value = "{{$evenement->image}}" id="exampleInputEmail11" aria-describedby="emailHelp" placeholder="Date création..." required>
+     <input type="file" class="form-control" name ="image"  id="exampleInputEmail11" aria-describedby="emailHelp" placeholder="Date création..." required>
      
           </div>
          </div>

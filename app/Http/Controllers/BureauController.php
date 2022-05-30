@@ -12,6 +12,7 @@ use App\Models\Association;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class BureauController extends Controller
 {
@@ -37,6 +38,7 @@ class BureauController extends Controller
             "association_id"=>['required']
         ]);
         
+        $path = Storage::disk('public')->put('bureaus_image',$request->image) ; 
          
 
         $association->bureaus = new Bureau() ; // une nouvelle ligne('enregistrement') vierge
@@ -48,6 +50,7 @@ class BureauController extends Controller
         $association->bureaus->Tel = $request->Tel; 
         $association->bureaus->email = $request->email; 
         $association->bureaus->filiere = $request->filiere ; 
+        $association->bureaus->image = $path ; 
         $association->bureaus->association_id = $request->association_id ; 
 
         $association->bureaus->save() ; 
@@ -81,6 +84,7 @@ class BureauController extends Controller
             "association_id"=>['required']
         ]);
         
+         $path  = Storage::disk('public')->put('bureaus_image',$request->image) ; 
          
                $bureau->nom = $request->nom ; 
                $bureau->prenom = $request->prenom ; 
@@ -89,6 +93,22 @@ class BureauController extends Controller
                $bureau->Tel = $request->Tel; 
                $bureau->email = $request->email; 
                $bureau->filiere = $request->filiere ; 
+
+               if($request->image == null ){
+
+                   $bureau->image = $bureau->image ; 
+                    $bureau->association_id = $bureau->association_id ;  // je dois prendre le même id car je ne peux pas mettre $request->association_id car c'est une clé etranger donc il reste le même 
+
+               $bureau->save() ;
+            
+         // $associations = Association::all() ;
+       // $users = User::all() ; 
+        return  redirect()->back()->with('edit','Modification effectuée avec succès '); ; 
+        
+               }
+
+               // else 
+               $bureau->image = $path ; 
                $bureau->association_id = $bureau->association_id ;  // je dois prendre le même id car je ne peux pas mettre $request->association_id car c'est une clé etranger donc il reste le même 
 
                $bureau->save() ;
@@ -117,7 +137,9 @@ class BureauController extends Controller
     public function membreCreate(Request $request){ 
 
           $request->validate([
-              'user_id'=>['required',Rule::unique('membres')],
+
+              'user_id'=>['required'],
+
           ]) ; 
 
           Membre::create($request->all()) ; 

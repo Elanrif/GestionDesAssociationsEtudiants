@@ -68,6 +68,7 @@ public function index() {
     public function images(Request $request){ 
 
         // pour sauvegarder l'image dans le storage 
+        // mais avant il faut importer ça car la fonction extension() est définit sur ça : use App\Http\Controllers\Controller;
     
           $filename = time() . '.' . $request->image->extension() ;
 

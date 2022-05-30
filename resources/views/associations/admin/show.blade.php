@@ -56,15 +56,13 @@
     @endif 
 
 
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white mt-2">
   <div class="card-img" alt="..." style="height:80vh;background:linear-gradient(rgba(40, 7, 10, 0.6),rgb(4, 2, 59)),url({{ asset('storage/'.$association->image) }}) center / cover no-repeat  ;"></div>
   <div class="card-img-overlay ms-4" style="margin:50px">
     <h3 class="card-title fs-1 fw-bold">Association <span class="text-uppercase">{{ $association->nom }}</span></h3>
      <h3 class="card-title fs-1 my-4 fw-bold">Date <span class="text-primary text-uppercase">{{ $association->date }}</span></h3>
-    <p class="card-text fs-3 fw-bold">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text">Last updated 3 mins ago
-        {{ $association->description }}
-    </p>
+    <p class="card-text fs-3 fw-bold"> {{ $association->description }}.</p>
+    
 
     <a href="{{ route('admin-asso.index') }}"> <button class="btn btn-danger fw-bold mt-4 p-4 rounded-circle" style="font-size:40px;">Retour</button>
         </a>
@@ -83,8 +81,9 @@
   @foreach ($association->bureaus as $bureau) <!-- déja on a le bureau pas besoin de faire $association's as $association avant car on l'a déja fait et ici on a direcement $association sans  -->
   <div class="col">
       <div class="card shadow h-100 admin-assohover "  style="transition:0.6s ease-in-out;"> 
-          <img src="{{ asset("images/association_default/DEVE-VE-Association_etudiantes.jpg") }}" class="card-img-top" alt="..." style="margin-left:150px; margin-top:10px;width:120px;border-radius:70% ;height:20vh;">
+          <img src="{{ asset("storage/".$bureau->image) }}" class="card-img-top" alt="..." style="margin-left:150px; margin-top:10px;width:120px;border-radius:70% ;height:20vh;">
           <div class="card-body">
+            
               <h4 class="card-title mt-3 text-primary">{{ $bureau->Poste }} </h4>
               <h5 class="card-title mt-2 text-dark fw-bold">{{ $bureau->nom }} {{ $bureau->prenom }}</h5>
               <p class="card-text">
@@ -96,7 +95,7 @@
                       
                   </ul>
                 
-                 This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                </p>
   <div class="d-flex">
      <!-- pour la suppression d'un membe du bureau  --> 
 

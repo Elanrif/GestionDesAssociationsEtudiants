@@ -142,7 +142,7 @@ Route::delete('/admin-asso/membreDestroy/{user}',[BureauController::class,'membr
 // pour les évènements 
 
 Route::post('/admin-asso/evenements' ,[AssociationController::class , 'eventStore'])->name('adminevent.store') ; 
-Route::put('admin-asso/evenement/update',[AssociationController::class , 'eventUpdate'])->name('update.evenement');
+Route::put('admin-asso/evenement/update/{evenement}',[AssociationController::class , 'eventUpdate'])->name('update.evenement');
 Route::delete('/admin-asso/evenement/delete/{evenement}',[AssociationController::class,'eventDelete'])->name('delete.event');
 
 

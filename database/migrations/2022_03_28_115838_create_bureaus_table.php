@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('Tel')->unique();
             $table->date('date_mandat');
             $table->string('Poste');
+            $table->string('image') ; 
             $table->foreignId('association_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->unique(['Poste','association_id','email']);
             $table->timestamps();

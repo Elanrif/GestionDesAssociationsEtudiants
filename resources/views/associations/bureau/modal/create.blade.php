@@ -16,7 +16,7 @@
       <div class="modal-body">
 
 
-        <form class="form" method="POST" action="{{ route('store.bureau',$association->id) }}">
+        <form class="form" method="POST" action="{{ route('store.bureau',$association->id) }}" enctype="multipart/form-data">
   <!-- maintenant la store methode connaitra l'association aussi dans le web je dois l'ajouter ce paramètre $association --> 
     <span class="row g-3 gx-5 d-flex justify-content-center mt-3">
     @csrf
@@ -109,10 +109,20 @@
      @enderror
   </div>
 
-  <div class="col-md-5">
+  <div class="col-md-5 visually-hidden">
     <label for="email" class="form-label fw-bold">Association</label>
-    <input type="text" name="association_id" value="{{ $association->id}}" required class="form-control @error('association_id') is-invalid @enderror" id="email" placeholder="saisir votre email" >
+    <input type="text"  name="association_id" value="{{ $association->id}}" required  class="form-control @error('association_id') is-invalid @enderror" id="email" placeholder="saisir votre email" >
      @error('association_id')
+          <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+           </span>
+     @enderror
+  </div>
+
+   <div class="col-md-5">
+    <label for="image" class="form-label fw-bold">Image</label>
+    <input type="file"  name="image" required  class="form-control @error('image') is-invalid @enderror" id="image"  >
+     @error('image')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
            </span>
