@@ -28,7 +28,7 @@
         <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
           @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="nav-item px-5">
-          <a class="nav-link  fs-5  nav-lien fw-bold rounded-2  {{request()->is('admin*') ? 'nav-liens':''}} " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+          <a class="nav-link  fs-5  nav-lien fw-bold rounded-2  {{request()->is('admin-users*') ? 'nav-liens':''}} " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
         </li>
         @endif
         <li class="nav-item px-5">
@@ -43,7 +43,7 @@
           <!-- dropdown-menu-dark si on veut un menu noire --> 
           <ul class="dropdown-menu dropdown-menu-dark fw-bold px-4 py-3" aria-labelledby="navbarDropdown">
             @foreach($associations as $association)
-               <li><a class="dropdown-item py-2 fs-5" href="{{ route('user.association',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
+               <li><a class="dropdown-item py-2 fs-5 {{ request()->is('admin-asso/association/') ? 'nav-liens' : '' }}" href="{{ route('user.association',$association->id) }}">{{ $association->nom }} {{ $association->date }}</a></li>
             @endforeach
 
              <hr>

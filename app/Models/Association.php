@@ -27,4 +27,9 @@ class Association extends Model
 
         return $this->hasMany(Evenement::class) ;
     }
+
+    public function user_comments() { 
+
+        return $this->belongsToMany(User::class , 'commentaires')->withPivot('id','commentaire','created_at','user_id','association_id')->orderByPivot('id', 'desc') ;
+    }
 }

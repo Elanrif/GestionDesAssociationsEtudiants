@@ -19,6 +19,6 @@ class Usercontact extends Model
 
     public function reponses() { 
 
-        return $this->belongsToMany(User::class,'reponses','usercontact_id','user_id')->withPivot('message','created_at') ;
+        return $this->belongsToMany(User::class,'reponses','usercontact_id','user_id')->withPivot('message','created_at','id') ;
     }
 }

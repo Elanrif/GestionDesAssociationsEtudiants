@@ -1,12 +1,36 @@
 @extends("source/layout")
 @section('content')
 
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white" style="margin-top:40px;">
 <!-- pour faire dynamique l'image de l'asso dans le disque storage -->    
 
  <!-- suppression membre du bureau --> 
+ 
+  @if ($message = Session::get('comment'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif 
+     @if ($message = Session::get('deleted'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif 
+
+     @if ($message = Session::get('edit'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif 
+
    @if ($message = Session::get('suivis'))
-     <div class="container d-flex justify-content-center mt-2 bg-body rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+     <div class="container d-flex bg-transparent  justify-content-center mt-2 bg-body rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
    <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
   <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -73,6 +97,10 @@
   </div>
 </div>
 
+
+   
+
+
 <div class="container-fluid  my-5">
     <!-- $association->id pour avoir l'instance de l'association dans le nouveau page $association -->
 
@@ -119,7 +147,7 @@
     <!-- $association->id pour avoir l'instance de l'association dans le nouveau page $association -->
    
  <div id="evenement" class="text-center fs-1 fw-bold " style="color:var(--blue)">Les évènements </div> <br><br>
-    <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
+    <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
  
 
     @foreach ($association->evenements as $evenement )
@@ -291,6 +319,220 @@
 
 </div>
 
+<div class="container" style = "min-height:40vh;">
+   <div class="row">
 
+    <hr>
+
+    <!-- fonction qui prend le count des commentaires , car on veut afficher une seule instance pas a chaque itération l'afficher ; 
+    aussi groupBy() nous permet parmi ces faculté de faire le count d'une colonne spécifique --> 
+
+
+    <!-- fin --> 
+
+    
+    
+    <div class="my-5 ms-3">
+
+
+      @if($association->user_comments->count() != 0 ) <!-- pour chaque utilisateur qui a laissé un commentaire  ; on le compte meme si elle est repeté n fois , pas de pivot ici : car ne marche pas --> 
+  
+      <h3 class="fw-bold py-4 text-primary">{{ $association->user_comments->count() }}  Commentaires <i class="fa-solid fa-comments ms-2"></i></h3> 
+
+       <div class="my-3">
+
+         <form action="{{ route('commentaire') }}" method="post">
+            @csrf 
+                    
+         <div class="row">
+                 <img class="pe-2 d-iline col-3" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
+                 
+                 <div class="form-floating col ">
+                   <input type="text" name="association_id" class="visually-hidden" value = "{{ $association->id }}">
+                   <input type="text" name="user_id" class="visually-hidden" value = "{{ auth()->user()->id}}">
+                 
+    <textarea class="form-control" required name="commentaire" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    <label for="floatingTextarea">Ajouter un nouveau commentaire</label>
+  </div>
+           
+
+               <div class="col">
+               
+                      <span class="fw-bold fs-5 ms-3" > 
+                    <div class="nav-liendd">
+                     
+                     <button class="btn fw-bold" type="submit">Ajouter un commentaire</button>  </div> </span>
+
+              </div> 
+
+        </div>
+              
+
+                </form>
+
+                
+                
+              </div> <!-- parent --> 
+           
+              <!-- button pour supprimé les messages envoyé pas encore fait --> 
+              <br>
+        </div>
+              
+            </div>
+
+       @foreach ($association->user_comments as $item)
+  
+      
+      <!--  pour afficher seulement les commentaires de cette assocation ou je me trouve  au lieu d'affiher tout -->
+        
+        @if(auth()->user()->id == $item->pivot->user_id)
+        <div class="my-3">
+                 <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
+              <span class="fw-bold text-primary"> {{ $item->nom }} {{ $item->prenom }} 
+              <span class="text-dark"> {{ $item->pivot->created_at }}</span> </span> 
+
+               <span class="dropup ">
+                <span class="text-black " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="fw-bold fs-1 ms-3" style="cursor:pointer;">...</span>
+
+                </span>
+
+                         <!-- Modal pour modifier commentaire --> 
+<!-- Modal -->
+<div class="modal fade" id="ex{{ $loop->index }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier commentaire</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+       <form action="{{ route('edit-comment') }}" method="post">
+                   @csrf 
+                  @method('put')
+                
+                 
+      <div class="modal-body">
+
+         <input type="text" class="visually-hidden" name="id" value="{{ $item->pivot->id }}">
+                  <input type="text" class="visually-hidden" name="user_id" value="{{ $item->pivot->user_id }}">
+                  <input type="text" class="visually-hidden" name="association_id" value="{{ $item->pivot->association_id }}">
+
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" required name="commentaire" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2" class="fw-bold"> {{ $item->pivot->commentaire }}</label>
+                  </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
+        <button type="submit" class="btn btn-primary">Oui</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                
+                  <li class="mb-3" data-bs-toggle="modal" data-bs-target="#ex{{ $loop->index }}"><a class="dropdown-item fw-bold" href="#"><i class="fa-solid fa-pen-fancy me-2"></i><button class="btn" type="button"> modifier </button></a></li>
+
+                
+                  <form action="{{ route('delete-comment') }}" method="post">
+                   @csrf 
+                  @method('delete')
+                
+                  <input type="text" class="visually-hidden" name="message_id" value="{{ $item->pivot->id }}">
+                   <li><a class="dropdown-item fw-bold" href="#"><i class="fa-solid fa-trash me-2" ></i> <button class="btn" type="submit">supprimer</button> </a></li>
+                  
+                </form>
+                 
+                </ul>
+              </span>
+           
+              <!-- button pour supprimé les messages envoyé pas encore fait --> 
+              <br>
+                <div class="fw-bold text-dark " style="margin-left:60px;max-width:850px;">
+                  
+
+                    <div class="card rounded" style="width: 840px;">
+                      <div class="card-body py-3">
+                    
+                        <p class="card-text">{{ $item->pivot->commentaire }}</p>
+                       
+                      </div>
+                    </div>
+           </div> 
+            </div>
+            
+
+        @else <!-- un autre personne --> 
+        <div class="my-3">
+                 <img class="pe-2 d-iline" src="{{ asset('storage/'.$item->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
+              <span class="fw-bold text-muted"> {{ $item->nom }} {{ $item->prenom }} 
+              <span class="text-dark"> {{ $item->pivot->created_at }}</span> </span> 
+
+            
+             
+              <!-- button pour supprimé les messages envoyé pas encore fait --> 
+              <br>
+                <div class="fw-bold text-dark " style="margin-left:60px;max-width:850px;">
+                    {{ $item->pivot->commentaire }}
+           </div> 
+            </div>
+
+
+
+        @endif 
+
+             @endforeach
+
+             @else <!-- si le count est null --> 
+
+               <h3 class="fw-bold py-4 text-muted"> Aucune Commentaires <i class="fa-solid fa-comments ms-2"></i></h3> 
+
+               
+       <div class="my-3">
+
+         <form action="{{ route('commentaire') }}" method="post">
+            @csrf 
+                    
+         <div class="row">
+                 <img class="pe-2 d-iline col-3" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
+                 
+                 <div class="form-floating col ">
+                   <input type="text" name="association_id" class="visually-hidden" value = "{{ $association->id }}">
+                   <input type="text" name="user_id" class="visually-hidden" value = "{{ auth()->user()->id}}">
+                 
+    <textarea class="form-control" required name="commentaire" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    <label for="floatingTextarea">Ajouter un nouveau commentaire</label>
+  </div>
+           
+
+               <div class="col">
+               
+                      <span class="fw-bold fs-5 ms-3" > 
+                    <div class="nav-liendd">
+                     
+                     <button class="btn fw-bold" type="submit">Ajouter un commentaire</button>  </div> </span>
+
+              </div> 
+
+        </div>
+              
+
+                </form>
+
+                
+                
+              </div> <!-- parent --> 
+
+           @endif 
+             
+     </div>
+   </div>
+
+</div>
 
 @endsection

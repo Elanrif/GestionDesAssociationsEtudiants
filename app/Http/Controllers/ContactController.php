@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Association;
+use App\Models\Commentaire;
 use App\Models\Reponse;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
@@ -21,6 +22,24 @@ class ContactController extends Controller
       $associations = Association::all() ; 
       return view('users.auth.user.recover',['associations'=>$associations]);
 
+    }
+
+   
+
+    public function commentaires(Request $request) { 
+
+       $request->validate([
+           'commentaire' => 'required' ,
+       ]);
+
+      
+        Commentaire::create([
+            'user_id' => $request->user_id , 
+            'association_id' =>$request->association_id  , 
+            'commentaire' => $request->commentaire
+        ]);
+
+        return back()->with('comment', 'votre commentarire a été envoyé avec succès ' ) ; 
     }
 
     //juste pas besoin de créer un autre table , je verfie juste si les donnés envoyé corresponds bien a celle de la table 
@@ -131,8 +150,36 @@ class ContactController extends Controller
         ]);
 
       
-        return back() ; 
+        return back()->with('reponse-send','Message envoyé avec succès ') ; 
 
      
+    }
+
+     public function delete_comment(Request $request) { 
+
+   
+       $messages =  Commentaire::where('id',$request->message_id)->first() ; 
+
+        $messages->delete() ;
+
+       
+        return back()->with('deleted','message supprimé avec succès') ; 
+    }
+        public function edit_comment(Request $request) { 
+
+   
+       $messages =  Commentaire::where('id',$request->id) ; 
+
+       
+        $messages->update([
+            'user_id' => $request->user_id , 
+            'association_id' => $request->association_id , 
+            'commentaire' => $request->commentaire 
+        ]) ;
+
+        
+
+       
+        return back()->with('edit','message supprimé avec succès') ; 
     }
 }

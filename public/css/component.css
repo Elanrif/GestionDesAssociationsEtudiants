@@ -100,8 +100,13 @@
    box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
 -webkit-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
 -moz-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
+ width: 300px;
   
  }
+
+ 
+
+ 
 /* pour les images en card des associations */ 
 /* pour l'association en violet de grand */
 .decouvrir-asso:hover{ 
@@ -123,11 +128,15 @@
 }
 
 /* pour les membres du bureau */ 
+
+
 .membre-lien p:hover { 
 
   color:var(--pink) ;
+ 
 
 }
+
 
 /* pour le footer les liens de facebook etc...... */
 
@@ -195,6 +204,11 @@ color:black ;
   border-bottom-style: solid; 
   border-bottom-width: 5px;
   color:var(--pink);
+}
+
+.lien-nav:hover{ 
+
+  color:var(--pink) ; 
 }
 
 .nav-liens { 

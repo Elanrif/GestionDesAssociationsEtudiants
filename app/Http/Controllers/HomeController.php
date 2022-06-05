@@ -23,6 +23,18 @@ class HomeController extends Controller
         return view('users.auth.user.home',compact('associations','reponses')) ; 
     }
 
+    public function deleted(Request $request) { 
+
+
+       $reponse =  Reponse::where('id' , $request->reponse)->first() ; 
+
+       $reponse->delete() ; 
+
+        return back()->with('reponses-delete' ,  'Message supprimé avec succès ') ;
+      
+        
+    }
+
     public function reponseadmin() { 
 
         // je pourrais faire find , mais puisque je veux utiliser @foreach passer direcement get() pour recuperer la collection

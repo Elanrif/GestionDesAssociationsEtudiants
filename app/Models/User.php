@@ -107,7 +107,11 @@ class User extends Authenticatable
      
       public function reponses(){ 
 
-        return $this->belongsToMany(Usercontact::class ,'reponses' ,'user_id', 'usercontact_id')->withPivot('message','created_at') ; 
+        return $this->belongsToMany(Usercontact::class ,'reponses' ,'user_id', 'usercontact_id')->withPivot('message','created_at','id') ; 
+    }
+    public function association_comments() {
+
+        return $this->belongsToMany(Association::class , 'commentaires')->withPivot('id','created_at','commentaire','user_id','association_id')->orderByPivot('id','desc') ; 
     }
 
 }

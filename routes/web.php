@@ -41,6 +41,7 @@ Route::get('/default-laravel', function () {
     return view('default-laravel');
 });
 
+Route::delete('/delete/reponse',[HomeController::class , 'deleted'])->name('contactuser.deleted') ; 
 
 // compte admin 
 Route::get('/admin-moncompte' ,[HomeController::class , 'compte'])->name('admin-moncompte') ; 
@@ -161,3 +162,8 @@ Route::get('message/admin/reponse',[HomeController::class , 'reponseadmin'])->na
 
 // admin répond aux message 
 Route::post('message/admin/reponse',[ContactController::class , 'reponse'])->name('reponse.admin') ;
+
+Route::post('commentaire/suppression',[ContactController::class, 'commentaires'])->name('commentaire') ; 
+
+Route::delete('supprimer/commentaire/user',[ContactController::class, 'delete_comment'])->name('delete-comment') ;
+Route::put('editer/commentaire/user',[ContactController::class, 'edit_comment'])->name('edit-comment') ;
