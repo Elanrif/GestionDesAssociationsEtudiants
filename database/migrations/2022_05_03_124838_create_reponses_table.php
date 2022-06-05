@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usercontact_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->string('message') ; 
+            $table->string('message',255) ; 
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade') ; 
             $table->foreignId('association_id')->constrained()->onDelete('cascade')->onUpdate('cascade') ; 
-            $table->string('commentaire') ; 
+            $table->string('commentaire',255) ; 
             $table->timestamps();
         });
     }

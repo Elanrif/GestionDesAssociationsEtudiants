@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('num_tel');
             $table->string('email')->unique ; 
-            $table->string('message');
+            $table->string('message',255);
             $table->timestamps();
         });
     }
