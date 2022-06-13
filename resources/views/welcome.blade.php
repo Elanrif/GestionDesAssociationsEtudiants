@@ -34,7 +34,7 @@
       
       <div class="carousel-item">
         <!-- par défaut le lien est $association->id mais vu que je suis dans les évenements je dois passer par une methode pour trouver cette association -->
-        <a href="{{ route('user.association',$evenement->association->id) }}">
+        <a href="{{ route('user.association',$evenement->association->id).'#event/'.$evenement->id }}">
       <div class="img-fluid rounded-start" alt="..." style="height:75vh;background:linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) ,url({{ asset('storage/'.$evenement->image) }}) center / cover no-repeat  ;"  data-bs-interval="3000" ></div>
 
       <div class="carousel-caption d-none d-md-block">

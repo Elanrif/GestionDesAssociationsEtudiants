@@ -28,8 +28,11 @@ public function index() {
     // $associations = Association::all() ; 
     $users = User::where('id','<>',auth()->user()->id)->orderBy('nom')->get(); // tout les utilisateur sauf la personne connecté . à savoir que auth()->user() est dans dèja configurer dans la session
     $associations = Association::all() ; 
-    $count_message =  Usercontact::count() ; // le nombre de message , juste il est dans le parent 'barre de l'admin' donc les enfants doit heriter tous de ça 
-    return view('users.admin.index',compact(['users','associations','count_message'])) ;
+    //seulement avec status = 0 qui seront compté 
+   // $count_message =  Usercontact::where('status',0)->count() ; // le nombre de message , juste il est dans le parent 'barre de l'admin' donc les enfants doit heriter tous de ça 
+   $count_message =  Usercontact::count();
+    $notification = UserContact::where('status', 0)->get() ; 
+    return view('users.admin.index',compact(['notification','users','associations','count_message'])) ;
 
     }
 
@@ -38,7 +41,8 @@ public function index() {
         Gate::authorize('admin-user');
          $associations = Association::all() ; 
          $count_message =  Usercontact::count() ;
-        return view('users.admin.edit',compact(['user','associations','count_message'])) ; 
+          $notification = UserContact::where('status', 0)->get() ; 
+        return view('users.admin.edit',compact(['notification','user','associations','count_message'])) ; 
     }
 
     public function update(Request $request, User $user) { 

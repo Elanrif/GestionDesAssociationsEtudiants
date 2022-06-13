@@ -19,8 +19,9 @@ class HomeController extends Controller
     public function index() { 
         
        $associations = Association::all() ;
+       $users= User::all(); 
        $reponses = Reponse::where('user_id',auth()->user()->id)->count() ; 
-        return view('users.auth.user.home',compact('associations','reponses')) ; 
+        return view('users.auth.user.home',compact('associations','reponses','users')) ; 
     }
 
     public function deleted(Request $request) { 
@@ -39,14 +40,16 @@ class HomeController extends Controller
 
         // je pourrais faire find , mais puisque je veux utiliser @foreach passer direcement get() pour recuperer la collection
      $user_contacts = Usercontact::where('user_id',auth()->user()->id)->get() ; 
+      $notification = UserContact::where('status', 0)->get() ; 
     
      //admin pour recuperer sa photo 
 
      $admin = User::where('role','admin')->first() ; 
      $count_message = Usercontact::count() ;
+      $notification = UserContact::where('status', 0)->get() ; 
    
       $associations = Association::all() ;
-        return view('users.auth.user.reponse',compact('associations','user_contacts','count_message','admin')) ; 
+        return view('users.auth.user.reponse',compact('notification','notification','associations','user_contacts','count_message','admin')) ; 
      
     }
 
@@ -61,7 +64,8 @@ class HomeController extends Controller
      { 
          $associations = Association::all() ; 
         $count_message =  Usercontact::count() ;
-         return view('users.auth.admin.admincompte',['associations'=>$associations,'count_message'=>$count_message]) ;
+         $notification = UserContact::where('status', 0)->get() ; 
+         return view('users.auth.admin.admincompte',['notification'=>$notification,'associations'=>$associations,'count_message'=>$count_message]) ;
      }
 
      public function general() 

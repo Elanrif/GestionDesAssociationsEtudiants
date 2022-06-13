@@ -81,8 +81,10 @@
      <div class="col col-md-9 mb-3">
          <label for="tetareaser" class="fw-bold mb-1">Description</label>
          <div class="form-floating ">
-                <textarea id="tetareas" name= "description" value = "{{$evenement->description}}" class="form-control" placeholder="Leave a comment here" id="floatingTextareaser" style="height: 100px" required></textarea>
-                <label for="floatingTextarea2">écrire...</label>
+                <textarea id="tetareas" name= "description" value = "{{$evenement->description}}" class="form-control" placeholder="Leave a comment here" id="floatingTextareaser" style="height: 100px" required>
+                {{$evenement->description}}
+              </textarea>
+                <label for="floatingTextarea2">{{$evenement->description}}</label>
           </div>
         </div>
         

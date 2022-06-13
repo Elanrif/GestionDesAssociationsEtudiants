@@ -76,7 +76,29 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link fw-bold admin-lien {{ request()->is('admin/contact/generale*') ? 'admin-liens':'' }}" href="{{ route('admin.contact') }}"><i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages</a> 
+
+  
+
+    <a class="nav-link fw-bold admin-lien {{ request()->is('admin/contact/generale*') ? 'admin-liens':'' }}" href="{{ route('admin.contact') }}">
+      <i class="fa-solid fa-comment-dots fs-5 me-2"></i>Messages 
+    
+       @if($notification->count() == 0 )
+
+       <i class="fa-solid fa-bell text-dark"></i> 
+           <!-- rien --> 
+           @else 
+           <i class="fa-solid fa-bell text-danger"></i> 
+      <!-- il m'a suffit juste d'annuller position-absolute--> 
+        <span class="top-1   start-100 translate-middle badge rounded-pill bg-danger">
+             
+           <!-- valuer initiale -->  <span class="visually-hidden">{{ $count_message }}</span> 
+          
+           {{ $notification->count() }} <!-- fin --> 
+           <span class="visually-hidden">unread messages</span>
+           
+          </span>
+          @endif 
+    </a> 
   </li>
 
      <div class="dropend">
@@ -141,12 +163,19 @@
         </li>
         <li class="nav-item mx-3">
           <a  class="nav-link fw-bold admin-lien text-primary position-relative">
-            message
+            
+            @if($notification->count() == 0)
+            message  <i class="fa-solid fa-bell text-dark"></i>
+            @else 
+
+             message  <i class="fa-solid fa-bell text-danger"></i>
             <span class="position-absolute top-1  start-100 translate-middle badge rounded-pill bg-danger">
-               {{ $count_message }} 
+             
+           <!-- valuer initiale -->  <span class="visually-hidden">{{ $count_message }}</span>   {{ $notification->count() }} <!-- fin --> 
               
               <span class="visually-hidden">unread messages</span>
             </span>
+            @endif
           </a>
         </li>
         <li class="nav-item dropdown">

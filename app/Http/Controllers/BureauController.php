@@ -9,6 +9,7 @@ use App\Models\Membre;
 use App\Models\Evenement;
 use App\Models\Participe;
 use App\Models\Association;
+use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
@@ -23,6 +24,9 @@ class BureauController extends Controller
        $associations = Association::all() ; 
         return view('associations.bureau.create',compact(['association','associations'])) ; 
     }
+
+  
+
 
     public function store(Request $request , Association $association)  { 
 

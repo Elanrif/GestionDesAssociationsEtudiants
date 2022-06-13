@@ -105,7 +105,10 @@ Route::resource('admin-asso',AssociationController::class)->parameters([
     'admin-asso' => 'association'
 ]); 
 
+
+
 //evenements des associations 
+
 
 Route::get('/admin-evenement/{association}',[AssociationController::class , 'eventindex'])->name('evenement.show');
 
@@ -127,8 +130,6 @@ Route::delete('evenement/participes/delete',[BureauController::class,'deletePart
 
 Route::post('evenement/like',[BureauController::class , 'like'])->name('like');
 Route::delete('evenement/like/delete',[BureauController::class , 'deleteLike'])->name('deleteLike');
-
-
 
 
 
@@ -158,7 +159,7 @@ Route::delete('admin/contact/delete',[ContactController::class,'contactdelete'])
 
 // user reponse 
 
-Route::get('message/admin/reponse',[HomeController::class , 'reponseadmin'])->name('reponse') ;
+Route::get('home/message/admin/reponse',[HomeController::class , 'reponseadmin'])->name('reponse') ;
 
 // admin répond aux message 
 Route::post('message/admin/reponse',[ContactController::class , 'reponse'])->name('reponse.admin') ;
@@ -167,3 +168,39 @@ Route::post('commentaire/suppression',[ContactController::class, 'commentaires']
 
 Route::delete('supprimer/commentaire/user',[ContactController::class, 'delete_comment'])->name('delete-comment') ;
 Route::put('editer/commentaire/user',[ContactController::class, 'edit_comment'])->name('edit-comment') ;
+
+
+//quand on deux foreach et que l'on veut afficher tout les information de la variable qui est dans le foreach dependament du 2eme foreach . alors on met tout les variables dans le 2eme foreach
+
+/* <!--  Quand on a deux foreach et que on veut afficher tous les informations dependement
+                    de deuxieme foreach alors on mets tous les variables dans le deuxieme foreach
+                -->
+                @foreach($users as $user)
+                <tr>
+                    <!-- qui devrait etre ici -->
+                    @foreach ($user->postes as $poste)
+                    <td>{{ $user->name }}</td> <!-- exemple ici -->
+                      <td>{{ $poste->id}}</td>
+    */      
+
+
+    //Notification 
+Route::put('notification_message',[AssociationController::class,'notifMessage'])->name('notification_message');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

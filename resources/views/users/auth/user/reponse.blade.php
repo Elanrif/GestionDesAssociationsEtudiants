@@ -39,30 +39,32 @@
                   <div class="accordion accordion-flush" id="accordionFlushExample" style="max-width:900px;">
     <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-    <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
-     
-     
-       
-        @if ($contact->reponses->count() > 1 )
+      
+      
+      @if ($contact->reponses->count() > 1 )
+      <button class="accordion-button collapsed fw-bold text-success " style="background-color:aquamarine;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
 
-         <span class="text-primary">
+         <span class="text-primary fw-bold">
              Afficher les  <span class="px-1" style="color:var(--pink)">   {{$contact->reponses->count()}} </span> réponses  </span>
 
-        @elseif ($contact->reponses->count() == 1)
+            </button>
 
-        Afficher la   <span class="text-primary px-1">   </span> réponses
+        @elseif ($contact->reponses->count() == 1)
+             <button class="accordion-button collapsed fw-bold text-success " style="background-color:aquamarine;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
+
+           <span class="text-primary fw-bold px-1"> Afficher la  réponse  </span>
+             </button>
 
         @else
-          <span class="text-muted">    Aucune  <span class="text-primary px-1"> </span> réponses !  </span>
+             <button class="accordion-button collapsed fw-bold text-success " style="background-color:rgb(201, 201, 201);" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
+
+          <span class="text-muted">    Aucune  réponses !  </span>
+
+             </button>
         @endif
           
-         
+      
         
-         
-        
-
-        
-    </button>
   </h2>
   <div id="flush-collapseOne{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 
@@ -106,7 +108,7 @@
                <!-- suppression du message --> 
                       <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#loop{{$contact->id}}">
                         <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
-                      </button>
+                      </button> 
                     <!-- fin --> 
                        
                  <!-- envoie du message ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --> 
@@ -126,7 +128,7 @@
                       </ul>
 
                       <button class="btn" type="button">
-                          <a href="{{ url('home') }}"><i class="fa-solid fa-arrow-rotate-left fs-3 text-success"></i></a>
+                          <a href="{{ url('home') }}"><i class="fa-solid fa-arrow-rotate-left fs-3 text-success"></i> </a>
                       </button>
                       
                     </span>

@@ -27,6 +27,21 @@ class AssociationController extends Controller
         return view('associations.admin.index', compact('associations','count_message'));
     }
 
+      public function notifMessage(){ 
+
+        $state = Usercontact::where('status',0)->get()  ;
+        
+        // il suffit juste d'entrer a la table et pour chaque Usercontact = 0 je le change en 1 ; 
+        foreach($state as $states){
+
+             $states->update([
+            'status'=>1 , 
+        ]);
+        }
+       
+       return back()->with('notification','Tous les messages ont été lu avec succès ') ; 
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +52,8 @@ class AssociationController extends Controller
          Gate::authorize('admin-user');
         $associations = Association::all() ;
         $count_message =  Usercontact::count() ;
-        return view('associations.admin.create',['associations'=>$associations ,'count_message' =>$count_message]) ; 
+         $notification = UserContact::where('status', 0)->get() ; 
+        return view('associations.admin.create',['notification'=>$notification,'associations'=>$associations ,'count_message' =>$count_message]) ; 
     }
 
     /**
@@ -88,7 +104,8 @@ class AssociationController extends Controller
         $associations = Association::all() ;
         $users = User::all() ; 
         $count_message =  Usercontact::count() ;
-        return view('associations.admin.show',compact(['association','associations','users','count_message'])) ; 
+         $notification = UserContact::where('status', 0)->get() ; 
+        return view('associations.admin.show',compact(['notification','association','associations','users','count_message'])) ; 
     }
 
     /**
@@ -102,7 +119,8 @@ class AssociationController extends Controller
         $associations = Association::all() ;
          Gate::authorize('admin-user');
         $count_message =  Usercontact::count() ;
-        return view('associations.admin.edit',compact(['association','associations','count_message'])); 
+         $notification = UserContact::where('status', 0)->get() ; 
+        return view('associations.admin.edit',compact(['notification','association','associations','count_message'])); 
     }
 
     /**
@@ -182,7 +200,8 @@ class AssociationController extends Controller
         $associations = Association::all() ;
         $users = User::all() ; 
         $count_message =  Usercontact::count() ;
-        return view('evenements.admin.index',compact(['association','associations','users','count_message'])) ; 
+         $notification = UserContact::where('status', 0)->get() ; 
+        return view('evenements.admin.index',compact(['notification','association','associations','users','count_message'])) ; 
     
       }
     
@@ -277,7 +296,8 @@ class AssociationController extends Controller
 
          $count = $users->count() ; 
          $count_message =  Usercontact::count() ;
-         return view('associations.search.users',compact('count_message','users','associations','count','q')) ; 
+          $notification = UserContact::where('status', 0)->get() ; 
+         return view('associations.search.users',compact('notification','count_message','users','associations','count','q')) ; 
 
         }
 

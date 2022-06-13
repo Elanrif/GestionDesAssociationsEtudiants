@@ -137,6 +137,23 @@
 
 }
 
+.nav-comment{ 
+  background-color: #449DD1 ;
+  width:150px;
+  border-radius:20px;
+  color:white;
+}
+
+.nav-comment button { 
+  color:white ;
+  transition:0.6s ease-in-out ; 
+}
+.nav-comment button:hover { 
+  color: #449DD1 ; 
+  background-color: white;
+  border-radius: 20px;
+}
+
 
 /* pour le footer les liens de facebook etc...... */
 

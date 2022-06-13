@@ -86,7 +86,7 @@ class ContactController extends Controller
 
         Usercontact::create($request->all()) ; 
         
-        return redirect()->route('home')  ; 
+        return redirect()->route('home')->with('contact',' votre message a été envoyé avec succès ! ')  ; 
     }
 
      public function guestContact(Request $request) //personne invité du site envoie le message
@@ -114,12 +114,14 @@ class ContactController extends Controller
      $associations = Association::all() ;
  
      $user_contacts = Usercontact::all() ; 
+     $notification = UserContact::where('status', 0)->get() ; 
 
      $count_message = Usercontact::count() ;
+
      
     
     
-    return view('contact.admin.index',compact('associations','user_contacts','count_message')) ;
+    return view('contact.admin.index',compact('associations','user_contacts','count_message','notification')) ;
     
     
     }
@@ -149,6 +151,24 @@ class ContactController extends Controller
             'message'=> $request->message, 
         ]);
 
+       
+        //PAS BESOIN DE FOREACH CAR JE SUIS DANS UNE MESSAGE DÉJÀ 
+        //juste ajouter les lignes de notification , ici c'est 'post' pas 'put' methode 
+     
+        // le 2eme where pour mettre la colonne status à  1 du bon message 
+        //le problème que j'ai eu avec les 2premier where , c'est que si la personne avait envoyé 2 message et que je reponds 2fois il decrémenté même si je suis dans le meme message 
+        $notification = Usercontact::where('status',0)->where('user_id',$request->user_id)->where('id',$request->contact)->first() ; 
+
+        if($notification){ // sans cette condition il y'aurait des erreurs ; si existe alors on change sinon on fait rien ; 
+
+             //pas de boucle 
+         $notification->status = 1 ; 
+         $notification->save() ; 
+
+        }
+       
+        
+ 
       
         return back()->with('reponse-send','Message envoyé avec succès ') ; 
 
