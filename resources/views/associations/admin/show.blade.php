@@ -78,41 +78,8 @@
 
     <div class="row row-cols-1 row-cols-lg-3 g-4">
   <!-- a l'interieur de boucle foreach on aura acces TJRS LA VARIABLE qui SONT AVANT le foreach comme ici $ASSOCIATION -->
-  @foreach ($association->bureaus as $bureau) <!-- déja on a le bureau pas besoin de faire $association's as $association avant car on l'a déja fait et ici on a direcement $association sans  -->
-  <div class="col">
-      <div class="card shadow h-100 admin-assohover "  style="transition:0.6s ease-in-out;"> 
-          <img src="{{ asset("storage/".$bureau->image) }}" class="card-img-top" alt="..." style="margin-left:150px; margin-top:10px;width:120px;border-radius:70% ;height:20vh;">
-          <div class="card-body">
-            
-              <h4 class="card-title mt-3 text-primary">{{ $bureau->Poste }} </h4>
-              <h5 class="card-title mt-2 text-dark fw-bold">{{ $bureau->nom }} {{ $bureau->prenom }}</h5>
-              <p class="card-text">
-                  <ul class="nav flex-column">
-                      
-                          <a href="#" class="nav-link text-dark fw-bold"> <i class="fa-solid fa-envelope me-2"></i>{{ $bureau->email }}</a>
-                          <a href="#" class="nav-link text-dark fw-bold">  <i class="fa-solid fa-mobile me-2"></i>{{ $bureau->Tel }}</a>
-                          <a href="#" class="nav-link text-dark fw-bold"> <i class="fa-solid fa-graduation-cap me-2"></i>{{ $bureau->filiere }}</a>
-                      
-                  </ul>
-                
-                </p>
-  <div class="d-flex">
-     <!-- pour la suppression d'un membe du bureau  --> 
-
-     @include('associations\bureau\modal\delete')
-
-     <!-- fin -->
-
-      <!-- pour editer un membre du bureau --> 
-
-      @include('associations.bureau.modal.edit')
-      <!-- fin --> 
-
-      </div>
-            </div>
-        </div>
-    </div>
-    @endforeach <!-- fin de foreach --> 
+ 
+    @include('associations.admin.table.show')
  
 </div>
 </div>
@@ -125,37 +92,10 @@
 
   <div class="row row-cols-1 row-cols-md-3 pb-5 g-4">
  
-    @foreach ($association->evenements->sortByDesc('id') as $evenement )
-      
-    <div class="col pb-5">
-      <div class="card">
-        <div class="card-img-top" alt="..."  style="height:20vh; background: linear-gradient(rgba(38, 35, 66, 0.5),#0e0324) , url({{ asset('storage/'.$evenement->image) }} ) center / cover no-repeat  ;"></div>
-        <div class="card-body">
-          <h5 class="card-title fw-bold ms-3">ÉVÈNEMENT {{ $evenement->type }}</h5>
-          <p class="card-text">
-            <ul class="nav flex-column">
-              <a href="#" class="nav-link my-2 text-dark fw-bold"><i class="fa-solid fa-calendar"></i> {{ $evenement->date }}</a>
-              <a href="#" class="nav-link my-2 text-dark fw-bold"><i class="fa-solid fa-clock"></i> {{ $evenement->heure }}</a>
-              <a href="#" class="nav-link my-2 text-dark fw-bold"><i class="fa-solid fa-location-dot"></i> {{ $evenement->lieu }}</a>
-            </ul>
-          </p>
-        </div>
+   
+  </div>
 
-       <div class="d-flex ms-4 mb-3">
-     <!-- pour la suppression d'un evenement et l'edition  --> 
-
-     @include('associations.bureau.evenement.delete')
-
-      @include('associations.bureau.evenement.edit')
-      <!-- fin --> 
-
-      </div>
-
-      </div>
-    </div>
-
-    @endforeach
-</div>
+  @include('associations.admin.table.event')
 
 
 </div>

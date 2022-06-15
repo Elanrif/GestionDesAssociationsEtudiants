@@ -28,8 +28,8 @@ class HomeController extends Controller
 
 
        $reponse =  Reponse::where('id' , $request->reponse)->first() ; 
-
-       $reponse->delete() ; 
+       
+        $reponse->delete() ; 
 
         return back()->with('reponses-delete' ,  'Message supprimé avec succès ') ;
       

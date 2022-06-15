@@ -72,8 +72,16 @@
         </li>
         
          <li class="nav-item">
-         <a class="nav-link fw-bold nav-lien  fs-5  {{request()->is('login') ? 'nav-liens':''}} fw-bold me-3" aria-current="page" href="{{ route('login') }}"> <i class="fas fa-user-check fw-bold  me-2"></i>se connecter</a>
-        
+           <div class="dropdown">
+             <button class="btn nav-link nav-lien dropdown-toggle fs-5  {{request()->is('login*') ? 'nav-liens':''}} fw-bold me-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-check fw-bold  me-2"></i>  se connecter
+              </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+             <li><a class="dropdown-item fw-bold px-3 mt-2" href="{{ route('login') }}">Utilisateur</a></li>
+             <li><a class="dropdown-item fw-bold px-3 mt-2" href="{{ route('loginAdmin') }}">Administrateur</a></li> 
+           </ul>
+          </div>
+
         </li>
         </ul>
         @endguest

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Association;
+use App\Models\Comment;
 use App\Models\Commentaire;
 use App\Models\Reponse;
 use App\Models\Usercontact;
@@ -113,18 +114,35 @@ class ContactController extends Controller
 
      $associations = Association::all() ;
  
-     $user_contacts = Usercontact::all() ; 
+     $user_contacts = Usercontact::where('supprimer',0)->get() ; 
      $notification = UserContact::where('status', 0)->get() ; 
 
      $count_message = Usercontact::count() ;
 
+     $commentaires = Comment::all() ; 
+
      
     
     
-    return view('contact.admin.index',compact('associations','user_contacts','count_message','notification')) ;
+    return view('contact.admin.index',compact('associations','user_contacts','count_message','notification', 'commentaires')) ;
     
     
     }
+
+    public function admincommentaire() {
+
+        $associations = Association::all() ;
+ 
+     $user_contacts = Usercontact::where('supprimer',0)->get() ; 
+     $notification = UserContact::where('status', 0)->get() ; 
+
+     $count_message = Usercontact::count() ;
+
+     $commentaires = Commentaire::all() ; 
+
+        return view('contact.admin.commentaire',compact('associations','user_contacts','count_message','notification', 'commentaires')) ; 
+    }
+
     // supprimer mon contact admin 
     public function admindelete(Usercontact $contact) { 
 
@@ -137,10 +155,19 @@ class ContactController extends Controller
     public function contactdelete(Request $request) 
     { 
         // j'utilise le meme systeme , je passe un input dans le formulaire ou je recupere l'enregistrement id et je le cahche ensuite par visually-hidden
-        $user = Usercontact::where('id',$request->message_id) ; 
-        $user->delete() ;
+        $user = Usercontact::where('id',$request->message_id)->first() ; 
+        $user->supprimer = 1 ; 
+        $user->save() ; 
         return back()->with('usermessage','message supprimer avec succès ! ') ; 
     }
+
+    public function contactread(Request $request) 
+     { 
+        $user = UserContact::where('id',$request->message_id)->first() ; 
+        $user->status = 1 ; 
+        $user->save()  ; 
+        return back()->with('userread','Le message a été bien lu ')  ; 
+     }
 
     public function reponse(Request $request) { 
 

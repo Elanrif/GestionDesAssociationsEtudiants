@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('message',255) ;
             $table->integer('status')->default(0)->nullable() ; //  0 pas lu par l'admin et 1 lu par l'admin  
+            $table->integer('supprimer')->default(0)->nullable() ;// juste pour afficher dans la page admin quand supprimer == 0 ;
             $table->timestamps();
         });
     }

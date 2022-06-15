@@ -366,42 +366,6 @@
      
   </div>
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingsevens">
-      <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesevens" aria-expanded="false" aria-controls="collapsefor">
-       
-     <div class="my-4" style="font-size:28px;">
-    
-    
-     <i class="fa-solid fa-message" style="font-size:28px;color:rgb(6, 6, 57)"></i> <span class="text-dark mb-5 fw-bold me-1"> Laisse nous un commentaire ! </span>
-  
-   </div>
-
-      </button>
-    </h2>
-    <div id="collapsesevens" class="accordion-collapse collapse" aria-labelledby="headingfor" >
-      <div class="accordion-body fs-5">
-        <ul class="nav">
-         <li class ="my-3"> <span class="text-dark">  
-           <h4 class=" text-primary mb-5">Des questions ? Des bons plans à partager ? Nous validons ton commentaire et te répondons en quelques heures ! </h4> 
-           
-           <form action="#">
-           <div class="form-floating border border-2 shadow">
-             <textarea class="form-control" placeholder="Tapez quelque chose ici ..." id="floatingTextarea2" style="height: 200px "></textarea>
-             <label for="floatingTextarea2">Comments</label>
-           </div>
-           <button type="submit" class= "btn btn-primary  mt-3 fw-bold">Envoyer</button>
-           </form>
-
-           </span>
-           </li>
-
-          </ul>
-  
-      </div>
-    </div>
-     
-  </div>
 
 
    <hr class="fw-bold my-5" style="height:5px;color:var(--pink);width:400px;">

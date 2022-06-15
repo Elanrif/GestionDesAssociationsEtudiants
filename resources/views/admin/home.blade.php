@@ -36,7 +36,7 @@
   </li>
   <li class="nav-item">
     
-    <div class="dropend mb-5">
+    <div class="dropend">
   <a  href="" class="dropdown-toggle nav-link fw-bold admin-lien {{ request()->is('admin-asso*') ? 'admin-liens':'' }}"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid me-2 fs-5 fa-layer-group"></i>
     Les Associations
   </a>
@@ -94,6 +94,32 @@
            <!-- valuer initiale -->  <span class="visually-hidden">{{ $count_message }}</span> 
           
            {{ $notification->count() }} <!-- fin --> 
+           <span class="visually-hidden">unread messages</span>
+           
+          </span>
+          @endif 
+    </a> 
+  </li>
+
+  <li class="nav-item">
+
+  
+
+    <a class="nav-link fw-bold admin-lien {{ request()->is('admin/commentaire/generale*') ? 'admin-liens':'' }}" href="{{ route('admin.commentaire') }}">
+     Commentaires
+    
+       @if($commentaires->count() == 0 )
+
+        <i class="fa-solid fa-message fe-5 me-2"></i>
+           <!-- rien --> 
+           @else 
+            <i class="fa-solid fa-message text-danger fe-5 me-2"></i>
+      <!-- il m'a suffit juste d'annuller position-absolute--> 
+        <span class="top-1   start-100 translate-middle badge rounded-pill bg-danger">
+             
+           <!-- valuer initiale -->  <span class="visually-hidden">{{ $count_message }}</span> 
+          
+           {{ $commentaires->count() }} <!-- fin --> 
            <span class="visually-hidden">unread messages</span>
            
           </span>

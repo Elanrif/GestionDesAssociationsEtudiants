@@ -16,13 +16,13 @@
     
 <!-- le body du modal -->
  <div class="container" style="min-height:60vh;padding-top:15px;">
-<form class="row g-3 d-flex justify-content-center mx-5 mt-5" method="post" action="{{ route('login') }}">
+<form class="row g-3 d-flex justify-content-center mx-5 mt-5" method="post" action="{{ route('storeadmin') }}">
     @csrf
 
     <div class="col-md-7">
           <div class="text-center">
-            <p> <img class="pe-2 " src="{{ asset('storage/users-image/user.jpg') }}" alt="" style="border-radius:50%;height:88px; width:88px;"></p>
-            <h3 class="fw-bold">UTILISATEUR</h3>
+            <p><img class="pe-2 " src="{{ asset('storage/users-image/admin.jpg') }}" alt="" style="border-radius:50%;height:88px; width:88px;"></p>
+            <h3 class="fw-bold">ADMINISTRATEUR</h3>
           </div>
   </div>
 
@@ -35,12 +35,13 @@
   <strong class="fs-5">Oupps !</strong> <span class="fw-bold">{{ $message }}</span>.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
-       @elseif($message =  Session::get('administrateur'))
+        @elseif($message =  Session::get('utilisateur'))
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong class="fs-5">Oupps !</strong> <span class="fw-bold">{{ $message }}</span>.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-        @endif
+       
+    @endif
   
      @error('email')
           <span class="invalid-feedback" role="alert">

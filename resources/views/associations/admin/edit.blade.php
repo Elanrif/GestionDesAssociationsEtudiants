@@ -1,6 +1,8 @@
 @extends("../../admin/home")
 @section('admin')
 
+<div class="container-fluid">
+
 <form action="{{ route('admin-asso.update',$association->id)}} " method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -78,5 +80,5 @@
 
 <!--Modal -->
 
-
+ </div>
 @endsection

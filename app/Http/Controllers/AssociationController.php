@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Association;
+use App\Models\Commentaire;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,9 +23,11 @@ class AssociationController extends Controller
     {
          Gate::authorize('admin-user');
          
+         $notification =  UserContact::where('status', 0)->get() ;;
         $associations = Association::latest()->get() ; 
         $count_message =  Usercontact::count() ;
-        return view('associations.admin.index', compact('associations','count_message'));
+        $commentaires = Commentaire::all() ; 
+        return view('associations.admin.index', compact('commentaires','associations','count_message','notification'));
     }
 
       public function notifMessage(){ 
@@ -53,7 +56,8 @@ class AssociationController extends Controller
         $associations = Association::all() ;
         $count_message =  Usercontact::count() ;
          $notification = UserContact::where('status', 0)->get() ; 
-        return view('associations.admin.create',['notification'=>$notification,'associations'=>$associations ,'count_message' =>$count_message]) ; 
+         $commentaires = Commentaire::all() ; 
+        return view('associations.admin.create',['notification'=>$notification,'associations'=>$associations ,'count_message' =>$count_message,'commentaires'=> $commentaires]) ; 
     }
 
     /**
@@ -104,8 +108,9 @@ class AssociationController extends Controller
         $associations = Association::all() ;
         $users = User::all() ; 
         $count_message =  Usercontact::count() ;
-         $notification = UserContact::where('status', 0)->get() ; 
-        return view('associations.admin.show',compact(['notification','association','associations','users','count_message'])) ; 
+        $notification = UserContact::where('status', 0)->get() ; 
+        $commentaires = Commentaire::all() ; 
+        return view('associations.admin.show',compact(['notification','commentaires','association','associations','users','count_message'])) ; 
     }
 
     /**
@@ -119,8 +124,9 @@ class AssociationController extends Controller
         $associations = Association::all() ;
          Gate::authorize('admin-user');
         $count_message =  Usercontact::count() ;
-         $notification = UserContact::where('status', 0)->get() ; 
-        return view('associations.admin.edit',compact(['notification','association','associations','count_message'])); 
+        $notification = UserContact::where('status', 0)->get() ; 
+        $commentaires = Commentaire::all() ; 
+        return view('associations.admin.edit',compact(['notification','commentaires','association','associations','count_message'])); 
     }
 
     /**
@@ -164,7 +170,13 @@ class AssociationController extends Controller
            
         ]);
     
-         $path = Storage::disk('public')->put('asso-image', $request->image);
+        //par défaut:  $path = Storage::disk('public')->put('asso-image', $request->image);
+
+            // $path = Storage::disk('public')->put('asso-image', $request->image);
+       $filename = time() . '.' . $request->image->extension() ; ; 
+        $path = $request->file('image')->storeAs(
+        'asso-image', $filename,'public'
+             );
       
         $association->update([
             'nom' => $request->nom , 
@@ -201,7 +213,8 @@ class AssociationController extends Controller
         $users = User::all() ; 
         $count_message =  Usercontact::count() ;
          $notification = UserContact::where('status', 0)->get() ; 
-        return view('evenements.admin.index',compact(['notification','association','associations','users','count_message'])) ; 
+         $commentaires = Commentaire::all() ; 
+        return view('evenements.admin.index',compact(['commentaires','notification','association','associations','users','count_message'])) ; 
     
       }
     
@@ -296,8 +309,9 @@ class AssociationController extends Controller
 
          $count = $users->count() ; 
          $count_message =  Usercontact::count() ;
-          $notification = UserContact::where('status', 0)->get() ; 
-         return view('associations.search.users',compact('notification','count_message','users','associations','count','q')) ; 
+         $notification = UserContact::where('status', 0)->get() ; 
+         $commentaires = Commentaire::all() ; 
+         return view('associations.search.users',compact('notification','commentaires','count_message','users','associations','count','q')) ; 
 
         }
 

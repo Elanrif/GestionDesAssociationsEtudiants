@@ -11,6 +11,13 @@
        </div>
     @endif
 
+    @if ($message = Session::get('userread'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
     @if ($message = Session::get('notification'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
    <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
@@ -51,7 +58,6 @@
            
               </form>
 
-              
 
             @foreach ($user_contacts->sortByDesc('id') as $contact ) <!-- J'AI COMMENCÉ dans la relation BELONGSTO --> 
               
@@ -63,27 +69,62 @@
               @if($contact->status == 0 )
        
 
-            <div class="col" style="background-color:rgb(165, 241, 241);"> <!-- COULEUR DES MESSAGES --> 
+            <div class="col" > <!-- COULEUR DES MESSAGES --> 
 
                    <!-- ici puisque on va partir de la belongTo de la relation avec cardinalité 1:N ; on part de 1 donc PAS DE FOREACH-->
                 <img class="pe-2 d-iline" src="{{ asset('storage/'.$contact->user->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
                 
-                <span class="fw-bold text-primary"> {{ $contact->user->nom }} {{ $contact->user->prenom }}</span> 
+                <span class="fw-bold text-primary"> {{ $contact->user->nom }} {{ $contact->user->prenom }}    <span class="text-muted">{{ $contact->created_at }}</span>
+                    <span class="dropup">
+         <button class="btn  fw-bold fs-4 ms-3 text-dark" type="button" id="dropdownMenuButton1"                 data-bs-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+          ...
+            </button>
+         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+           <form action="{{ route('userRead') }}" method="post">
+
+           <li><a class="dropdown-item fw-bold text-light mt-3" href="#" data-bs-toggle="modal" data-bs-target="#loop{{$contact->id}}"> <i class="fa-solid text-light  me-2 fa-trash" style="cursor:grab;"></i>  supprimer</a></li>
+           
+            <li><a class="dropdown-item fw-bold text-light my-3" href="#"><i class="fa-solid fa-check"></i>
+               @csrf 
+              @method('delete') 
+             <input type="text" class="visually-hidden" name="message_id" value="{{ $contact->id }}">
+              <button type="submit" class="btn text-light fw-bold">
+                  @if ($contact->status == 0)
+                  Marquer comme lu
+                @else
+                  Lu 
+                @endif
+              </button>  
+            </a></li>
+          </form>
+            </ul>
+          </span> </span> 
                 
-                  <div class="fw-bold" style="margin-left:90px;" >{{ $contact->message }} <span class="text-muted"> {{ $contact->created_at }} </span> 
-                      <!-- suppression du message --> 
-                      <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#loop{{$contact->id}}">
-                        <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
-                      </button>
-                    <!-- fin -->  </div>
              
+                    <div class="fw-bold text-dark mb-2" style="margin-left:60px;">
+              
+                    <!-- border-radius pour le card et le body --> 
+                <div class="card" style="max-width:600px;border-radius: 30px;">
+                  <div class="card-body py-3" style="background-color:rgb(255, 255, 255);border-radius: 30px;">
+                
+                    <p class="card-text" >{{ $contact->message }} </p>
+                    
+                  </div>
+                </div>
+              </div> 
+                    
               
                   <!-- reponse de l'admin --> 
                   <div class="accordion accordion-flush" id="accordionFlushExample" style="max-width:900px;">
     <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-    <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
+    <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne"
+     style="background-color:rgb(165, 241, 241);" >
+      @if($contact->reponses->count() == 0)
+      Aucune réponses 
+      @else 
       Afficher les  <span class="text-primary px-1">  {{ $contact->reponses->count() }} </span> réponses 
+      @endif 
     </button>
   </h2>
   <div id="flush-collapseOne{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" >
@@ -95,8 +136,10 @@
                             @csrf 
 
                     <img class="ms-5 pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> <span class="text-primary fw-bold"> Moi </span>
+
+                     
                     
-                    <textarea type="text" class="form-control pt-5"  placeholder="Ajouter une réponse..." style="border-bottom-width:3px; border-style:solid;border-left-width:0px;border-right-width:0px;border-top-width:0px;width:70%;" rows="3" name="message"></textarea>
+                    <textarea type="text" class="form-control py-3 bg-dark text-light fw-bold"  placeholder="Ajouter une réponse..." style="border-radius:30px;width:70%;" rows="1" name="message">  </textarea>
 
                 
 
@@ -207,22 +250,61 @@
                    <!-- ici puisque on va partir de la belongTo de la relation avec cardinalité 1:N ; on part de 1 donc PAS DE FOREACH-->
                 <img class="pe-2 d-iline" src="{{ asset('storage/'.$contact->user->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
                 
-                <span class="fw-bold text-primary"> {{ $contact->user->nom }} {{ $contact->user->prenom }}</span> 
+           
+                <span class="fw-bold text-primary"> {{ $contact->user->nom }} {{ $contact->user->prenom }}
+                     <span class="dropup">
+         <button class="btn  fw-bold fs-4 ms-3 text-dark" type="button" id="dropdownMenuButton1"                 data-bs-toggle="dropdown" aria-expanded="false" style="cursor:pointer">
+          ...
+            </button>
+         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+            <form action="{{ route('userRead') }}" method="post">
+
+           <li><a class="dropdown-item fw-bold text-light mt-3" href="#" data-bs-toggle="modal" data-bs-target="#loop{{$contact->id}}"> <i class="fa-solid text-light  me-2 fa-trash" style="cursor:grab;"></i>  supprimer</a></li>
+           
+            <li><a class="dropdown-item fw-bold text-light my-3" href="#"><i class="fa-solid fa-check"></i>
+               @csrf 
+              @method('delete') 
+             <input type="text" class="visually-hidden" name="message_id" value="{{ $contact->id }}">
+              <button type="submit" class="btn text-light fw-bold">
+                @if ($contact->status == 0)
+                  Marquer comme lu
+                @else
+                  Lu 
+                @endif
+               
+              </button>  
+            </a></li>
+          </form>
+         
+            </ul>
+          </span> </span> 
                 
-                  <div class="fw-bold" style="margin-left:90px;" >{{ $contact->message }} <span class="text-muted"> {{ $contact->created_at }} </span> 
-                      <!-- suppression du message --> 
-                      <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#loop{{$contact->id}}">
-                        <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
-                      </button>
-                    <!-- fin -->  </div>
-             
+                 
+                    <div class="fw-bold text-dark mb-2" style="margin-left:60px;">
+              
+                    <!-- border-radius pour le card et le body --> 
+                <div class="card" style="max-width:600px;border-radius: 30px;">
+                  <div class="card-body py-3" style="background-color:rgb(255, 255, 255);border-radius: 30px;">
+                
+                    <p class="card-text" >{{ $contact->message }} </p>
+                    
+                  </div>
+                </div>
+              </div> 
               
                   <!-- reponse de l'admin --> 
                   <div class="accordion accordion-flush" id="accordionFlushExample" style="max-width:900px;">
     <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-    <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
+    <button class="accordion-button collapsed fw-bold text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color:rgb(223, 224, 224)">
+      @if ($contact->reponses->count() <> 0)
+        
       Afficher les  <span class="text-primary px-1">  {{ $contact->reponses->count() }} </span> réponses 
+      @else
+      
+      Aucune réponse
+        
+      @endif
     </button>
   </h2>
   <div id="flush-collapseOne{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" >
@@ -235,9 +317,8 @@
 
                     <img class="ms-5 pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> <span class="text-primary fw-bold"> Moi </span>
                     
-                    <textarea type="text" class="form-control pt-5"  placeholder="Ajouter une réponse..." style="border-bottom-width:3px; border-style:solid;border-left-width:0px;border-right-width:0px;border-top-width:0px;width:70%;" rows="3" name="message"></textarea>
-
-                
+                    <textarea type="text" class="form-control py-3  fw-bold"  placeholder="Ajouter une réponse..." style="border-radius:30px;width:70%;" rows="1" name="message"></textarea>
+                    <!-- textarea devra être fermer bien pour afficher le palceholder --> 
 
                     <span class="dropup d-flex">
            
@@ -282,7 +363,18 @@
                  <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#looper{{$contact->id}}">
                         <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
                       </button><br>
-                <div class="fw-bold text-dark " style="margin-left:60px;"> {{ $reponse->pivot->message }}</div> 
+              
+                   <div class="fw-bold text-dark mb-2" style="margin-left:60px;">
+              
+                    <!-- border-radius pour le card et le body --> 
+                <div class="card" style="max-width:600px;border-radius: 30px;background-color:black">
+                  <div class="card-body py-3" style="background-color:rgb(81, 79, 79);border-radius: 30px;">
+                
+                    <p class="card-text text-light fw-bold" >{{ $reponse->pivot->message }} </p>
+                    
+                  </div>
+                </div>
+              </div> 
      </div>
 
      
@@ -348,7 +440,7 @@
                    @method('DELETE')
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">supprimer message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body fw-bold">

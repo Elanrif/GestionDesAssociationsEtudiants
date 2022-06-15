@@ -68,6 +68,10 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::get('register/{register}/edit',[RegisterController::class, 'edit'])->name('register.edit') ;
     Route::get('login', [LoginController::class,'create'])->name('login') ; 
     Route::post('login', [LoginController::class,'store']) ; 
+
+    Route::get('login-adminstrateur',[LoginController::class,'createadmin'])->name('loginAdmin');
+    Route::post('loginadmin', [LoginController::class,'storeadmin'])->name('storeadmin') ; 
+
     Route::get('logout', [loginController::class,'logout'])->name('logout') ;
      
 });
@@ -154,9 +158,12 @@ Route::get('contact',[ContactController::class,'indexContact'])->name('contact.i
 Route::post('contact/invite/message/admin',[ContactController::class,'guestContact'])->name('guest.contact');
 Route::post('contact/utilisateur/message/admin',[ContactController::class,'authContact'])->name('auth.contact');
 
-Route::get('admin/contact/generale',[ContactController::class,'admincontact'])->name('admin.contact');
 Route::delete('admin/contact/delete',[ContactController::class,'contactdelete'])->name('contactuser.delete');
+Route::delete('admin/contact/read',[ContactController::class,'contactread'])->name('userRead');
 
+Route::get('admin/contact/generale',[ContactController::class,'admincontact'])->name('admin.contact');
+
+Route::get('admin/commentaire/generale',[ContactController::class,'admincommentaire'])->name('admin.commentaire');
 // user reponse 
 
 Route::get('home/message/admin/reponse',[HomeController::class , 'reponseadmin'])->name('reponse') ;
