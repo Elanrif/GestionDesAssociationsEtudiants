@@ -30,6 +30,8 @@ class Association extends Model
 
     public function user_comments() { 
 
-        return $this->belongsToMany(User::class , 'commentaires')->withPivot('id','commentaire','created_at','user_id','association_id')->orderByPivot('id', 'desc') ;
+        return $this->belongsToMany(User::class , 'commentaires')->withPivot('id','commentaire','created_at','supprimer','user_id','association_id')->orderByPivot('id', 'desc') ;
     }
+
+  
 }

@@ -111,7 +111,7 @@ class User extends Authenticatable
     }
     public function association_comments() {
 
-        return $this->belongsToMany(Association::class , 'commentaires')->withPivot('id','created_at','commentaire','user_id','association_id')->orderByPivot('id','desc') ; 
+        return $this->belongsToMany(Association::class , 'commentaires')->withPivot('id','created_at','commentaire','user_id','association_id','supprimer')->orderByPivot('id','desc') ; 
     }
 
 }

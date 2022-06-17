@@ -25,7 +25,14 @@ class ContactController extends Controller
 
     }
 
-   
+   public function deletecommentaire(Request $request) {
+    
+          $comment = Commentaire::where('id',$request->id)->first() ; 
+           
+          $comment->delete() ; 
+
+          return back()->with('commentdelete' , 'Le commentaire est supprimé avec succès ') ; 
+   }
 
     public function commentaires(Request $request) { 
 
@@ -139,6 +146,7 @@ class ContactController extends Controller
      $count_message = Usercontact::count() ;
 
      $commentaires = Commentaire::all() ; 
+     
 
         return view('contact.admin.commentaire',compact('associations','user_contacts','count_message','notification', 'commentaires')) ; 
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Association;
+use App\Models\Comment;
 use App\Models\Reponse;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
@@ -65,7 +66,8 @@ class HomeController extends Controller
          $associations = Association::all() ; 
         $count_message =  Usercontact::count() ;
          $notification = UserContact::where('status', 0)->get() ; 
-         return view('users.auth.admin.admincompte',['notification'=>$notification,'associations'=>$associations,'count_message'=>$count_message]) ;
+         $commentaires = Comment::all() ; 
+         return view('users.auth.admin.admincompte',['commentaires'=>$commentaires,'notification'=>$notification,'associations'=>$associations,'count_message'=>$count_message]) ;
      }
 
      public function general() 

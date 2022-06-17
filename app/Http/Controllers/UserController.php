@@ -32,7 +32,8 @@ public function index() {
    // $count_message =  Usercontact::where('status',0)->count() ; // le nombre de message , juste il est dans le parent 'barre de l'admin' donc les enfants doit heriter tous de ça 
    $count_message =  Usercontact::count();
     $notification = UserContact::where('status', 0)->get() ; 
-    return view('users.admin.index',compact(['notification','users','associations','count_message'])) ;
+    $commentaires = Comment::all() ;
+    return view('users.admin.index',compact(['commentaires','notification','users','associations','count_message'])) ;
 
     }
 

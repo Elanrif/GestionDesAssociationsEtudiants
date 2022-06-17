@@ -164,6 +164,8 @@ Route::delete('admin/contact/read',[ContactController::class,'contactread'])->na
 Route::get('admin/contact/generale',[ContactController::class,'admincontact'])->name('admin.contact');
 
 Route::get('admin/commentaire/generale',[ContactController::class,'admincommentaire'])->name('admin.commentaire');
+Route::delete('admin/commentaire/generale/deletecomment',[ContactController::class,'deletecommentaire'])->name('usercommentaire');
+
 // user reponse 
 
 Route::get('home/message/admin/reponse',[HomeController::class , 'reponseadmin'])->name('reponse') ;
