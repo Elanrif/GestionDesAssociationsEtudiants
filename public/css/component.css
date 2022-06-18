@@ -96,12 +96,12 @@
 
 /* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2); sur le site css */ 
  .hoover:hover { 
-   transform: translateY(-15px);
-   box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
--webkit-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
--moz-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
- width: 300px;
   
+  
+  padding-top : 2px;
+  border:solid 1px rgb(255, 0, 157) ;
+  width:400px ;
+
  }
 
  

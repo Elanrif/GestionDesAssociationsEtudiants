@@ -105,17 +105,16 @@
     <!-- $association->id pour avoir l'instance de l'association dans le nouveau page $association -->
 
      <!-- petit example -->
+     @if($association->bureaus->count())
      <div class="d-flex justify-content-center"> 
      <h3 class="text-center fs-1 fw-bold" style="color:var(--blue)">Les Membres du Bureau</h3>
      </div>
-     <div class="container-fluid d-flex justify-content-center">
+     @endif
 
-        <div style="max-width:1500px;min-height:400px;"> <!-- max-width pour maximum 1000px ne pas dépasser ça ; en revanche il continuera au centre en agrandissant et s'arrête a cette taille -->
-       
-          <div class="row row-cols-1 row-cols-md-3 mt-3">
-
+        <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
+ 
              @foreach ($association->bureaus as $bureau)
-            <div class="col hoover px-5" style = "transition:0.6s ease-out;"> <!-- je vais centré les balises p seulement -->
+            <div class="col hoover" style = "transition:0.6s ease-out;"> <!-- je vais centré les balises p seulement -->
               <p class="text-center">  <img src="{{asset('storage/'.$bureau->image) }}" class="img-fluid" alt="don't exist" style="height:60px; width:60px; border-radius:70px;">
               </p>
               <p class="text-center fw-bold" style="font-size:18px;color:var(--pink)">{{ $bureau->Poste }}</p>
@@ -126,7 +125,21 @@
                <p><i class="fa-solid fa-square-phone"></i> {{ $bureau->Tel }}</p>
                <p> <i class="fa-solid fa-graduation-cap"></i> {{ $bureau->filiere }}</p>
                <p><i class="fa-solid fa-calendar-day"></i> {{ $bureau->date_mandat }}</p>
-               <p class="text-light">Lorem ipsum dolor sit amet.ip</p> <!-- sert juste a avoir de l'espace entre les membres --> 
+
+               @if($bureau->Poste == "President")
+               <p class="mt-3 text-muted"> Le <span class="text-primary"> << Président >> </span> , qui s’occupe en général de tout ce qui relève de l’administration, mais pas que ! Il donne la ligne directrice de l’association , tranche dans les débats et dans les grandes prises de décision. C’est un poste avec de <span class="fw-bold text-primary">grandes responsabilités</span> et <span class="fw-bold text-primary">très formateur</span></p> <!-- sert juste a avoir de l'espace entre les membres --> 
+
+               @elseif($bureau->Poste == "Secretaire") 
+               <p class="mt-3 text-muted">
+                Le <span class="fw-bold text-primary"><< secrétaire général >> </span>, enfin, est la personne <span class="fw-bold text-primary"> chargée de la communication avec l’extérieur </span> (ça peut être l’administration, les entreprises partenaires…) et avec les autres membres de l’association. Il est là pour <span class="fw-bold text-primary"> tenir au courant des décisions prises </span> par le bureau et aussi pour organiser les réunions (les assemblées générales).</p> 
+               @elseif($bureau->Poste == "Tresorier")
+               <p class="mt-3 text-muted">
+                Le <span class="text-primary"> << trésorier >> : </span> c’est le magicien de la comptabilité ! 💰 Il <span class="text-primary"> gère les dépenses </span>, trouve des solutions pour faire gagner de l’argent à l’association, choisit les tarifs lorsque l’association vend des produits (ou autres) aux étudiants, de sorte à tirer un <span class="text-primary">certain bénéfice à réinvestir</span> dans les autres projets de l’association .
+                </p>
+               @else  
+              <p class="mt-3 text-muted">
+               Un <span class="fw-bold text-primary"><< membre de l'association >> </span> , participe à l'association et <span class="text-primary">bénéficie des mêmes droits</span> et mêmes obligations (sauf disposition contraire des statuts). un bénevole ( des personnes qui <span class="text-primary"> consacrent une partie de leur temps </span>, sans être rémunérées, aux activités de l’association .) ou autre membre  ...  </p>
+               @endif
              </div>
             
             </div>
@@ -134,8 +147,8 @@
            
           </div>
 
-        </div>
-    </div>
+        
+  
       <!-- fin -->
    
 
@@ -145,8 +158,11 @@
 
 <div class="container-fluid my-5">
     <!-- $association->id pour avoir l'instance de l'association dans le nouveau page $association -->
-   
+   @if($association->evenements->count())
  <div id="evenement" class="text-center fs-1 fw-bold " style="color:var(--blue)">Les évènements </div> <br><br>
+
+   @endif 
+
     <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
  
 
