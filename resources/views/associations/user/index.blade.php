@@ -111,38 +111,38 @@
      </div>
      @endif
 
-        <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
+        <div class="row row-cols-1 row-cols-md-3 g-1" style="margin:0 120px;">
  
              @foreach ($association->bureaus as $bureau)
-            <div class="col hoover" style = "transition:0.6s ease-out;"> <!-- je vais centré les balises p seulement -->
+            <div class="col hoover" style = "transition:0.6s ease-out;background-color:rgb(246, 245, 245) ;"> <!-- je vais centré les balises p seulement -->
               <p class="text-center">  <img src="{{asset('storage/'.$bureau->image) }}" class="img-fluid" alt="don't exist" style="height:60px; width:60px; border-radius:70px;">
               </p>
               <p class="text-center fw-bold" style="font-size:18px;color:var(--pink)">{{ $bureau->Poste }}</p>
              <p class="text-center fw-bold" style="color:#26046a"><i class="fa-solid fa-envelope"></i> {{ $bureau->email }} </p>
 
-             <div class="text-start membre-lien pt-3" style="font-weight: bold;">
+             <div class="text-start membre-lien pt-3 px-5" style="font-weight: bold;">
                <p><i class="fa-solid fa-user-tie"></i> {{ $bureau->nom }} {{ $bureau->prenom }}</p>
                <p><i class="fa-solid fa-square-phone"></i> {{ $bureau->Tel }}</p>
                <p> <i class="fa-solid fa-graduation-cap"></i> {{ $bureau->filiere }}</p>
                <p><i class="fa-solid fa-calendar-day"></i> {{ $bureau->date_mandat }}</p>
 
                @if($bureau->Poste == "President")
-               <p class="mt-3 text-muted"> Le <span class="text-primary"> << Président >> </span> , qui s’occupe en général de tout ce qui relève de l’administration, mais pas que ! Il donne la ligne directrice de l’association , tranche dans les débats et dans les grandes prises de décision. C’est un poste avec de <span class="fw-bold text-primary">grandes responsabilités</span> et <span class="fw-bold text-primary">très formateur</span></p> <!-- sert juste a avoir de l'espace entre les membres --> 
+               <p class="mt-3 text-muted px-1"> Le <span class="text-primary"> << Président >> </span> , qui s’occupe en général de tout ce qui relève de l’administration, mais pas que ! Il donne la ligne directrice de l’association , tranche dans les débats et dans les grandes prises de décision. C’est un poste avec de <span class="fw-bold text-primary">grandes responsabilités</span> et <span class="fw-bold text-primary">très formateur</span></p> <!-- sert juste a avoir de l'espace entre les membres --> 
 
                @elseif($bureau->Poste == "Secretaire") 
-               <p class="mt-3 text-muted">
+               <p class="mt-3 text-muted px-1">
                 Le <span class="fw-bold text-primary"><< secrétaire général >> </span>, enfin, est la personne <span class="fw-bold text-primary"> chargée de la communication avec l’extérieur </span> (ça peut être l’administration, les entreprises partenaires…) et avec les autres membres de l’association. Il est là pour <span class="fw-bold text-primary"> tenir au courant des décisions prises </span> par le bureau et aussi pour organiser les réunions (les assemblées générales).</p> 
                @elseif($bureau->Poste == "Tresorier")
-               <p class="mt-3 text-muted">
+               <p class="mt-3 text-muted px-1">
                 Le <span class="text-primary"> << trésorier >> : </span> c’est le magicien de la comptabilité ! 💰 Il <span class="text-primary"> gère les dépenses </span>, trouve des solutions pour faire gagner de l’argent à l’association, choisit les tarifs lorsque l’association vend des produits (ou autres) aux étudiants, de sorte à tirer un <span class="text-primary">certain bénéfice à réinvestir</span> dans les autres projets de l’association .
                 </p>
                @else  
-              <p class="mt-3 text-muted">
-               Un <span class="fw-bold text-primary"><< membre de l'association >> </span> , participe à l'association et <span class="text-primary">bénéficie des mêmes droits</span> et mêmes obligations (sauf disposition contraire des statuts). un bénevole ( des personnes qui <span class="text-primary"> consacrent une partie de leur temps </span>, sans être rémunérées, aux activités de l’association .) ou autre membre  ...  </p>
+              <p class="mt-3 text-muted px-1">
+               Un <span class="fw-bold text-primary"><< membre de l'association >> </span> , participe à l'association et <span class="text-primary">bénéficie des mêmes droits</span> et mêmes obligations (sauf disposition contraire des statuts). comme un bénevole ( des personnes qui <span class="text-primary"> consacrent une partie de leur temps </span>, sans être rémunérées, aux activités de l’association .) ou autre membre  ...  </p>
                @endif
              </div>
             
-            </div>
+            </div> 
             @endforeach
            
           </div>
