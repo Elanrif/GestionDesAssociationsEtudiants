@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Association;
 use App\Models\Comment;
 use App\Models\Commentaire;
+use App\Models\Evenement;
 use App\Models\Reponse;
 use App\Models\Usercontact;
 use Illuminate\Http\Request;
@@ -138,17 +139,35 @@ class ContactController extends Controller
 
     public function admincommentaire() {
 
-        $associations = Association::all() ;
- 
+     $associations = Association::all() ;
      $user_contacts = Usercontact::where('supprimer',0)->get() ; 
      $notification = UserContact::where('status', 0)->get() ; 
-
      $count_message = Usercontact::count() ;
-
      $commentaires = Commentaire::all() ; 
      
 
         return view('contact.admin.commentaire',compact('associations','user_contacts','count_message','notification', 'commentaires')) ; 
+    }
+
+        public function dashboard() { 
+            
+            
+            // les valeurs comptés 
+            $asso = Association::all()->count() ;
+            $event = Evenement::all()->count() ;  
+            $use = User::all()->count() ; 
+            $comment = Commentaire::all()->count() ; 
+            $messa = Usercontact::all()->count() ; 
+            
+         $associations = Association::all() ;
+         $user_contacts = Usercontact::where('supprimer',0)->get() ; 
+         $notification = UserContact::where('status', 0)->get() ; 
+         $count_message = Usercontact::count() ;
+         $commentaires = Commentaire::all() ; 
+         $users = User::where('id','<>',auth()->user()->id)->paginate(5) ; 
+         $evenements = Evenement::take(7)->get() ; 
+       return view('admins.dashboard.home',compact('associations','user_contacts','count_message','notification', 'commentaires','users','evenements','asso','event','use','comment','messa')) ; 
+
     }
 
     // supprimer mon contact admin 

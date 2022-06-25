@@ -104,6 +104,10 @@
 
  }
 
+ .boxes  { 
+  box-shadow: 40px;
+ }
+
  
 
  
@@ -208,6 +212,7 @@ color:black ;
  border-bottom-style: solid; 
   border-bottom-width: 5px;
   color:var(--blue); 
+  
 }
 
 

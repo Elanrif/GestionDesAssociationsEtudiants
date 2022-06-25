@@ -23,6 +23,7 @@ use App\Models\User;
 |
 */
 
+
 Route::get('/',function(){ 
     $associations = Association::all() ; 
     $evenements = Evenement::all() ; 
@@ -60,6 +61,7 @@ Route::post('/home/delete',[HomeController::class,'delete'])->name('deleteAccoun
 
 // pour l'admin connecté 
 Route::get('/admin-moncompte/monCompte',[HomeController::class,'moncompte'])->name('monCompte') ;
+Route::get('/admin-dashboard',[ContactController::class,'dashboard'])->name('admin-dashboard') ;
 
 Route::group(['namespace' => 'Auth'], function() { 
     Route::get('register',[RegisterController::class,'create'])->name('register');
@@ -69,7 +71,7 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::get('login', [LoginController::class,'create'])->name('login') ; 
     Route::post('login', [LoginController::class,'store']) ; 
 
-    Route::get('login-adminstrateur',[LoginController::class,'createadmin'])->name('loginAdmin');
+    Route::get('login-administrateur',[LoginController::class,'createadmin'])->name('loginAdmin');
     Route::post('loginadmin', [LoginController::class,'storeadmin'])->name('storeadmin') ; 
 
     Route::get('logout', [loginController::class,'logout'])->name('logout') ;
@@ -113,7 +115,7 @@ Route::resource('admin-asso',AssociationController::class)->parameters([
 
 //evenements des associations 
 
-
+Route::get('/admin-evenement',[AssociationController::class , 'dashboardevent'])->name('evenement.dashboard') ; 
 Route::get('/admin-evenement/{association}',[AssociationController::class , 'eventindex'])->name('evenement.show');
 
 Route::get('/admin-asso/create/{association}/bureau',[BureauController::class,'create'])->name('create.bureau');

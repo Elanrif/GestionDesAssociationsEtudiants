@@ -39,12 +39,18 @@ public function index() {
 
     public function edit(User $user) { 
 
+         // l'erreur qui m'a cassé la tête est juste d'ajouter la variable $commentaires ; 
         Gate::authorize('admin-user');
          $associations = Association::all() ; 
          $count_message =  Usercontact::count() ;
+         $commentaires = Comment::all() ;
           $notification = UserContact::where('status', 0)->get() ; 
-        return view('users.admin.edit',compact(['notification','user','associations','count_message'])) ; 
+        
+        return view('users.admin.edit',compact('notification','user','associations','count_message','commentaires')) ; 
     }
+
+  
+
 
     public function update(Request $request, User $user) { 
 

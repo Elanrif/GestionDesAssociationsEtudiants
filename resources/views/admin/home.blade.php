@@ -32,7 +32,10 @@
   <div class=""><!-- permet aux élement enfant de prendre automatiquement la largeur --> 
   <ul class="nav uuid flex-column">
   <li class="nav-item">
-    <a class="nav-link fw-bold admin-lien {{ request()->is('admin-users*') ? 'admin-liens':'' }}" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-users-line me-2 fs-5"></i>Les utilisateurs</a>
+    <a class="nav-link fw-bold admin-lien {{ request()->is('admin-dashboard*') ? 'admin-liens':'' }}" aria-current="page" href="{{ route('admin-dashboard') }}"><i class="fas fa-home me-2 fs-5"></i> Tableau de bord </a>
+
+      <a class="nav-link fw-bold admin-lien {{ request()->is('admin-users*') ? 'admin-liens':'' }}" aria-current="page" href="{{ route('admin-users') }}"><i class="fa-solid fa-users-line me-2 fs-5"></i>Les utilisateurs</a>
+
   </li>
   <li class="nav-item">
     
@@ -67,7 +70,7 @@
     @endforeach
 
     <hr>
-    <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}" href="#">rien</a></li>
+    <li><a class="dropdown-item py-2" href="{{ route('evenement.dashboard') }}" href="#">Les évènements</a></li>
 
   
   </ul>
@@ -176,9 +179,13 @@
   <!-- fin Modal --> 
 
   <!-- pour la barre de recherche -->
- <nav class="navbar navbar-expand-lg" style="background-color:var(--blanc)">
+ <nav class="navbar navbar-expand-lg " style="background-color:var(--blanc);position:fixed;z-index:10;width:100%;">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold nav-link " href="#">logo</a>
+   
+       <a class="navbar-brand ps-5" href="/">
+    <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:40px; width:100px; border-radius:70px;">
+    </a>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -229,7 +236,7 @@
   </div>
 </nav>
   <!-- fin -->
-<div style="height:5vh;"></div> <!-- pour eloigner le navbar -->
+<div class="mt-4" style="height:5vh;"></div> <!-- pour eloigner le navbar -->
         @yield('admin')
 
     </div>

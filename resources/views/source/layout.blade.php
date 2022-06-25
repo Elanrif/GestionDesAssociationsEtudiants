@@ -28,7 +28,7 @@
         <!-- permet juste de cacher le boutton si l'utilisateur n'est pas admin  --> 
           @if(auth()->check() AND auth()->user()->role == 'admin')
         <li class="nav-item px-5">
-          <a class="nav-link  fs-5  nav-lien fw-bold rounded-2  {{request()->is('admin-users*') ? 'nav-liens':''}} " href="{{ route('admin-users') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
+          <a class="nav-link  fs-5  nav-lien fw-bold rounded-2  {{request()->is('admin-dashboard') ? 'nav-liens':''}} " href="{{ route('admin-dashboard') }}"><i class="fa-solid fa-user-tie me-2"></i>Administrateur</a>
         </li>
         @endif
         <li class="nav-item px-5">
@@ -157,7 +157,7 @@
 
   <!-- fin Modal -->
 
-<div class="" style="height:13vh;"></div>
+<div class="mt-3" style="height:13vh;"></div>
 <!-- fin --> 
      <!-- ajouter quelque chose -->
 

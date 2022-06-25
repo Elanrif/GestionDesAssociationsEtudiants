@@ -30,6 +30,20 @@ class AssociationController extends Controller
         return view('associations.admin.index', compact('commentaires','associations','count_message','notification'));
     }
 
+    public function dashboardevent() { 
+
+        Gate::authorize('admin-user') ; 
+             
+         $notification =  UserContact::where('status', 0)->get() ;;
+        $associations = Association::latest()->get() ; 
+        $count_message =  Usercontact::count() ;
+        $commentaires = Commentaire::all() ;
+        $evenements = Evenement::all() ;  
+        return view('associations.admin.dashboard', compact('commentaires','associations','count_message','notification','evenements'));
+
+    }
+
+    
       public function notifMessage(){ 
 
         $state = Usercontact::where('status',0)->get()  ;

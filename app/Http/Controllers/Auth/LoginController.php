@@ -80,7 +80,7 @@ class LoginController extends Controller
             Auth::login($user)  ;
             $request->session()->regenerate();  // regenere la session()
           
-          return redirect()->route('monCompte')->with('login',' Bienvenu dans votre page d\'administration '); 
+          return redirect()->route('admin-dashboard')->with('login',' Bienvenu dans votre page d\'administration '); 
         }
         elseif($user->active == 1 && $user->role == 'utilisateur') {// si c'est un simple utilisateur 
 
@@ -106,6 +106,15 @@ class LoginController extends Controller
 
     public function logout(Request $request) { 
 
+      if(auth()->user()->role == 'admin'){ 
+
+         auth()->logout() ; 
+        
+        $request->session()->invalidate();
+
+        return redirect()->route('loginAdmin')->with('logouts','Veuillez vous connecter à votre compte pour mettre à jour les informations . ! '); 
+      }
+    
         auth()->logout() ; 
         
         $request->session()->invalidate();

@@ -4,7 +4,7 @@
 <div class="container d-flex justify-content-center align-items-center mt-5" >
   <div style="max-width:600px;">
      <!-- pour s'être déconnecter --> 
-    @if ($message = Session::get('logout'))
+    @if ($message = Session::get('logouts'))
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
    <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
