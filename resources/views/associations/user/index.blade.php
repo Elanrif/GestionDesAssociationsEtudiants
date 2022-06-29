@@ -13,6 +13,34 @@
       </div>
      </div>
     @endif 
+      @if ($message = Session::get('participer'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif
+      @if ($message = Session::get('deleteparticiper'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex text-danger">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif
+     @if ($message = Session::get('liker'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif
+     @if ($message = Session::get('deletelike'))
+     <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex text-danger">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif
      @if ($message = Session::get('deleted'))
      <div class="container d-flex justify-content-center mt-2 bg-body bg-transparent rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
    <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
@@ -192,7 +220,7 @@
       @method('DELETE')
       <input type="text" class="visually-hidden" name="evenement_id" value={{ $evenement->id }}><!-- je prends la ligne id de chaque evenement -->
       <input type="text" class="visually-hidden" name="user_id" value={{ auth()->user()->id }}><!-- et l' utilisateur connecté -->
-       <a href="#" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold" style="color:var(--pink)">Participé(e)</button></a>
+       <a href="#" class="nav-link"><button type="submit" href="#" class="btn border border-black fw-bold" style="color:var(--pink)">Je participe</button></a>
      </form>
        
        @else <!-- sinon -->

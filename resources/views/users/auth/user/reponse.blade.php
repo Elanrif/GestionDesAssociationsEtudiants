@@ -13,6 +13,12 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     @endif
+      @if ($message = Session::get('reponses-delete'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
      </div>
  </div>
 
@@ -23,7 +29,40 @@
             <!-- orderByDesc , sortByDesc font le même rôle , si l'un ne marche pas utilisé l'autre -->  
             @foreach ($user_contacts->sortByDesc('id') as $contact ) <!-- J'AI COMMENCÉ dans la relation BELONGSTO --> 
               
-       
+                  
+               
+<!-- Modal pour DELETE -->
+<div class="modal fade" id="loop{{$contact->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form action="{{ route('contactuser.deleteds') }}" method = "post">
+                 @csrf 
+                   @method('DELETE')
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold text-danger" id="exampleModalLabel">supprimer </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body fw-bold">
+
+           
+                      <button class="btn fw-bold text-muted" type="button"  aria-expanded="false">
+                       Êtes-vous sûr de <span class="text-danger">supprimé</span>   <span class="text-dark">votre message ? </span>  <!--  --> 
+                      </button>
+                     
+                            <input type="text" class="visually-hidden" value="{{ $contact->id }}" name="message_id">
+                     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Non</button>
+        <button type="submit"  class="btn btn-danger fw-bold">Oui</button>
+      </div>
+    </div>
+</form>
+  </div>
+</div>
+
+  
+<!-- fin modal --> 
 
             <div class="col">
 
@@ -40,8 +79,10 @@
     <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       
-      
+    <!-- j'avais ERROR :SERVER donc verifie si dans le model c'est bien surtout dans pivot si il n'y a pas un autre valeur 
+      aussi pour chercher une erreur dans une page on fait : @ php dd('text')@ endphp comme ça tu teste de ligne en ligne -->
       @if ($contact->reponses->count() > 1 )
+   
       <button class="accordion-button collapsed fw-bold text-success " style="background-color:aquamarine;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ $loop->index }}" aria-expanded="false" aria-controls="flush-collapseOne">
 
          <span class="text-primary fw-bold">
@@ -69,7 +110,8 @@
   <div id="flush-collapseOne{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 
     <!-- je fais la relation dans le modele User et directement ici , dans cette vue je recupere cet modele par $contact ; car le but c'est d'avoir ce model affecté par la variable user_contact soit par le passer dans le controller ; mais puisque je l'ai déjà pas besoin de le passer dans le controller --> 
-    <!-- reponses c'est le nom de la relation --> 
+    <!-- reponses c'est le nom de la relation -->
+     
     @foreach ($contact->reponses as $reponse )
         
           <div class="my-5">
@@ -85,8 +127,6 @@
       
             </div>
                     <!-- fin --> 
-
-
 
                 <div class="d-flex mt-3"> <!--  --> 
 
@@ -135,50 +175,9 @@
                 </form>
                 </div>
             </div>
-            
-<!-- Modal pour DELETE -->
-<div class="modal fade" id="loop{{$contact->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form action="{{ route('contactuser.delete') }}" method = "post">
-                 @csrf 
-                   @method('DELETE')
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fw-bold text-danger" id="exampleModalLabel">supprimer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body fw-bold">
-
-           
-                      <button class="btn fw-bold text-muted" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                       Êtes-vous sûr de <span class="text-danger">supprimé</span>   <span class="text-dark">votre message ? </span>  <!--  --> 
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                        <li><a class="dropdown-item fw-bold text-danger" href="#">
-                            <input type="text" class="visually-hidden" value="{{ $contact->id }}" name="message_id">
-                            <button class="btn fw-bold text-danger" type="submit">supprimer</button></a></li>
-                        
-                      </ul>
-                      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Non</button>
-        <button type="submit" class="btn btn-danger fw-bold">Oui</button>
-      </div>
-    </div>
-</form>
-  </div>
-</div>
-
-<!-- fin modal --> 
-       
-           
             @endforeach
-
         </div>
 
- 
     </div>
 </div>
 

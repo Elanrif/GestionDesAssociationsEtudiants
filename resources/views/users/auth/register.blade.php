@@ -35,7 +35,8 @@
   </div>
     <div class="col-md-6">
     <label for="num_tel" class="form-label fw-bold">Tel</label>
-    <input type="number" name="num_tel" value="{{ old('num_tel') }}" required class="form-control @error('num_tel') is-invalid @enderror" id="num_tel" placeholder="saisir votre Numéro">
+    <input type="tel" name="num_tel" placeholder="Format : 06/07********" pattern="[0-9]{10}" value="{{ old('num_tel') }}" required class="form-control @error('num_tel') is-invalid @enderror" id="num_tel" >
+
      @error('num_tel')
           <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

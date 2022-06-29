@@ -1,7 +1,8 @@
 @extends("../../admin/home")
 @section('admin')
 
- <!-- suppression membre du bureau --> 
+  <div class="text-center">
+    <!-- suppression membre du bureau --> 
    @if ($message = Session::get('manarfatiguer'))
      <div class="container d-flex justify-content-center mt-2 bg-body rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
    <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
@@ -20,6 +21,14 @@
     @endif
     
     @if ($message = Session::get('manar'))
+     <div class="container d-flex justify-content-center mt-2 bg-body rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
+   <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
+  <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+     </div>
+    @endif 
+
+     @if ($message = Session::get('salma'))
      <div class="container d-flex justify-content-center mt-2 bg-body rounded-1 fs-5 fw-bold">     <div class="alert  alert-primary ms-4 alert-dismissible fade show w-50" role="alert">
    <span class="fw-bold justify-content-center d-flex">{{ $message }} <strong class="fs-5"> <i class="fa-solid ms-2 fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.</span>
   <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
@@ -54,6 +63,7 @@
       </div>
      </div>
     @endif 
+  </div>
 
 
 <div class="card bg-dark text-white mt-2">

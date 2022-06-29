@@ -4,28 +4,16 @@
  <div class="container-fluid d-flex justify-content-center">
      <div class="w-50">
           <!-- pour s'être connecter --> 
-    @if ($message = Session::get('usermessage'))
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-    @endif
-
-    @if ($message = Session::get('userread'))
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-    @endif
-
-    @if ($message = Session::get('notification'))
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-    @endif
+  
 
     @if($message = Session::get('reponses-delete'))
+         <div class="alert alert-primary alert-dismissible fade show" role="alert">
+   <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    @endif
+
+     @if($message = Session::get('usermessage'))
          <div class="alert alert-primary alert-dismissible fade show" role="alert">
    <span class="fw-bold">{{ $message }}</span><strong class="fs-5"> <i class="fa-solid fa-face-grin-wide" style="color:rgb(255, 0, 157);"></i> </strong>.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -62,13 +50,9 @@
             @foreach ($user_contacts->sortByDesc('id') as $contact ) <!-- J'AI COMMENCÉ dans la relation BELONGSTO --> 
               
               <!-- il suffit de modifier la colonne 'status' a '1' de la table 'user_contact' : POUR CE FAIRE CHAQUE $contact je vais envoyé une formulaire -->
-              
-             
-               
-
+         
               @if($contact->status == 0 )
-       
-
+     
             <div class="col" > <!-- COULEUR DES MESSAGES --> 
 
                    <!-- ici puisque on va partir de la belongTo de la relation avec cardinalité 1:N ; on part de 1 donc PAS DE FOREACH-->
@@ -100,6 +84,7 @@
             </ul>
           </span> </span> 
                 
+        
              
                     <div class="fw-bold text-dark mb-2" style="margin-left:60px;">
               
@@ -139,7 +124,7 @@
 
                      
                     
-                    <textarea type="text" class="form-control py-3 bg-dark text-light fw-bold"  placeholder="Ajouter une réponse..." style="border-radius:30px;width:70%;" rows="1" name="message">  </textarea>
+                    <textarea type="text" class="form-control py-3 bg-dark text-light fw-bold"  placeholder="Ajouter une réponse..." style="border-radius:30px;width:70%;" rows="1" name="message"></textarea>
 
                 
 
@@ -176,76 +161,20 @@
 
     <!-- je fais la relation dans le modele User et directement ici , dans cette vue je recupere cet modele par $contact->user ; car le but c'est d'avoir ce model soit par le passer dans le controller ; mais puisque je l'ai déjà pas besoin de le passer dans le controller --> 
     <!-- reponses c'est le nom de la relation --> 
-    @foreach ($contact->reponses->sortBy('created_at') as $reponse )
-        
-          <div class="my-5 ms-3">
-         <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
-              <span class="fw-bold text-primary">  {{ $reponse->pivot->created_at }} </span> 
 
-              <!-- button pour supprimé les messages envoyé pas encore fait --> 
-                 <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#looper{{$contact->id}}">
-                        <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
-                      </button><br>
-                <div class="fw-bold text-dark " style="margin-left:60px;"> {{ $reponse->pivot->message }}</div> 
-     </div>
-
-     
-<!-- Modal pour DELETE une réponse -->
-<div class="modal fade" id="looper{{$contact->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form action="{{ route('contactuser.deleted') }}" method = "post">
-                 @csrf 
-                   @method('DELETE')
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body fw-bold">
-
-           
-                      <button class="btn fw-bold text-muted" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                       Êtes-vous sûr de <span class="text-danger">supprimé</span> cette réponse envoyé à {{ $reponse->pivot->created_at }} <!-- une variable hors du foreach peut etre utilisé dans le foreach car existe comme un nom --> 
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                        <li><a class="dropdown-item fw-bold text-danger" href="#">
-                            <input type="text" class="visually-hidden" value="{{ $reponse->pivot->id }}" name="reponse">
-                            <button class="btn fw-bold text-danger" type="submit">supprimer</button></a></li>
-                        
-                      </ul>
-                      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Non</button>
-        <button type="submit" class="btn btn-danger fw-bold">Oui</button>
-      </div>
-    </div>
-</form>
-  </div>
-</div>
-
-<!-- fin modal --> 
-    @endforeach
-
+    <!-- ================================================************* index_supprimer.php1**********************======================= -->
 
   </div>
   </div>
-
-         
-             
-      
+ 
             </div>
                     <!-- fin --> 
 
-
-
             </div>
-
-            @else 
+  
+            @else <!-- les messages pas encore lu --> 
             
-
-            <div class="col" style="background-cojlor:rgb(165, 241, 241);"> <!-- COULEUR DES MESSAGES --> 
+            <div class="col"> <!-- COULEUR DES MESSAGES --> 
 
                    <!-- ici puisque on va partir de la belongTo de la relation avec cardinalité 1:N ; on part de 1 donc PAS DE FOREACH-->
                 <img class="pe-2 d-iline" src="{{ asset('storage/'.$contact->user->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
@@ -352,81 +281,17 @@
    
 
     <!-- je fais la relation dans le modele User et directement ici , dans cette vue je recupere cet modele par $contact->user ; car le but c'est d'avoir ce model soit par le passer dans le controller ; mais puisque je l'ai déjà pas besoin de le passer dans le controller --> 
+
     <!-- reponses c'est le nom de la relation --> 
-    @foreach ($contact->reponses->sortBy('created_at') as $reponse )
-        
-          <div class="my-5 ms-3">
-         <img class="pe-2 d-iline" src="{{ asset('storage/'.auth()->user()->image) }}" alt="" style="border-radius:50%;height:50px; width:50px;"> 
-              <span class="fw-bold text-primary">  {{ $reponse->pivot->created_at }} </span> 
-
-              <!-- button pour supprimé les messages envoyé pas encore fait --> 
-                 <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#looper{{$contact->id}}">
-                        <i class="fa-solid text-danger fs-3 fa-trash" style="cursor:grab;"></i>
-                      </button><br>
-              
-                   <div class="fw-bold text-dark mb-2" style="margin-left:60px;">
-              
-                    <!-- border-radius pour le card et le body --> 
-                <div class="card" style="max-width:600px;border-radius: 30px;background-color:black">
-                  <div class="card-body py-3" style="background-color:rgb(81, 79, 79);border-radius: 30px;">
-                
-                    <p class="card-text text-light fw-bold" >{{ $reponse->pivot->message }} </p>
-                    
-                  </div>
-                </div>
-              </div> 
-     </div>
-
-     
-<!-- Modal pour DELETE une réponse -->
-<div class="modal fade" id="looper{{$contact->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form action="{{ route('contactuser.deleted') }}" method = "post">
-                 @csrf 
-                   @method('DELETE')
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body fw-bold">
-
-           
-                      <button class="btn fw-bold text-muted" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                       Êtes-vous sûr de <span class="text-danger">supprimé</span> cette réponse envoyé à {{ $reponse->pivot->created_at }} <!-- une variable hors du foreach peut etre utilisé dans le foreach car existe comme un nom --> 
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                        <li><a class="dropdown-item fw-bold text-danger" href="#">
-                            <input type="text" class="visually-hidden" value="{{ $reponse->pivot->id }}" name="reponse">
-                            <button class="btn fw-bold text-danger" type="submit">supprimer</button></a></li>
-                        
-                      </ul>
-                      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Non</button>
-        <button type="submit" class="btn btn-danger fw-bold">Oui</button>
-      </div>
-    </div>
-</form>
-  </div>
-</div>
-
-<!-- fin modal --> 
-    @endforeach
+     <!-- ================================================************* index_supprimer.php2**********************======================= -->
 
 
   </div>
   </div>
 
-         
-             
-      
+
             </div>
                     <!-- fin --> 
-
-
 
             </div>
 
@@ -468,19 +333,13 @@
 </div>
 
 <!-- fin modal --> 
-       
-
-       
-           
+    
             @endforeach
 
         </div>
 
-       
- 
     </div>
 </div>
 
 
 @endsection
-

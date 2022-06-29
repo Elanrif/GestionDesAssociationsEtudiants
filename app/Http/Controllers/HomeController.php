@@ -30,10 +30,11 @@ class HomeController extends Controller
     public function deleted(Request $request) { 
 
 
-       $reponse =  Reponse::where('id' , $request->reponse)->first() ; 
+      
+       $reponse =  Usercontact::where('id' , $request->message_id)->first() ; 
        
         $reponse->delete() ; 
-
+  
         return back()->with('reponses-delete' ,  'Message supprimé avec succès ') ;
       
         
@@ -52,6 +53,7 @@ class HomeController extends Controller
       $notification = UserContact::where('status', 0)->get() ; 
    
       $associations = Association::all() ;
+     
         return view('users.auth.user.reponse',compact('notification','notification','associations','user_contacts','count_message','admin')) ; 
      
     }

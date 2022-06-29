@@ -261,7 +261,7 @@ class AssociationController extends Controller
             'image' => $path 
          ]);
 
-         return back() ;
+         return back()->with('salma','l\'évènement a été créé avec succès ') ;
 
         }
        

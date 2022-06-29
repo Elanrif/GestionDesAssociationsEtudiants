@@ -42,7 +42,7 @@ Route::get('/default-laravel', function () {
     return view('default-laravel');
 });
 
-Route::delete('/delete/reponse',[HomeController::class , 'deleted'])->name('contactuser.deleted') ; 
+Route::delete('/delete/reponse',[HomeController::class , 'deleted'])->name('contactuser.deleteds') ; 
 
 // compte admin 
 Route::get('/admin-moncompte' ,[HomeController::class , 'compte'])->name('admin-moncompte') ; 

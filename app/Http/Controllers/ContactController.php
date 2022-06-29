@@ -121,19 +121,14 @@ class ContactController extends Controller
     public function admincontact() { 
 
      $associations = Association::all() ;
- 
-     $user_contacts = Usercontact::where('supprimer',0)->get() ; 
+     $user_contacts = Usercontact::where('supprimer',0)->get() ;
      $notification = UserContact::where('status', 0)->get() ; 
-
      $count_message = Usercontact::count() ;
-
-     $commentaires = Comment::all() ; 
-
-     
+     $commentaires = Commentaire::all() ; 
+       // 500 | SERVER ERROR car j'avais écrit 'comment'
     
-    
+   
     return view('contact.admin.index',compact('associations','user_contacts','count_message','notification', 'commentaires')) ;
-    
     
     }
 
@@ -182,6 +177,7 @@ class ContactController extends Controller
     public function contactdelete(Request $request) 
     { 
         // j'utilise le meme systeme , je passe un input dans le formulaire ou je recupere l'enregistrement id et je le cahche ensuite par visually-hidden
+        
         $user = Usercontact::where('id',$request->message_id)->first() ; 
         $user->supprimer = 1 ; 
         $user->save() ; 

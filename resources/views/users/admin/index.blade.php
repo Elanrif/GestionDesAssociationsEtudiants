@@ -107,8 +107,8 @@
 </div>
 <!-- fin -->
      
-      <td><a href="{{ route('admin-users.edit',$user->id) }}"><i class="fa-solid fa-file-pen fs-4 text-primary"></i></a> </td><!--modifer-->
-      <td><a href="#"><i class="fa-solid fs-4 text-success fa-eye"></i></a></td><!-- voir --> 
+      <td><a href="{{ route('admin-users.edit',$user->id) }}" class="me-2"><i class="fa-solid fa-file-pen fs-4 text-primary"></i></a> </td><!--modifer-->
+       
    
     </tr>
 

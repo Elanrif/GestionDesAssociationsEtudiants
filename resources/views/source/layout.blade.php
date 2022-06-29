@@ -12,7 +12,7 @@
 
 
 <!-- 1eme barre --> 
-<nav class="navbar navbar-expand-lg " style="position:fixed ; z-index:8 ; width:100%;background-color:rgb(255, 255, 255);">
+<nav class="navbar navbar-expand-lg" style="position:fixed ;top:0; z-index:8 ; width:100%;background-color:rgb(255, 255, 255);">
   <div class="container-fluid">
      <a class="navbar-brand ps-5" href="/">
     <img src="{{asset('images/Logo_0008_Universite-AS.png') }}" class="img-fluid" alt="don't exist" style="height:80px; width:100px; border-radius:70px;">
@@ -51,16 +51,10 @@
              @auth
                @if(auth()->user()->role == 'admin')
              <li><a class="dropdown-item py-2" href="{{ route('admin-asso.index') }}">Toutes les Associations</a></li>
-             @else
-             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @user</a></li>
              @endif 
              @endauth
              
-             @guest
-             
-             <li><a class="dropdown-item py-2" href="#">Toutes les Associations @visiteur</a></li>
-
-             @endguest
+            
           </ul>
         </li>
       </ul>

@@ -188,7 +188,7 @@ class BureauController extends Controller
         
        Participe::create($request->all()) ; 
     
-      return back()   ; 
+      return back()->with('participer','Vous participez maintenant à cet évènement')   ; 
      }
 
      public function deleteParticipe(Request $request)
@@ -199,13 +199,13 @@ class BureauController extends Controller
 
          $participe->delete() ; 
       
-         return back() ; 
+         return back()->with('deleteparticiper','Vous ne particpez plus à cet évènement') ; 
      }
 
      public function like(Request $request)
      { 
          Like::create($request->all()) ; 
-         return back() ; 
+         return back()->with('liker','j\'aime') ; 
      }
 
      public function deleteLike(Request $request)
@@ -215,6 +215,6 @@ class BureauController extends Controller
 
          $like->delete() ; 
 
-         return back() ; 
+         return back()->with('deletelike','je n\'aime plus') ; 
      }
 }

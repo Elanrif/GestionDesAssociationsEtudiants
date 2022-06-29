@@ -1,444 +1,394 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+* {
+    --bisque--: #c4e0f9;
+    --blanc--: #fffbfc; /*#FFFBFC ;*/
+    --bleu_ciel--: #449dd1;
+    --noir--: #00072d;
+    --bleu--: #232ed1;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-*{
- --bisque-- : #C4E0F9;
- --blanc--: #FFFBFC ;  /*#FFFBFC ;*/
- --bleu_ciel--: #449DD1 ; 
- --noir--: #00072D ;
- --bleu--: #232ED1;
+    --dark-orchid: #a42cd6;
+    --midnight: #0f084b;
+    --plum-web: #f9b9f2;
+    --gold-crayola: #f7efe4;
+    --persian: #721817;
+    --orange-red: #ff5a5f;
+    --orange: #e6391b;
 
- --dark-orchid: #a42cd6 ;
- --midnight: #0f084b; 
- --plum-web:#f9b9f2;
- --gold-crayola :#f7efe4;
- --persian:#721817;
- --orange-red:#ff5a5f;
- --orange:#e6391b;
+    /* utiliser soit le bleu : --pink:blue;  */
+    --pink_old: rgb(255, 0, 157);
+    --pink_oldest: blue;
+    --pink: rgb(255, 0, 157);
+    --blue: rgb(60, 46, 214);
+    --adminsidebar: rgb(195, 195, 195);
+    --blanc: #ffff;
 
- 
- /* utiliser soit le bleu : --pink:blue;  */
- --pink_old: rgb(255, 0, 157); 
- --pink_oldest:blue;
- --pink:rgb(255, 0, 157);
- --blue: rgb(60, 46, 214);
- --adminsidebar:rgb(195, 195, 195);
- --blanc:#ffff;
- 
-
- font-family: 'Poppins', sans-serif;
- /* font-family: 'Lobster', cursive; */
+    font-family: "Poppins", sans-serif;
+    /* font-family: 'Lobster', cursive; */
 }
 
-
-.slider { 
-
-  height:50vh; 
-  position: relative ; 
+.slider {
+    height: 50vh;
+    position: relative;
 }
 
-.slider .image { 
-  object-fit:  cover;
-  height:100%; 
-  width:100% ; 
-  position : absolute ; 
-  top:0 ; 
-  left: 0 ; 
-  opacity: 0;
-  transition: opacity .5s;
-
+.slider .image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-.slider  .active { 
-  opacity: 1; 
+.slider .active {
+    opacity: 1;
 }
 
-.suivant, .precedent { 
-  position : absolute ; 
-  color : black ; 
-  font-size : 3rem ;
-  top : 50% ; 
-  transform: translateY(-50%);
+.suivant,
+.precedent {
+    position: absolute;
+    color: black;
+    font-size: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.suivant { 
-
-    right : 3rem ;
-    cursor:pointer ; 
+.suivant {
+    right: 3rem;
+    cursor: pointer;
 }
 
-.precedent { 
-    left : 3rem ; 
-    cursor : pointer ;
+.precedent {
+    left: 3rem;
+    cursor: pointer;
 }
 
-/* pour les évenements */ 
-.nav-evenement { 
-  color:var(--blue);
- }
+/* pour les évenements */
+.nav-evenement {
+    color: var(--blue);
+}
 
- .nav-evenement:hover { 
+.nav-evenement:hover {
+    background-color: var(--pink);
+    color: var(--blanc);
+}
 
-  background-color: var(--pink);
-  color: var(--blanc) ; 
+/* la survole de l'evenement */
+.eventhoover:hover {
+    box-shadow: 19px 27px 0px 0px rgba(0, 0, 0, 0.53);
+    -webkit-box-shadow: 19px 27px 0px 0px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 19px 27px 0px 0px rgba(0, 0, 0, 0.53);
+}
 
- }
+/* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2); sur le site css */
+.hoover:hover {
+    padding-top: 2px;
+    border: solid 1px rgb(255, 0, 157);
+    width: 400px;
+}
 
- /* la survole de l'evenement */
- .eventhoover:hover { 
+.boxes {
+    box-shadow: 40px;
+}
 
-    box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
--webkit-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
--moz-box-shadow: 19px 27px 0px 0px rgba(0,0,0,0.53);
-  
- }
-
-/* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2); sur le site css */ 
- .hoover:hover { 
-  
-  
-  padding-top : 2px;
-  border:solid 1px rgb(255, 0, 157) ;
-  width:400px ;
-
- }
-
- .boxes  { 
-  box-shadow: 40px;
- }
-
- 
-
- 
-/* pour les images en card des associations */ 
+/* pour les images en card des associations */
 /* pour l'association en violet de grand */
-.decouvrir-asso:hover{ 
-  transform : translateX(25px) ;
-  box-shadow: 0px 4px 10px 3px blue ;
-  padding:auto 50px;
-  
+.decouvrir-asso:hover {
+    transform: translateX(25px);
+    box-shadow: 0px 4px 10px 3px blue;
+    padding: auto 50px;
 }
 
-/* pour editer de l'user */ 
-.eiter:hover { 
-  color:var(--pink);
+/* pour editer de l'user */
+.eiter:hover {
+    color: var(--pink);
 }
-/* pour dropdwon page d'acceuil */ 
-.add:hover
-{
-  cursor : default ; 
-  background-color:white;
-}
-
-/* pour les membres du bureau */ 
-
-
-.membre-lien p:hover { 
-
-  color:var(--pink) ;
- 
-
+/* pour dropdwon page d'acceuil */
+.add:hover {
+    cursor: default;
+    background-color: white;
 }
 
-.nav-comment{ 
-  background-color: #449DD1 ;
-  width:150px;
-  border-radius:20px;
-  color:white;
+/* pour les membres du bureau */
+
+.membre-lien p:hover {
+    color: var(--pink);
 }
 
-.nav-comment button { 
-  color:white ;
-  transition:0.6s ease-in-out ; 
-}
-.nav-comment button:hover { 
-  color: #449DD1 ; 
-  background-color: white;
-  border-radius: 20px;
+.nav-comment {
+    background-color: #449dd1;
+    width: 150px;
+    border-radius: 20px;
+    color: white;
 }
 
+.nav-comment button {
+    color: white;
+    transition: 0.6s ease-in-out;
+}
+.nav-comment button:hover {
+    color: #449dd1;
+    background-color: white;
+    border-radius: 20px;
+}
 
 /* pour le footer les liens de facebook etc...... */
 
-.suivre >* { 
-   
-      color:black;
-      font-weight: bold; 
-      
+.suivre > * {
+    color: black;
+    font-weight: bold;
 }
-.suivre a { 
-
-  transition: 1,5s ease-in;
+.suivre a {
+    transition: 1, 5s ease-in;
 }
 
-.suivre a:hover { 
-
-  color: var(--pink);
+.suivre a:hover {
+    color: var(--pink);
 }
 
-.lien-general { 
-  transition: 1,5s ease-in-out ;
-  color:#721817;
+.lien-general {
+    transition: 1, 5s ease-in-out;
+    color: #721817;
 }
 
-.lien-active { 
+.lien-active {
     border-bottom-style: solid;
-  border-bottom-width: 5px;
-  color:blue ; 
-  width:170px;
+    border-bottom-width: 5px;
+    color: blue;
+    width: 170px;
 }
 
-.lien-general:hover { 
-  color:blue;
-  border-bottom-style: solid;
-  border-bottom-width: 5px;
-  width:170px;
+.lien-general:hover {
+    color: blue;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    width: 170px;
 }
 
 /* pour liens du sidebar admin */
 
-.admin-lien { 
-color:black ;
+.admin-lien {
+    color: black;
 }
 
-.admin-lien:hover{ 
-    border-bottom-style: solid; 
-  border-bottom-width: 5px;
-  color:var(--blue);
+.admin-lien:hover {
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    color: var(--blue);
 }
 
-.admin-liens { 
- border-bottom-style: solid; 
-  border-bottom-width: 5px;
-  color:var(--blue); 
-  
+.admin-liens {
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    color: var(--blue);
 }
-
 
 /*pour les autres lien du site */
 
-.nav-lien { 
-  color:black;
+.nav-lien {
+    color: black;
 }
 
-.nav-lien:hover { 
-  border-bottom-style: solid; 
-  border-bottom-width: 5px;
-  color:var(--pink);
+.nav-lien:hover {
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    color: var(--pink);
 }
 
-.lien-nav:hover{ 
-
-  color:var(--pink) ; 
+.lien-nav:hover {
+    color: var(--pink);
 }
 
-.nav-liens { 
- border-bottom-style: solid; 
-  border-bottom-width: 5px;
-  color:var(--pink); 
+.nav-liens {
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    color: var(--pink);
 }
 
-
-.nav-i { 
-  color:var(--pink);
+.nav-i {
+    color: var(--pink);
 }
-/* pour le bouton savoir plus */ 
-.savoir-hover:hover{ 
-
-  background-color: #0f084b;
-  color:white;
-  
-
+/* pour le bouton savoir plus */
+.savoir-hover:hover {
+    background-color: #0f084b;
+    color: white;
 }
-.admin-assohover:hover{ 
-  border:solid 1px blue ;
-
+.admin-assohover:hover {
+    border: solid 1px blue;
 }
+/* pour rendre invisible les petites crochets */
 
-
-.foot{ 
-  height:15vh;
-  border-radius: 100% 0% 100% 0% / 55% 96% 4% 45%  ;
-  background-color:var(--dark-orchid);
-}
-.foot-child{ 
-  font-size:20px;
-  font-weight:bold;
-  background-color:var(--midnight);
-  color:white ; 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
-.foot-child:hover{ 
-  font-size:25px;
-  background-color: white;
-  color:black ;
+.foot {
+    height: 15vh;
+    border-radius: 100% 0% 100% 0% / 55% 96% 4% 45%;
+    background-color: var(--dark-orchid);
+}
+.foot-child {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--midnight);
+    color: white;
 }
 
-/* fin de ça */ 
-.btn1{ 
-  border : solid 1px blue ; 
-  background-color: blue;
-  color:white ; 
-  float:right;
-  margin-right:100px;
-}
-.liens{
-  background-color: white;
-  color:black;
-  padding-top:50px;
+.foot-child:hover {
+    font-size: 25px;
+    background-color: white;
+    color: black;
 }
 
-
-#newsletter{ 
-  background-color: var(--bisque--);
-  color:var(--noir--);
+/* fin de ça */
+.btn1 {
+    border: solid 1px blue;
+    background-color: blue;
+    color: white;
+    float: right;
+    margin-right: 100px;
+}
+.liens {
+    background-color: white;
+    color: black;
+    padding-top: 50px;
 }
 
-.index1{ 
-  z-index:-1; 
-  
-}
-.card_1{ 
-  box-shadow: 12px 12px 2px 1px var(--bisque--);
+#newsletter {
+    background-color: var(--bisque--);
+    color: var(--noir--);
 }
 
-.index2{
-  z-index:1;
+.index1 {
+    z-index: -1;
+}
+.card_1 {
+    box-shadow: 12px 12px 2px 1px var(--bisque--);
 }
 
-
-
-.owen{ 
-  background-color: var(--bisque--);
+.index2 {
+    z-index: 1;
 }
-.lineaire { 
-   background: linear-gradient(rgba(38, 35, 66, 0.5),#0e0324) , url(../images/fete.jpeg) center / cover no-repeat  ;
-  height:100vh;
-  border-radius:74% 26% 94% 6% / 4% 66% 34% 96% ;
+
+.owen {
+    background-color: var(--bisque--);
 }
-.linear img { 
-  position : relative ; 
-  top:10px ; 
-  right: 15px ;
-  left:20px;
-   height:200px;
-   opacity:0.2; 
-   border-radius: 50%;
-   
+.lineaire {
+    background: linear-gradient(rgba(38, 35, 66, 0.5), #0e0324),
+        url(../images/fete.jpeg) center / cover no-repeat;
+    height: 100vh;
+    border-radius: 74% 26% 94% 6% / 4% 66% 34% 96%;
+}
+.linear img {
+    position: relative;
+    top: 10px;
+    right: 15px;
+    left: 20px;
+    height: 200px;
+    opacity: 0.2;
+    border-radius: 50%;
 }
 /*page user */
 
 /*fin */
 .cont-ain {
-  width:100%;
-  display:flex ;
+    width: 100%;
+    display: flex;
 }
-.cont-ain1{ 
-
-  flex:1 0 200px ;
-  height:75vh;
-  background-color: #00072D;
+.cont-ain1 {
+    flex: 1 0 200px;
+    height: 75vh;
+    background-color: #00072d;
 }
-.cont-ain2{
-  
-  flex:1 1 100%;
+.cont-ain2 {
+    flex: 1 1 100%;
 }
 
 /*page admin */
 .ilemes {
-  width:100%;
-  display:flex ;
+    width: 100%;
+    display: flex;
 }
-.ileme_link1{ 
-
-  flex:1 0 200px ;
-  min-height:100vh;
-  
-
+.ileme_link1 {
+    flex: 1 0 200px;
+    min-height: 100vh;
 }
-.ileme_link2{
-  height:100vh;
-  overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
-  scrollbar-width: 0;
-  flex:1 1 100%;
+.ileme_link2 {
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: 0;
+    flex: 1 1 100%;
 }
-      .ileme_link2::-webkit-scrollbar{
-        
-      }
+.ileme_link2::-webkit-scrollbar {
+}
 
-     .ileme_link2 {
-        -ms-overflow-style: none;
-        overflow: -moz-scrollbars-none;
-      }
+.ileme_link2 {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
 
-.uuid > * { 
-  margin-top: 18px;
-  text-align: left;
+.uuid > * {
+    margin-top: 18px;
+    text-align: left;
 }
 /* */
-.voix{
-  margin-left:300px;
-  margin-top:50px;
+.voix {
+    margin-left: 300px;
+    margin-top: 50px;
 }
 
- .us-ser a:hover { 
-        color: blue ;
-  }
+.us-ser a:hover {
+    color: blue;
+}
 
-  /* pour 0 ---- 576px;*/
-  
-  @media (max-width: 576px) { 
+/* pour 0 ---- 576px;*/
 
-    .general { 
-
-      visibility:hidden;
-      height:0 ; 
-
+@media (max-width: 576px) {
+    .general {
+        visibility: hidden;
+        height: 0;
     }
-  }
+}
 
-
-@media screen and (max-width:970px) {
-
-  .us-er{ 
-    height:0px;
-    width:0px;
-    visibility: hidden;
-  }
- 
-  .voix{ 
-    margin-left:0px;
-   
-  }
-  .voi-x{
-    margin-top:100px;
-  }
-    #newsletter{ 
-        padding-top:0px;
-        margin-left:0px;
+@media screen and (max-width: 970px) {
+    .us-er {
+        height: 0px;
+        width: 0px;
+        visibility: hidden;
     }
-    .forms{ 
-      width:70%;
+
+    .voix {
+        margin-left: 0px;
     }
-   .admin-s{
-     height:50px;
-   
-   }
+    .voi-x {
+        margin-top: 100px;
+    }
+    #newsletter {
+        padding-top: 0px;
+        margin-left: 0px;
+    }
+    .forms {
+        width: 70%;
+    }
+    .admin-s {
+        height: 50px;
+    }
     .togle > * {
-      margin-bottom: 5px;
-      margin-top:5px;
+        margin-bottom: 5px;
+        margin-top: 5px;
     }
-   .lineaire{ 
-     border-radius: 87% 13% 44% 56% / 28% 79% 21% 72% ;
-     visibility:hidden ;
-     height:0px;
-     
-   }
-
+    .lineaire {
+        border-radius: 87% 13% 44% 56% / 28% 79% 21% 72%;
+        visibility: hidden;
+        height: 0px;
+    }
 }
-
 
 /* pour l'image en linear-gradient déja en commentaire dans le blade.php*/
 /*.linear{ 
@@ -447,26 +397,25 @@ color:black ;
 }
 */
 
-.img1 { 
-
-  background: linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) , url(../images/association_default/esma.jpg) center / cover no-repeat  ;
-  
+.img1 {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), var(--pink)),
+        url(../images/association_default/esma.jpg) center / cover no-repeat;
 }
-.img1 a { 
-  color:white ; 
-  text-decoration: none;
+.img1 a {
+    color: white;
+    text-decoration: none;
 }
-.img1 a:hover{ 
-  color:#221ef0;
-  transition: 1,4s ease-out;
+.img1 a:hover {
+    color: #221ef0;
+    transition: 1, 4s ease-out;
 }
-.img2 { 
-
-  background:  linear-gradient(rgba(0, 0, 0, 0.1),var(--pink))  , url(../images/association_default/DEVE-VE-Association_etudiantes.jpg) center / cover no-repeat  ;
-
+.img2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), var(--pink)),
+        url(../images/association_default/DEVE-VE-Association_etudiantes.jpg)
+            center / cover no-repeat;
 }
-.img3 { 
-
-  background: linear-gradient(rgba(0, 0, 0, 0.1),var(--pink)) , url(../images/association_default/POL_1028-1-1024x683-1.jpg) center / cover no-repeat  ;
-  
+.img3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), var(--pink)),
+        url(../images/association_default/POL_1028-1-1024x683-1.jpg) center /
+            cover no-repeat;
 }

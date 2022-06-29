@@ -422,9 +422,9 @@
 
 <!-- Début des Evènements  @include('evenements.index')-->
 
-<div id="eventss" class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Les Évènements Etudiantes  de la faculté Abdelmalek Essâadi Tetouan </div>
+<div id="eventss" class="fw-bold fs-2 text-center my-5" style="color:var(--blue)"> <i class="fa-solid fa-calendar-days"></i> Tout les èvenements  de la faculté Abdelmalek Essâadi de Tetouan </div>
  
-<div class="container-fluid d-flex justfy-content-center" style="background-color: rgb(104, 5, 72);">
+<div class="container-fluid d-flex justfy-content-center" style="background-color: rgb(237, 235, 237);">
    
     <div class="row row-cols-1 row-cols-md-3 pb-5 g-4" style="margin:0 120px;">
  
